@@ -18,7 +18,7 @@ export const dai = new StableBond({
     reserveContractAbi: StableReserveContract,
     networkAddrs: {
         [Networks.FTM]: {
-            bondAddress: "0xe36B6905ED81141CCE7f4B67d28EFBf5E6a26d0B",
+            bondAddress: "0x4D30bF2166B2F4eB61913Bdff00d67D8BA0657E1",
             reserveAddress: "0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E",
         },
     },
@@ -33,7 +33,7 @@ export const wftm = new CustomBond({
     reserveContractAbi: StableReserveContract,
     networkAddrs: {
         [Networks.FTM]: {
-            bondAddress: "0xa2967b2DACa73cE9D1f89f399F9B8E9810C20934",
+            bondAddress: "0x60509400CFC30f3F468630EfD8bB08D864564D72",
             reserveAddress: "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
         },
     },
@@ -48,11 +48,11 @@ export const daiLuxor = new LPBond({
     reserveContractAbi: LpReserveContract,
     networkAddrs: {
         [Networks.FTM]: {
-            bondAddress: "0x115D63A73Ab988b5f8a2bc61682803D82bbe01b0",
-            reserveAddress: "0xf21e7307F8A0C18bF72fe3880EFe82868cC7EeB5",
+            bondAddress: "0x194C771f142751A0368aE9E92dC4eF7E0B5327D5",
+            reserveAddress: "0x46729c2AeeabE7774a0E710867df80a6E19Ef851",
         },
     },
-    lpUrl: "https://app.soulswap.finance/exchange/add/0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E/0x01ABFdF9AA9B1689f5497409112e327B51397783",
+    lpUrl: "https://app.soulswap.finance/exchange/add/0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
 });
 
 export const ftmLuxor = new CustomLPBond({
@@ -64,11 +64,11 @@ export const ftmLuxor = new CustomLPBond({
     reserveContractAbi: LpReserveContract,
     networkAddrs: {
         [Networks.FTM]: {
-            bondAddress: "0xD1aBB2e4b53BFfba07eE8c13D9Ea02EE2b5F45df",
-            reserveAddress: "0x977d428e3Fca17118ed3d68907845591fB2B7fd7",
+            bondAddress: "0x6fB6368e59621eD69639a44C7b39930780cCCE51",
+            reserveAddress: "0x951BBB838e49F7081072895947735b0892cCcbCD",
         },
     },
-    lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0x01ABFdF9AA9B1689f5497409112e327B51397783",
+    lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
 });
 
 export default [dai, wftm, daiLuxor, ftmLuxor];

@@ -154,7 +154,7 @@ function Stake() {
                                     <div className="stake-card-wallet-connect-btn" onClick={connect}>
                                         <p>Connect Wallet</p>
                                     </div>
-                                    <p className="stake-card-wallet-desc-text">Connect your wallet to stake LUX tokens!</p>
+                                    <p className="stake-card-wallet-desc-text">Connect Wallet to stake LUX</p>
                                 </div>
                             )}
                             {address && (

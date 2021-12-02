@@ -1,5 +1,6 @@
 import FtmIcon from "../assets/tokens/FTM.svg";
 import LuxorIcon from "../assets/tokens/TIME.svg";
+import LumensIcon from "../assets/tokens/TIME.svg";
 import BnbIcon from "../assets/tokens/BNB.png";
 import IceIcon from "../assets/tokens/ICE.png";
 import DaiIcon from "../assets/tokens/DAI.svg";
@@ -55,9 +56,16 @@ const usdt: IToken = {
 
 export const lux: IToken = {
     name: "LUX",
-    address: "0x01ABFdF9AA9B1689f5497409112e327B51397783",
+    address: "0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
     img: LuxorIcon,
-    decimals: 18,
+    decimals: 9,
+};
+
+export const lum: IToken = {
+    name: "LUM",
+    address: "0x4290b33158F429F40C0eDc8f9b9e5d8C5288800c",
+    img: LumensIcon,
+    decimals: 9,
 };
 
 const usdc: IToken = {
@@ -88,4 +96,4 @@ const weth: IToken = {
     decimals: 18,
 };
 
-export default [bnb, dai, ice, usdc, usdt, lux, ftm, wftm, wbtc, weth];
+export default [bnb, dai, ice, usdc, usdt, lux, lum, ftm, wftm, wbtc, weth];

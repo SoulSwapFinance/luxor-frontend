@@ -6,8 +6,8 @@ export const messages = {
     existing_mint:
         "You have an existing mint. Minting will reset your vesting period and forfeit any pending claimable rewards. We recommend claiming rewards first or using a fresh wallet. Do you still wish to proceed?",
     before_stake: "Before staking, enter a value.",
-    before_unstake: "Before un staking, enter a value.",
-    tx_successfully_send: "Your transaction was successfully",
+    before_unstake: "Before unstaking, enter a value.",
+    tx_successfully_send: "Your transaction was successful",
     your_balance_updated: "Your balance was successfully updated",
     nothing_to_claim: "You have nothing to claim",
     something_wrong: "Something went wrong",

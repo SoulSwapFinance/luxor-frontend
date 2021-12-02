@@ -21,7 +21,8 @@ export const loadAppDetails = createAsyncThunk(
         const addresses = getAddresses(networkID);
 
         const luxorPrice = getTokenPrice("LUX");
-        const luxorAmount = 1512.12854088 * luxorPrice;
+        const ohmPrice = getTokenPrice("LUX");
+        const ohmAmount = 1512.12854088 * ohmPrice;
 
         const stakingContract = new ethers.Contract(addresses.STAKING_ADDRESS, StakingContract, provider);
         const currentBlock = await provider.getBlockNumber();
@@ -39,16 +40,16 @@ export const loadAppDetails = createAsyncThunk(
 
         const tokenBalPromises = allBonds.map(bond => bond.getTreasuryBalance(networkID, provider));
         const tokenBalances = await Promise.all(tokenBalPromises);
-        const treasuryBalance = tokenBalances.reduce((tokenBalance0, tokenBalance1) => tokenBalance0 + tokenBalance1, luxorAmount);
+        const treasuryBalance = tokenBalances.reduce((tokenBalance0, tokenBalance1) => tokenBalance0 + tokenBalance1, ohmAmount);
 
         const tokenAmountsPromises = allBonds.map(bond => bond.getTokenAmount(networkID, provider));
         const tokenAmounts = await Promise.all(tokenAmountsPromises);
-        const rfvTreasury = tokenAmounts.reduce((tokenAmount0, tokenAmount1) => tokenAmount0 + tokenAmount1, luxorAmount);
+        const rfvTreasury = tokenAmounts.reduce((tokenAmount0, tokenAmount1) => tokenAmount0 + tokenAmount1, ohmAmount);
 
-        const timeBondsAmountsPromises = allBonds.map(bond => bond.getLuxorAmount(networkID, provider));
-        const timeBondsAmounts = await Promise.all(timeBondsAmountsPromises);
-        const timeAmount = timeBondsAmounts.reduce((timeAmount0, timeAmount1) => timeAmount0 + timeAmount1, 0);
-        const luxorSupply = totalSupply - timeAmount;
+        const luxorBondsAmountsPromises = allBonds.map(bond => bond.getLuxorAmount(networkID, provider));
+        const luxorBondsAmounts = await Promise.all(luxorBondsAmountsPromises);
+        const luxorAmount = luxorBondsAmounts.reduce((luxorAmount0, luxorAmount1) => luxorAmount0 + luxorAmount1, 0);
+        const luxorSupply = totalSupply - luxorAmount;
 
         const rfv = rfvTreasury / luxorSupply;
 
