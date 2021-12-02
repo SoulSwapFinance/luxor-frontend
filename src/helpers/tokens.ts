@@ -22,7 +22,7 @@ export const ftm: IToken = {
     name: "FTM",
     isFtm: true,
     img: FtmIcon,
-    address: "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+    address: "",
     decimals: 18,
 };
 
