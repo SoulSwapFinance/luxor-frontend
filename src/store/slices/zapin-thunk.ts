@@ -123,8 +123,8 @@ export const calcZapinDetails = async ({ token, provider, networkID, bond, value
     }
 
     const valueInWei = trim(Number(value) * Math.pow(10, token.decimals));
-
-     try {
+    
+    try {
         if (bond.isLP) {
             [swapTarget, swapData, amount] = await zapinLpData(bond, token, valueInWei, networkID, acceptedSlippage);
         } else {
