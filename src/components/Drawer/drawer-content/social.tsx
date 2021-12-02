@@ -11,7 +11,7 @@ export default function Social() {
                 <SvgIcon color="primary" component={GitHub} />
             </Link>
 
-            <Link href="https://twitter.com/SoulSwapFinance" target="_blank">
+            <Link href="https://twitter.com/LuxorMoney" target="_blank">
                 <SvgIcon color="primary" component={Twitter} />
             </Link>
 

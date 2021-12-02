@@ -26,12 +26,12 @@ export const ftm: IToken = {
     decimals: 18,
 };
 
-const bnb: IToken = {
-    name: "BNB",
-    address: "0xD67de0e0a0Fd7b15dC8348Bb9BE742F3c5850454",
-    img: BnbIcon,
-    decimals: 18,
-};
+// const bnb: IToken = {
+//     name: "BNB",
+//     address: "0xD67de0e0a0Fd7b15dC8348Bb9BE742F3c5850454",
+//     img: BnbIcon,
+//     decimals: 18,
+// };
 
 export const dai: IToken = {
     name: "DAI",
@@ -40,19 +40,19 @@ export const dai: IToken = {
     decimals: 18,
 };
 
-const ice: IToken = {
-    name: "ICE",
-    address: "0xf16e81dce15B08F326220742020379B855B87DF9",
-    img: IceIcon,
-    decimals: 18,
-};
+// const ice: IToken = {
+//     name: "ICE",
+//     address: "0xf16e81dce15B08F326220742020379B855B87DF9",
+//     img: IceIcon,
+//     decimals: 18,
+// };
 
-const usdt: IToken = {
-    name: "USDT",
-    address: "0x049d68029688eAbF473097a2fC38ef61633A3C7A",
-    img: UsdtIcon,
-    decimals: 6,
-};
+// const usdt: IToken = {
+//     name: "USDT",
+//     address: "0x049d68029688eAbF473097a2fC38ef61633A3C7A",
+//     img: UsdtIcon,
+//     decimals: 6,
+// };
 
 export const lux: IToken = {
     name: "LUX",
@@ -68,12 +68,12 @@ export const lum: IToken = {
     decimals: 9,
 };
 
-const usdc: IToken = {
-    name: "USDC",
-    address: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-    img: UsdcIcon,
-    decimals: 6,
-};
+// const usdc: IToken = {
+//     name: "USDC",
+//     address: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+//     img: UsdcIcon,
+//     decimals: 6,
+// };
 
 export const wftm: IToken = {
     name: "WFTM",
@@ -82,18 +82,19 @@ export const wftm: IToken = {
     decimals: 18,
 };
 
-const wbtc: IToken = {
-    name: "WBTC",
-    address: "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
-    img: WBtcIcon,
-    decimals: 8,
-};
+// const wbtc: IToken = {
+//     name: "WBTC",
+//     address: "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+//     img: WBtcIcon,
+//     decimals: 8,
+// };
 
-const weth: IToken = {
-    name: "WETH",
-    address: "0x74b23882a30290451A17c44f4F05243b6b58C76d",
-    img: WethIcon,
-    decimals: 18,
-};
+// const weth: IToken = {
+//     name: "WETH",
+//     address: "0x74b23882a30290451A17c44f4F05243b6b58C76d",
+//     img: WethIcon,
+//     decimals: 18,
+// };
 
-export default [bnb, dai, ice, usdc, usdt, lux, lum, ftm, wftm, wbtc, weth];
+// export default [bnb, dai, ice, usdc, usdt, lux, lum, ftm, wftm, wbtc, weth];
+export default [dai, lux, lum, ftm, wftm];

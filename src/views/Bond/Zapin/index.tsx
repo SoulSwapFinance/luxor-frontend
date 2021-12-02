@@ -253,7 +253,7 @@ function Zapin({ open, handleClose, bond }: IZapinProps) {
                         </div>
                         <div className="zapin-body-params">
                             <div className="data-row">
-                                <p className="data-row-name">Destination token </p>
+                                <p className="data-row-name">Destination Token </p>
                                 <p className="data-row-value">{bond.displayName}</p>
                             </div>
                             <div className="data-row">

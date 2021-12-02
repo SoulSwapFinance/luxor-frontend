@@ -10,12 +10,12 @@ function Main() {
                 <img src={CatImg} alt="" />
             </div>
             <div className="landing-main-btns-wrap">
-                <Link href="https://app.soulswap.finance" target="_blank" rel="noreferrer">
+                <Link href="https://luxor.money" target="_blank" rel="noreferrer">
                     <div className="landing-main-btn">
                         <p>Enter App</p>
                     </div>
                 </Link>
-                <Link href="https://docs.soulswap.finance" target="_blank" rel="noreferrer">
+                <Link href="https://docs.luxor.money" target="_blank" rel="noreferrer">
                     <div className="landing-main-btn">
                         <p>Documentation</p>
                     </div>

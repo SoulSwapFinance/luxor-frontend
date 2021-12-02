@@ -129,7 +129,7 @@ function NavContent() {
                 </div>
             </div>
             <div className="dapp-menu-doc-link">
-                <Link href="https://docs.soulswap.finance" target="_blank">
+                <Link href="https://docs.luxor.money" target="_blank">
                     <img alt="" src={DocsIcon} />
                     <p>Docs</p>
                 </Link>
