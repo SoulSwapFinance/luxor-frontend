@@ -27,7 +27,7 @@ export const ftm: IToken = {
 
 const bnb: IToken = {
     name: "BNB",
-    address: "0xd062C9a1b97d47feD5004932487c2624AdE837a4",
+    address: "0xD67de0e0a0Fd7b15dC8348Bb9BE742F3c5850454",
     img: BnbIcon,
     decimals: 18,
 };
