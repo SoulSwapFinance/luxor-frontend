@@ -16,6 +16,7 @@ import { messages } from "../../constants/messages";
 import { getGasPrice } from "../../helpers/get-gas-price";
 import { metamaskErrorWrap } from "../../helpers/metamask-error-wrap";
 import { sleep } from "../../helpers";
+import { BigNumber } from "ethers";
 
 interface IChangeApproval {
     bond: Bond;
@@ -167,12 +168,16 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
             const ftmPrice = getTokenPrice("FTM");
             purchased = purchased * ftmPrice;
         }
-    } else if (bond.name === wftm.name) {
-        purchased = purchased / Math.pow(10, 18);
-        const ftmPrice = getTokenPrice("FTM");
-        purchased = purchased * ftmPrice;
     } else {
+        if (bond.tokensInStrategy) {
+            purchased = BigNumber.from(purchased).add(BigNumber.from(bond.tokensInStrategy)).toString();
+        }
         purchased = purchased / Math.pow(10, 18);
+
+        if (bond.name === wftm.name) {
+            const ftmPrice = getTokenPrice("FTM");
+            purchased = purchased * ftmPrice;
+        }
     }
 
     return {

@@ -22,6 +22,7 @@ export const dai = new StableBond({
             reserveAddress: "0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E",
         },
     },
+    tokensInStrategy: "60500000000000000000000000",
 });
 
 export const wftm = new CustomBond({
@@ -37,6 +38,7 @@ export const wftm = new CustomBond({
             reserveAddress: "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
         },
     },
+    tokensInStrategy: "756916000000000000000000",
 });
 
 export const daiLuxor = new LPBond({

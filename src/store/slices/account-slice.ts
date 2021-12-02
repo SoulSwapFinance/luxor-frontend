@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { getAddresses } from "../../constants";
-import { LuxorTokenContract, LumensTokenContract, DaiTokenContract } from "../../abi";
+import { LuxorTokenContract, LumensTokenContract, DaiTokenContract, wLumTokenContract } from "../../abi";
 import { setAll } from "../../helpers";
 
 import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit";
@@ -21,6 +21,7 @@ interface IAccountBalances {
     balances: {
         lumens: string;
         luxor: string;
+        wlum: string;
     };
 }
 
@@ -29,13 +30,18 @@ export const getBalances = createAsyncThunk("account/getBalances", async ({ addr
 
     const lumensContract = new ethers.Contract(addresses.LUMENS_ADDRESS, LumensTokenContract, provider);
     const lumensBalance = await lumensContract.balanceOf(address);
+
     const luxorContract = new ethers.Contract(addresses.LUXOR_ADDRESS, LuxorTokenContract, provider);
     const luxorBalance = await luxorContract.balanceOf(address);
+
+    const wlumContract = new ethers.Contract(addresses.WLUM_ADDRESS, wLumTokenContract, provider);
+    const wlumBalance = await wlumContract.balanceOf(address);
 
     return {
         balances: {
             lumens: ethers.utils.formatUnits(lumensBalance, "gwei"),
             luxor: ethers.utils.formatUnits(luxorBalance, "gwei"),
+            wlum: ethers.utils.formatEther(wlumBalance),
         },
     };
 });
@@ -50,9 +56,13 @@ interface IUserAccountDetails {
     balances: {
         luxor: string;
         lumens: string;
+        wlum: string;
     };
     staking: {
         luxor: number;
+        lumens: number;
+    };
+    wrapping: {
         lumens: number;
     };
 }
@@ -60,6 +70,10 @@ interface IUserAccountDetails {
 export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails", async ({ networkID, provider, address }: ILoadAccountDetails): Promise<IUserAccountDetails> => {
     let luxorBalance = 0;
     let lumensBalance = 0;
+
+    let wlumBalance = 0;
+    let lumWlumAllowance = 0;
+
     let stakeAllowance = 0;
     let unstakeAllowance = 0;
 
@@ -75,16 +89,28 @@ export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails",
         const lumensContract = new ethers.Contract(addresses.LUMENS_ADDRESS, LumensTokenContract, provider);
         lumensBalance = await lumensContract.balanceOf(address);
         unstakeAllowance = await lumensContract.allowance(address, addresses.STAKING_ADDRESS);
+
+        if (addresses.WLUM_ADDRESS) {
+            lumWlumAllowance = await lumensContract.allowance(address, addresses.WLUM_ADDRESS);
+        }
+    }
+    if (addresses.WLUM_ADDRESS) {
+        const wlumContract = new ethers.Contract(addresses.WLUM_ADDRESS, wLumTokenContract, provider);
+        wlumBalance = await wlumContract.balanceOf(address);
     }
 
     return {
         balances: {
             lumens: ethers.utils.formatUnits(lumensBalance, "gwei"),
             luxor: ethers.utils.formatUnits(luxorBalance, "gwei"),
+            wlum: ethers.utils.formatEther(wlumBalance),
         },
         staking: {
             luxor: Number(stakeAllowance),
             lumens: Number(unstakeAllowance),
+        },
+        wrapping: {
+            lumens: Number(lumWlumAllowance),
         },
     };
 });
@@ -223,10 +249,14 @@ export interface IAccountSlice {
     balances: {
         lumens: string;
         luxor: string;
+        wlum: string;
     };
     loading: boolean;
     staking: {
         luxor: number;
+        lumens: number;
+    };
+    wrapping: {
         lumens: number;
     };
     tokens: { [key: string]: IUserTokenDetails };
@@ -235,8 +265,9 @@ export interface IAccountSlice {
 const initialState: IAccountSlice = {
     loading: true,
     bonds: {},
-    balances: { lumens: "", luxor: "" },
+    balances: { lumens: "", luxor: "", wlum: "" },
     staking: { luxor: 0, lumens: 0 },
+    wrapping: { lumens: 0 },
     tokens: {},
 };
 

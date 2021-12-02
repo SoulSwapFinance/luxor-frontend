@@ -11,7 +11,7 @@ import { ethers } from "ethers";
 import { DaiTokenContract, ZapinContract } from "../../abi";
 import { calculateUserBondDetails, fetchAccountSuccess } from "./account-slice";
 import { IAllBondData } from "../../hooks/bonds";
-import { zapinData, zapinLpData } from "../../helpers/zapin-fetch-data";
+import { zapinData } from "../../helpers/zapin-fetch-data"; // zapinLpData
 import { trim } from "../../helpers/trim";
 import { sleep } from "../../helpers";
 
@@ -82,6 +82,7 @@ export interface ITokenZapinResponse {
     swapTarget: string;
     swapData: string;
     amount: string;
+    value: string;
 }
 
 export const calcZapinDetails = async ({ token, provider, networkID, bond, value, slippage, dispatch }: ITokenZapin): Promise<ITokenZapinResponse> => {
@@ -97,6 +98,7 @@ export const calcZapinDetails = async ({ token, provider, networkID, bond, value
             swapTarget,
             swapData,
             amount,
+            value,
         };
     }
 
@@ -106,6 +108,7 @@ export const calcZapinDetails = async ({ token, provider, networkID, bond, value
             swapTarget,
             swapData,
             amount,
+            value,
         };
     }
 
@@ -115,17 +118,18 @@ export const calcZapinDetails = async ({ token, provider, networkID, bond, value
             swapTarget,
             swapData,
             amount,
+            value,
         };
     }
 
     const valueInWei = trim(Number(value) * Math.pow(10, token.decimals));
 
     try {
-        if (bond.isLP) {
-            [swapTarget, swapData, amount] = await zapinLpData(bond, token, valueInWei, networkID, acceptedSlippage);
-        } else {
-            [swapTarget, swapData, amount] = await zapinData(bond, token, valueInWei, networkID, acceptedSlippage);
-        }
+        // if (bond.isLP) {
+        // [swapTarget, swapData, amount] = await zapinLpData(bond, token, valueInWei, networkID, acceptedSlippage);
+        // } else {
+        [swapTarget, swapData, amount] = await zapinData(bond, token, valueInWei, networkID, acceptedSlippage);
+        // }
     } catch (err) {
         metamaskErrorWrap(err, dispatch);
     }
@@ -134,6 +138,7 @@ export const calcZapinDetails = async ({ token, provider, networkID, bond, value
         swapTarget,
         swapData,
         amount,
+        value,
     };
 };
 
@@ -185,13 +190,13 @@ export const zapinMint = createAsyncThunk(
                         minReturnAmount,
                         swapTarget,
                         swapData,
-                        false,
+                        true,
                         maxPremium,
                         depositorAddress,
                         { value: valueInWei, gasPrice },
                     );
                 } else {
-                    zapinTx = await zapinContract.ZapInLp(token.address, bondAddress, valueInWei, minReturnAmount, swapTarget, swapData, false, maxPremium, depositorAddress, {
+                    zapinTx = await zapinContract.ZapInLp(token.address, bondAddress, valueInWei, minReturnAmount, swapTarget, swapData, true, maxPremium, depositorAddress, {
                         gasPrice,
                     });
                 }
