@@ -12,7 +12,8 @@ import { BigNumber } from "ethers";
 //     const sellToken = token.isFtm ? ethers.constants.AddressZero : token.address;
 //     const buyToken = bond.getAddressForReserve(network);
 //     // TODO
-//     const url = `https://api.zapper.fi/v1/zap-in/pool/soulswap/transaction?gasPrice=1000000000000&ownerAddress=${addresses.ZAPIN_ADDRESS}&sellAmount=${tokenAmmount}&sellTokenAddress=${sellToken}&poolAddress=${buyToken}&slippagePercentage=${slippage}&network=fantom&api_key=96e0cc51-a62e-42ca-acee-910ea7d2a241&skipGasEstimate=true`;
+//     // const url = `https://api.zapper.fi/v1/zap-in/pool/soulswap/transaction?gasPrice=1000000000000&ownerAddress=${addresses.ZAPIN_ADDRESS}&sellAmount=${tokenAmmount}&sellTokenAddress=${sellToken}&poolAddress=${buyToken}&slippagePercentage=${slippage}&network=fantom&api_key=96e0cc51-a62e-42ca-acee-910ea7d2a241&skipGasEstimate=true`;
+//     const url = `https://api.zapper.fi/v1/zap-in/pool/0x1120e150dA9def6Fe930f4fEDeD18ef57c0CA7eF/transaction?gasPrice=1000000000000&ownerAddress=${addresses.ZAPIN_ADDRESS}&sellAmount=${tokenAmmount}&sellTokenAddress=${sellToken}&poolAddress=${buyToken}&slippagePercentage=${slippage}&network=fantom&api_key=96e0cc51-a62e-42ca-acee-910ea7d2a241&skipGasEstimate=true`;
 
 //     const { data } = await axios.get(url);
 
