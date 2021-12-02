@@ -16,7 +16,7 @@ export const zapinLpData = async (bond: IAllBondData, token: IToken, tokenAmmoun
 
     const { data } = await axios.get(url);
 
-    const zapinInterface = new utils.Interface(TraderZapinContract);
+    const zapinInterface = new utils.Interface(LuxorZapinContract);
 
     const { _swapTarget, swapData } = zapinInterface.decodeFunctionData("ZapIn", data.data);
 
