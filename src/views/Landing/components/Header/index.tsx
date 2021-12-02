@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./header.scss";
-import { ReactComponent as LuxorIcon } from "../../../../assets/icons/wonderland-icon.svg";
+import { ReactComponent as LuxorIcon } from "../../../../assets/icons/sun.svg";
 // import LuxorIcon from "../../../../assets/icons/title-logo.png";
 import { SvgIcon, Link, Box, Popper, Fade } from "@material-ui/core";
 import { ReactComponent as GitHub } from "../../../../assets/icons/github.svg";

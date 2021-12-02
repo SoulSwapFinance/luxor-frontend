@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import Social from "./social";
 import StakeIcon from "../../../assets/icons/stake.svg";
 import BondIcon from "../../../assets/icons/bond.svg";
-import LuxorIcon from "../../../assets/icons/title-logo.png";
+import LuxorIcon from "../../../assets/icons/logo.png";
 import DashboardIcon from "../../../assets/icons/dashboard.svg";
 import { trim, shorten } from "../../../helpers";
 import { useAddress } from "../../../hooks";
@@ -41,7 +41,7 @@ function NavContent() {
         <div className="dapp-sidebar">
             <div className="branding-header">
                 <Link href="/" target="_blank">
-                    <img alt="" src={LuxorIcon} height="25" />
+                    <img alt="" src={LuxorIcon} height="125" />
                 </Link>
 
                 {address && (
