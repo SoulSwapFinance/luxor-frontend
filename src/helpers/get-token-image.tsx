@@ -1,5 +1,5 @@
-import LuxImg from "../assets/tokens/TIME.svg";
-import LumImg from "../assets/tokens/MEMO.png";
+import LuxImg from "../assets/tokens/LUX.svg";
+import LumImg from "../assets/tokens/LUM.svg";
 
 function toUrl(tokenPath: string): string {
     const host = window.location.origin;
