@@ -16,5 +16,5 @@ const FTM_MAINNET = {
 export const getAddresses = (networkID: number) => {
     if (networkID === Networks.FTM) return FTM_MAINNET;
 
-    throw Error("Network don't support");
+    throw Error("Unsupported Network");
 };
