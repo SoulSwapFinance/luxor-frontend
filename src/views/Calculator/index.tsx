@@ -100,7 +100,7 @@ function Calculator() {
                                     </Grid>
                                     <Grid item xs={6} sm={4} md={4} lg={4}>
                                         <div className="calculator-card-index">
-                                            <p className="calculator-card-metrics-title">Your LUM Balance</p>
+                                            <p className="calculator-card-metrics-title">LUM Balance</p>
                                             <p className="calculator-card-metrics-value">{isAppLoading ? <Skeleton width="100px" /> : <>{trimmedLumensBalance} LUM</>}</p>
                                         </div>
                                     </Grid>
