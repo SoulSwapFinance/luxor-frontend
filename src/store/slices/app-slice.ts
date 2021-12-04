@@ -29,6 +29,7 @@ export const loadAppDetails = createAsyncThunk(
         const luxorContract = new ethers.Contract(addresses.LUXOR_ADDRESS, LuxorTokenContract, provider);
 
         const marketPrice = ((await getMarketPrice(networkID, provider)) / Math.pow(10, 9)) * daiPrice;
+        console.log("marketPrice:%s", await Number(marketPrice));
 
         const totalSupply = (await luxorContract.totalSupply()) / Math.pow(10, 9);
         const circSupply = (await lumensContract.circulatingSupply()) / Math.pow(10, 9);
