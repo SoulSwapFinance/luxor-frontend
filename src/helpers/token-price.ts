@@ -7,8 +7,8 @@ export const loadTokenPrices = async () => {
     const { data } = await axios.get(url);
 
     cache["LUX"] = data["olympus"].usd; // TODO
-    cache["FTM"] = data["fantom"].usd;
     cache["DAI"] = data["dai"].usd;
+    cache["FTM"] = data["fantom"].usd;
 };
 
 export const getTokenPrice = (symbol: string): number => {

@@ -18,6 +18,8 @@ export const loadAppDetails = createAsyncThunk(
     //@ts-ignore
     async ({ networkID, provider }: ILoadAppDetails) => {
         const daiPrice = getTokenPrice("DAI");
+        console.log("DAI:%s", daiPrice);
+
         const addresses = getAddresses(networkID);
 
         const stakingContract = new ethers.Contract(addresses.STAKING_ADDRESS, StakingContract, provider);
