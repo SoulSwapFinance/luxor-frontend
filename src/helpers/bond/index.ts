@@ -18,27 +18,27 @@ export const dai = new StableBond({
     reserveContractAbi: StableReserveContract,
     networkAddrs: {
         [Networks.FTM]: {
-            bondAddress: "0x4D30bF2166B2F4eB61913Bdff00d67D8BA0657E1",
+            bondAddress: "0xCf994423b39A6991e82443a8011Bf6749e19434b",
             reserveAddress: "0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E",
         },
     },
-    tokensInStrategy: "60500000000000000000000000",
+    tokensInStrategy: "00000000000000000000000000",
 });
 
 export const wftm = new CustomBond({
     name: "wftm",
-    displayName: "wFTM",
+    displayName: "WFTM",
     bondToken: "FTM",
     bondIconSvg: FtmIcon,
     bondContractABI: WftmBondContract,
     reserveContractAbi: StableReserveContract,
     networkAddrs: {
         [Networks.FTM]: {
-            bondAddress: "0x60509400CFC30f3F468630EfD8bB08D864564D72",
+            bondAddress: "0x376969e00621Ebf685fC3D1F216C00d19B162923",
             reserveAddress: "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
         },
     },
-    tokensInStrategy: "756916000000000000000000",
+    tokensInStrategy: "00000000000000000000000",
 });
 
 export const daiLuxor = new LPBond({

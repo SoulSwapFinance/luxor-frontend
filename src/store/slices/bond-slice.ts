@@ -177,9 +177,9 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         if (bond.name === wftm.name) {
             const ftmPrice = getTokenPrice("FTM");
             purchased = purchased * ftmPrice;
+            console.log("ftmPrice:%s", ftmPrice);
         }
     }
-
     return {
         bond: bond.name,
         bondDiscount,
