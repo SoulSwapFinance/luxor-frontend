@@ -1,14 +1,14 @@
 import FtmIcon from "../assets/tokens/FTM.svg";
 import LuxorIcon from "../assets/tokens/LUX.svg";
 import LumensIcon from "../assets/tokens/LUM.svg";
-import BnbIcon from "../assets/tokens/BNB.png";
-import IceIcon from "../assets/tokens/ICE.png";
+// import BnbIcon from "../assets/tokens/BNB.png";
+// import IceIcon from "../assets/tokens/ICE.png";
 import DaiIcon from "../assets/tokens/DAI.svg";
-import UsdcIcon from "../assets/tokens/USDC.e.png";
-import UsdtIcon from "../assets/tokens/USDT.e.png";
+// import UsdcIcon from "../assets/tokens/USDC.e.png";
+// import UsdtIcon from "../assets/tokens/USDT.e.png";
 import WftmIcon from "../assets/tokens/WFTM.png";
-import WBtcIcon from "../assets/tokens/WBTC.e.png";
-import WethIcon from "../assets/tokens/WETH.e.png";
+// import WBtcIcon from "../assets/tokens/WBTC.e.png";
+// import WethIcon from "../assets/tokens/WETH.e.png";
 
 export interface IToken {
     name: string;
