@@ -24,8 +24,7 @@ function Root() {
         </HashRouter>
     );
 
-    // return isApp() ? app() : <Landing />; // TODO
-    return app();
+    return isApp() ? app() : <Landing />;
 }
 
 export default Root;
