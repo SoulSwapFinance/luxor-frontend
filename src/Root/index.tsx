@@ -20,7 +20,7 @@ function Root() {
 
     const app = () => (
         <HashRouter>
-            <App />
+            <Landing />
         </HashRouter>
     );
 
