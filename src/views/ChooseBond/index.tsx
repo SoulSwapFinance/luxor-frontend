@@ -25,10 +25,7 @@ function ChooseBond() {
         <div className="choose-bond-view">
             <Zoom in={true}>
                 <div className="choose-bond-view-card">
-                    <div className="choose-bond-view-card-header">
-                        <p className="choose-bond-view-card-title"> Mint (🏦, 🏦)</p>
-                    </div>
-
+                    <div className="choose-bond-view-card-header">{/* <p className="choose-bond-view-card-title"> Mint Luxor using DAI</p> */}</div>
                     <Grid container item xs={12} spacing={2} className="choose-bond-view-card-metrics">
                         <Grid item xs={12} sm={6}>
                             <Box textAlign="center">

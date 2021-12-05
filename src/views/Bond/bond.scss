@@ -71,7 +71,7 @@
       font-weight: 500;
       font-size: 20px;
       line-height: 24px;
-      color: rgba(255, 255, 255, 0.6);
+      color:  rgb(246, 197, 0.2);
     }
 
     .bond-price-data-value {
@@ -156,7 +156,7 @@
       border-bottom: 1px solid #FFFFFF;
 
       p{
-        color: #FFFFFF;
+        color: rgb(246, 197, 0.2);
       }
     }
   }
@@ -182,7 +182,7 @@
     }
 
     .MuiOutlinedInput-notchedOutline {
-      border-color: rgba(255, 255, 255, 0.2) !important;
+      border-color: rgb(255, 255, 255) !important;
     }
 
     .stake-input-btn {
