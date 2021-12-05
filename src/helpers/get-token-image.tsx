@@ -1,5 +1,5 @@
-import LuxImg from "../assets/tokens/LUX.svg";
-import LumImg from "../assets/tokens/LUM.svg";
+import LuxImg from "../assets/tokens/LUXOR.svg";
+import LumImg from "../assets/tokens/LUMENS.svg";
 
 function toUrl(tokenPath: string): string {
     const host = window.location.origin;
@@ -7,11 +7,11 @@ function toUrl(tokenPath: string): string {
 }
 
 export function getTokenUrl(name: string) {
-    if (name === "luxor") {
+    if (name === "lux") {
         return toUrl(LuxImg);
     }
 
-    if (name === "lumens") {
+    if (name === "lum") {
         return toUrl(LumImg);
     }
 
