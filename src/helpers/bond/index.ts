@@ -38,7 +38,6 @@ export const wftm = new CustomBond({
     reserveContractAbi: StableReserveContract,
     networkAddrs: {
         [Networks.FTM]: {
-            // bondAddress: "0x0762298d405f86368a4dB65f6248dA236CEE350f",
             bondAddress: "0x376969e00621Ebf685fC3D1F216C00d19B162923",
             reserveAddress: "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
         },
