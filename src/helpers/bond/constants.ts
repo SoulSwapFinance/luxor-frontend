@@ -12,4 +12,5 @@ export interface BondAddresses {
 
 export interface NetworkAddresses {
     [Networks.FTM]: BondAddresses;
+    [Networks.BSC]: BondAddresses;
 }

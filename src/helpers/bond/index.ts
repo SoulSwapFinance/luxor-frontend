@@ -22,6 +22,10 @@ export const dai = new StableBond({
             bondAddress: "0xCf994423b39A6991e82443a8011Bf6749e19434b",
             reserveAddress: "0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E",
         },
+        [Networks.BSC]: {
+            bondAddress: "",
+            reserveAddress: "",
+        },
     },
     tokensInStrategy: "00000000000000000000000000",
 });
@@ -37,6 +41,10 @@ export const wftm = new CustomBond({
         [Networks.FTM]: {
             bondAddress: "0x376969e00621Ebf685fC3D1F216C00d19B162923",
             reserveAddress: "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+        },
+        [Networks.BSC]: {
+            bondAddress: "",
+            reserveAddress: "",
         },
     },
     tokensInStrategy: "00000000000000000000000",
@@ -54,6 +62,10 @@ export const daiLuxor = new LPBond({
             bondAddress: "0x194C771f142751A0368aE9E92dC4eF7E0B5327D5",
             reserveAddress: "0x46729c2AeeabE7774a0E710867df80a6E19Ef851",
         },
+        [Networks.BSC]: {
+            bondAddress: "",
+            reserveAddress: "",
+        },
     },
     lpUrl: "https://app.soulswap.finance/exchange/add/0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
 });
@@ -69,6 +81,10 @@ export const ftmLuxor = new CustomLPBond({
         [Networks.FTM]: {
             bondAddress: "0x6fB6368e59621eD69639a44C7b39930780cCCE51",
             reserveAddress: "0x951BBB838e49F7081072895947735b0892cCcbCD",
+        },
+        [Networks.BSC]: {
+            bondAddress: "",
+            reserveAddress: "",
         },
     },
     lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
