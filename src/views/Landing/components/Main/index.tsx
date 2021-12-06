@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "@material-ui/core";
 import "./main.scss";
-import CatImg from "../../../../assets/icons/Chershire_Cat.png";
+import LuxImg from "../../../../assets/icons/LUXOR.svg";
 
 function Main() {
     return (
         <div className="landing-main">
             <div className="landing-main-img-wrap">
-                <img src={CatImg} alt="" />
+                <img src={LuxImg} alt="" />
             </div>
             <div className="landing-main-btns-wrap">
                 <Link href="https://luxor.money" target="_blank" rel="noreferrer">
@@ -22,12 +22,12 @@ function Main() {
                 </Link>
             </div>
             <div className="landing-main-title-wrap">
-                <p>The Defi</p>
-                <p>Luxor</p>
+                {/* <p>The Defi</p> */}
+                <p>Luxor Money</p>
             </div>
             <div className="landing-main-help-text-wrap">
                 <p>Financial tools to grow your wealth - stake</p>
-                <p>and earn compounding interest</p>
+                <p>and earn compounding interest.</p>
             </div>
         </div>
     );

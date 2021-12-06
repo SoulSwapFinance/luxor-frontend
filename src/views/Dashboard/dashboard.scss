@@ -20,13 +20,13 @@
       z-index: 2;
       
       @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-        background: rgba(0, 0, 0, 0.2);
+        background: rgb(0, 0, 0);
       backdrop-filter: blur(100px);
       }
     
       /* slightly transparent fallback for Firefox (not supporting backdrop-filter) */
       @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-        background: #181B1C;
+        background: #ffffff;
       }
 
       border-radius: 10px;
@@ -36,7 +36,7 @@
         font-family: Montserrat Medium;
         font-weight: 500;
         font-size: 20px;
-        color: rgba(255, 255, 255, 0.6);
+        color: rgb(255, 196, 0);
       }
   
       .card-value {
@@ -44,7 +44,7 @@
         font-weight: bold;
         font-size: 24px;
         font-weight: bold;
-        color: #FFFFFF;
+        color: #ffffff;
       }
     }
   }

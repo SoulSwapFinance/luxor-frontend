@@ -1,6 +1,6 @@
 import { Networks } from "../../constants/blockchain";
-import { LPBond, CustomLPBond } from "./lp-bond";
-import { StableBond, CustomBond } from "./stable-bond";
+import { CustomLPBond, LPBond } from "./lp-bond";
+import { CustomBond, StableBond } from "./stable-bond";
 
 import DaiIcon from "../../assets/tokens/DAI.svg";
 import FtmIcon from "../../assets/tokens/FTM.svg";
@@ -8,6 +8,7 @@ import DaiLuxorIcon from "../../assets/tokens/DAI.svg";
 import FtmLuxorIcon from "../../assets/tokens/FTM.svg";
 
 import { StableBondContract, LpBondContract, WftmBondContract, StableReserveContract, LpReserveContract } from "../../abi";
+// import { StableBondContract, StableReserveContract } from "../../abi";
 
 export const dai = new StableBond({
     name: "dai",
@@ -73,4 +74,4 @@ export const ftmLuxor = new CustomLPBond({
     lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
 });
 
-export default [dai, wftm, daiLuxor, ftmLuxor];
+export default [dai, daiLuxor, wftm, ftmLuxor]; // , wftm, daiLuxor];

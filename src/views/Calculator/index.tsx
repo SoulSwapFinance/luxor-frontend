@@ -21,12 +21,12 @@ function Calculator() {
 
     const trimmedStakingAPY = trim(stakingAPY * 100, 1);
     const trimmedLumensBalance = trim(Number(lumensBalance), 6);
-    const trimeMarketPrice = trim(marketPrice, 2);
+    const trimMarketPrice = trim(marketPrice, 2);
 
     const [lumensAmount, setLumensAmount] = useState(trimmedLumensBalance);
     const [rewardYield, setRewardYield] = useState(trimmedStakingAPY);
-    const [priceAtPurchase, setPriceAtPurchase] = useState(trimeMarketPrice);
-    const [futureMarketPrice, setFutureMarketPrice] = useState(trimeMarketPrice);
+    const [priceAtPurchase, setPriceAtPurchase] = useState(trimMarketPrice);
+    const [futureMarketPrice, setFutureMarketPrice] = useState(trimMarketPrice);
     const [days, setDays] = useState(30);
 
     const [rewardsEstimation, setRewardsEstimation] = useState("0");
@@ -41,7 +41,7 @@ function Calculator() {
 
     const calcCurrentWealth = () => {
         const lumens = Number(lumensAmount) || 0;
-        const price = parseFloat(trimeMarketPrice);
+        const price = parseFloat(trimMarketPrice);
         const amount = lumens * price;
         return trim(amount, 2);
     };
@@ -87,7 +87,7 @@ function Calculator() {
                                     <Grid item xs={12} sm={4} md={4} lg={4}>
                                         <div className="calculator-card-apy">
                                             <p className="calculator-card-metrics-title">LUX Price</p>
-                                            <p className="calculator-card-metrics-value">{isAppLoading ? <Skeleton width="100px" /> : `$${trimeMarketPrice}`}</p>
+                                            <p className="calculator-card-metrics-value">{isAppLoading ? <Skeleton width="100px" /> : `$${trimMarketPrice}`}</p>
                                         </div>
                                     </Grid>
                                     <Grid item xs={6} sm={4} md={4} lg={4}>
@@ -164,7 +164,7 @@ function Calculator() {
                                                     labelWidth={0}
                                                     endAdornment={
                                                         <InputAdornment position="end">
-                                                            <div onClick={() => setPriceAtPurchase(trimeMarketPrice)} className="stake-card-action-input-btn">
+                                                            <div onClick={() => setPriceAtPurchase(trimMarketPrice)} className="stake-card-action-input-btn">
                                                                 <p>Current</p>
                                                             </div>
                                                         </InputAdornment>
@@ -184,7 +184,7 @@ function Calculator() {
                                                     labelWidth={0}
                                                     endAdornment={
                                                         <InputAdornment position="end">
-                                                            <div onClick={() => setFutureMarketPrice(trimeMarketPrice)} className="stake-card-action-input-btn">
+                                                            <div onClick={() => setFutureMarketPrice(trimMarketPrice)} className="stake-card-action-input-btn">
                                                                 <p>Current</p>
                                                             </div>
                                                         </InputAdornment>
