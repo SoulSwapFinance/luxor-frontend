@@ -59,7 +59,7 @@ export const daiLuxor = new LPBond({
     reserveContractAbi: LpReserveContract,
     networkAddrs: {
         [Networks.FTM]: {
-            bondAddress: "0x194C771f142751A0368aE9E92dC4eF7E0B5327D5",
+            bondAddress: "0xaC64DC47A1fe52458D3418AC7C568Edc3306130a",
             reserveAddress: "0x46729c2AeeabE7774a0E710867df80a6E19Ef851",
         },
         [Networks.BSC]: {
@@ -90,4 +90,4 @@ export const ftmLuxor = new CustomLPBond({
     lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
 });
 
-export default [dai]; // , wftm, ftmLuxor];, wftm, ftmLuxor, daiLuxor
+export default [dai, daiLuxor]; // , wftm, ftmLuxor];, wftm, ftmLuxor, daiLuxor
