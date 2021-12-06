@@ -22,7 +22,6 @@ function Main() {
                 </Link>
             </div>
             <div className="landing-main-title-wrap">
-                {/* <p>The Defi</p> */}
                 <p>Luxor Money</p>
             </div>
             <div className="landing-main-help-text-wrap">

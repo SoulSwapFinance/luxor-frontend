@@ -51,7 +51,18 @@ function Bond({ bond }: IBondProps) {
                                 </div>
                                 <div className="bond-price-data">
                                     <p className="bond-price-data-title">LUX Price</p>
-                                    <p className="bond-price-data-value">{isBondLoading ? <Skeleton /> : `$${trim(bond.marketPrice, 2)}`}</p>
+                                    <p className="bond-price-data-value">
+                                        {isBondLoading ? (
+                                            <Skeleton />
+                                        ) : (
+                                            new Intl.NumberFormat("en-US", {
+                                                style: "currency",
+                                                currency: "USD",
+                                                maximumFractionDigits: 0,
+                                                minimumFractionDigits: 0,
+                                            }).format(bond.marketPrice)
+                                        )}
+                                    </p>
                                 </div>
                             </Box>
 
