@@ -7,7 +7,7 @@ import { DEFAULT_NETWORK } from "../../constants";
 import { Networks } from "../../constants";
 import { messages } from "../../constants/messages";
 import { useDispatch } from "react-redux";
-import { swithNetwork } from "../../helpers/switch-network";
+import { switchNetwork } from "../../helpers/switch-network";
 
 type onChainProvider = {
     connect: () => Promise<Web3Provider>;
@@ -131,7 +131,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
         if (providerChainID !== DEFAULT_NETWORK) {
             const shouldSwitch = window.confirm(messages.switch_to_fantom);
             if (shouldSwitch) {
-                await swithNetwork();
+                await switchNetwork();
                 window.location.reload();
             }
             return true;

@@ -96,5 +96,4 @@ export const wftm: IToken = {
 //     decimals: 18,
 // };
 
-// export default [bnb, dai, ice, usdc, usdt, lux, lum, ftm, wftm, wbtc, weth];
 export default [dai, lux, lum, ftm, wftm];

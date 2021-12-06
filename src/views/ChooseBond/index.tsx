@@ -63,8 +63,6 @@ function ChooseBond() {
                             </Box>
                         </Grid>
                     </Grid>
-                    {/* // $${trim(marketPrice, 2)} */}
-
                     {!isSmallScreen && (
                         <Grid container item>
                             <TableContainer className="choose-bond-view-card-table">

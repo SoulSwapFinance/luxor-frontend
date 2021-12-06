@@ -1,4 +1,4 @@
-// import { Networks } from "../constants/blockchain";
+import { Networks } from "../constants/blockchain";
 
 const switchRequest = () => {
     return window.ethereum.request({
@@ -26,7 +26,7 @@ const addChainRequest = () => {
     });
 };
 
-export const swithNetwork = async () => {
+export const switchNetwork = async () => {
     if (window.ethereum) {
         try {
             await switchRequest();
