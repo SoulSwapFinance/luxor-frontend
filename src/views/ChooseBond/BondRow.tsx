@@ -34,7 +34,16 @@ export function BondDataCard({ bond }: IBondProps) {
                     <p className="bond-name-title">Price</p>
                     <p className="bond-price bond-name-title">
                         <>
-                            {priceUnits(bond)} {isBondLoading ? <Skeleton width="50px" /> : trim(bond.bondPrice, 2)}
+                            {isBondLoading ? (
+                                <Skeleton width="50px" />
+                            ) : (
+                                new Intl.NumberFormat("en-US", {
+                                    style: "currency",
+                                    currency: "USD",
+                                    maximumFractionDigits: 0,
+                                    minimumFractionDigits: 0,
+                                }).format(bond.bondPrice)
+                            )}
                         </>
                     </p>
                 </div>
@@ -88,7 +97,19 @@ export function BondTableData({ bond }: IBondProps) {
             <TableCell align="center">
                 <p className="bond-name-title">
                     <>
-                        <span className="currency-icon">{priceUnits(bond)}</span> {isBondLoading ? <Skeleton width="50px" /> : trim(bond.bondPrice, 2)}
+                        {/* <span className="currency-icon">
+                            {priceUnits(bond)}
+                        </span>{" "} */}
+                        {isBondLoading ? (
+                            <Skeleton width="50px" />
+                        ) : (
+                            new Intl.NumberFormat("en-US", {
+                                style: "currency",
+                                currency: "USD",
+                                maximumFractionDigits: 0,
+                                minimumFractionDigits: 0,
+                            }).format(bond.bondPrice)
+                        )}
                     </>
                 </p>
             </TableCell>

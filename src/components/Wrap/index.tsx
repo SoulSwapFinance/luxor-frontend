@@ -114,7 +114,7 @@ function Wrap({ open, handleClose }: IAdvancedSettingsProps) {
 
     return (
         <Modal id="hades" open={open} onClose={onClose} hideBackdrop>
-            <Paper className="ohm-card ohm-popover wrap-token-poper">
+            <Paper className="lux-card lux-popover wrap-token-poper">
                 <div className="cross-wrap wrap-cros-wrap">
                     <IconButton onClick={onClose}>
                         <SvgIcon color="primary" component={XIcon} />

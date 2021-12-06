@@ -126,7 +126,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
         <Box display="flex" flexDirection="column">
             <Box display="flex" justifyContent="space-around" flexWrap="wrap">
                 {bond.name === "wftm" && (
-                    <FormControl className="ohm-input" variant="outlined" color="primary" fullWidth>
+                    <FormControl className="lux-input" variant="outlined" color="primary" fullWidth>
                         <div className="ftm-checkbox">
                             <input type="checkbox" checked={useFtm} onClick={() => setUseFtm(!useFtm)} />
                             <p>Use FTM</p>
@@ -144,7 +144,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                         endAdornment={
                             <InputAdornment position="end">
                                 <div className="stake-input-btn" onClick={setMax}>
-                                    <p>Max</p>
+                                    <p>MAX</p>
                                 </div>
                             </InputAdornment>
                         }

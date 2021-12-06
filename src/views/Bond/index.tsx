@@ -46,7 +46,18 @@ function Bond({ bond }: IBondProps) {
                                 <div className="bond-price-data">
                                     <p className="bond-price-data-title">Mint Price</p>
                                     <p className="bond-price-data-value">
-                                        {isBondLoading ? <Skeleton /> : bond.isLP || bond.name === "wftm" ? `$${trim(bond.bondPrice, 2)}` : `${trim(bond.bondPrice, 2)} DAI`}
+                                        {isBondLoading ? (
+                                            <Skeleton />
+                                        ) : bond.isLP || bond.name === "wftm" ? (
+                                            `$${trim(bond.bondPrice, 2)}`
+                                        ) : (
+                                            new Intl.NumberFormat("en-US", {
+                                                style: "currency",
+                                                currency: "USD",
+                                                maximumFractionDigits: 0,
+                                                minimumFractionDigits: 0,
+                                            }).format(bond.bondPrice)
+                                        )}
                                     </p>
                                 </div>
                                 <div className="bond-price-data">

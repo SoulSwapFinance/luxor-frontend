@@ -41,7 +41,7 @@
       display: flex;
       flex-direction: row;
 
-      .ohm-logo-bg {
+      .lux-logo-bg {
         height: 40px !important;
         width: 40px !important;
         padding: 8px !important;
@@ -98,7 +98,7 @@
     }
   }
 
-  .ohm-input {
+  .lux-input {
     min-width: 50%;
     max-width: 408px;
     margin: 5px;
@@ -239,7 +239,7 @@
 }
 
 .mobile #bond-view {
-  .ohm-card {
+  .lux-card {
     .card-content {
       justify-content: space-evenly !important;
 
@@ -254,7 +254,7 @@
         align-items: center;
         align-content: center;
 
-        .input-group.ohm-input-group {
+        .input-group.lux-input-group {
           margin: 10px !important;
           width: 75%;
           height: 50px;

@@ -175,7 +175,7 @@ function Zapin({ open, handleClose, bond }: IZapinProps) {
 
     return (
         <Modal id="hades" open={open} onClose={handleClose} hideBackdrop>
-            <Paper className="ohm-card ohm-popover zapin-poper">
+            <Paper className="lux-card lux-popover zapin-poper">
                 <div className="cross-wrap">
                     <IconButton onClick={handleClose}>
                         <SvgIcon color="primary" component={XIcon} />

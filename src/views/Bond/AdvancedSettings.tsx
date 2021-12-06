@@ -23,7 +23,7 @@ function AdvancedSettings({ open, handleClose, slippage, onSlippageChange }: IAd
 
     return (
         <Modal id="hades" open={open} onClose={handleClose} hideBackdrop>
-            <Paper className="ohm-card ohm-popover">
+            <Paper className="lux-card lux-popover">
                 <div className="cross-wrap">
                     <IconButton onClick={handleClose}>
                         <SvgIcon color="primary" component={XIcon} />
