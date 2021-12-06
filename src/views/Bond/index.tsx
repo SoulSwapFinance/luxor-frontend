@@ -49,7 +49,12 @@ function Bond({ bond }: IBondProps) {
                                         {isBondLoading ? (
                                             <Skeleton />
                                         ) : bond.isLP || bond.name === "wftm" ? (
-                                            `$${trim(bond.bondPrice, 2)}`
+                                            new Intl.NumberFormat("en-US", {
+                                                style: "currency",
+                                                currency: "USD",
+                                                maximumFractionDigits: 0,
+                                                minimumFractionDigits: 0,
+                                            }).format(bond.bondPrice)
                                         ) : (
                                             new Intl.NumberFormat("en-US", {
                                                 style: "currency",
