@@ -61,7 +61,7 @@ function ChooseToken({ open, handleClose, handleSelect, bond }: IChooseTokenProp
                 </div>
                 <Box>
                     <div className="choose-token-poper-header">
-                        <p className="choose-token-poper-header-title">Choose token</p>
+                        <p className="choose-token-poper-header-title">Choose Token</p>
                         <OutlinedInput
                             placeholder="Search name or paste address"
                             className="choose-token-poper-header-input"
