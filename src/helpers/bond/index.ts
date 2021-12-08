@@ -31,25 +31,25 @@ export const dai = new StableBond({
     tokensInStrategy: "00000000000000000000000",
 });
 
-export const usdc = new StableBond({
-    name: "usdc",
-    displayName: "USDC",
-    bondToken: "USDC",
-    bondIconSvg: DaiIcon,
-    bondContractABI: StableBondContract,
-    reserveContractAbi: StableReserveContract,
-    networkAddrs: {
-        [Networks.FTM]: {
-            bondAddress: "0x5351Ca511C2348738728b5E71dd76e905BeCbCb8",
-            reserveAddress: "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75",
-        },
-        [Networks.BSC]: {
-            bondAddress: "",
-            reserveAddress: "",
-        },
-    },
-    tokensInStrategy: "00000000000000000000000",
-});
+// export const usdc = new StableBond({
+//     name: "usdc",
+//     displayName: "USDC",
+//     bondToken: "USDC",
+//     bondIconSvg: DaiIcon,
+//     bondContractABI: StableBondContract,
+//     reserveContractAbi: StableReserveContract,
+//     networkAddrs: {
+//         [Networks.FTM]: {
+//             bondAddress: "0x5351Ca511C2348738728b5E71dd76e905BeCbCb8",
+//             reserveAddress: "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75",
+//         },
+//         [Networks.BSC]: {
+//             bondAddress: "",
+//             reserveAddress: "",
+//         },
+//     },
+//     tokensInStrategy: "00000000000000000000000",
+// });
 
 export const wftm = new CustomBond({
     name: "wftm",
@@ -133,4 +133,4 @@ export const ftmLuxor = new CustomLPBond({
     lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
 });
 
-export default [dai, daiLuxor, usdc, wftm]; // ftmLuxor];
+export default [dai, daiLuxor, wftm]; // ftmLuxor];

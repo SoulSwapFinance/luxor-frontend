@@ -68,6 +68,13 @@ export const lum: IToken = {
     decimals: 9,
 };
 
+export const wlum: IToken = {
+    name: "wLUM",
+    address: "0xa69557e01B0a6b86E5b29BE66d730c0Bfff68208",
+    img: LumensIcon,
+    decimals: 9,
+};
+
 // const usdc: IToken = {
 //     name: "USDC",
 //     address: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
