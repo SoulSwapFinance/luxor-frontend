@@ -37,14 +37,14 @@ const useStyles = makeStyles(theme => ({
             easing: theme.transitions.easing.easeOut,
             duration: TRANSITION_DURATION,
         }),
-        marginLeft: 0,
+        marginLeft: -15,
     },
 }));
 
 function Header({ handleDrawerToggle, drawe }: IHeader) {
     const classes = useStyles();
     const isVerySmallScreen = useMediaQuery("(max-width: 400px)");
-    const isWrapShow = useMediaQuery("(max-width: 480px)");
+    const isWrapShow = useMediaQuery("(max-width: 300px)");
 
     return (
         <div className={`${classes.topBar} ${!drawe && classes.topBarShift}`}>

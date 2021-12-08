@@ -90,10 +90,10 @@ function Wrap({ open, handleClose }: IAdvancedSettingsProps) {
 
     const hasAllowance = useCallback(() => lumensAllowance > 0, [lumensAllowance]);
 
-    const trimmedMemoBalance = trim(Number(lumensBalance), 6);
+    const trimmedLumBalance = trim(Number(lumensBalance), 3);
     const trimmedWlumBalance = trim(Number(wlumBalance), 6);
 
-    const getBalance = () => (isWrap ? `${trimmedMemoBalance} LUM` : `${trimmedWlumBalance} wLUM`);
+    const getBalance = () => (isWrap ? `${trimmedLumBalance} LUM` : `${trimmedWlumBalance} wLUM`);
 
     const handleOnWrap = async () => {
         if (await checkWrongNetwork()) return;
@@ -128,7 +128,7 @@ function Wrap({ open, handleClose }: IAdvancedSettingsProps) {
 
                 <div className="wrap-header-conteiner">
                     <p className="wrap-header-title">{isWrap ? "Wrap" : "Unwrap"}</p>
-                    <p className="wrap-header-balance">Balance: {isAppLoading ? <Skeleton width="80px" /> : <>{getBalance()}</>}</p>
+                    <p className="wrap-header-balance">{isAppLoading ? <Skeleton width="80px" /> : <>{getBalance()}</>}</p>
                 </div>
 
                 <div className="wrap-container">

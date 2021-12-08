@@ -12,6 +12,7 @@ import { Link } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import "./drawer-content.scss";
 import DocsIcon from "../../../assets/icons/stake.svg";
+// import WrapIcon from "../../../assets/icons/wrap.svg";
 import GlobeIcon from "../../../assets/icons/wonderglobe.svg";
 import classnames from "classnames";
 
@@ -31,6 +32,9 @@ function NavContent() {
         if (currentPath.indexOf("mints") >= 0 && page === "mints") {
             return true;
         }
+        // if (currentPath.indexOf("wrap") >= 0 && page === "wrap") {
+        //     return true;
+        // }
         if (currentPath.indexOf("calculator") >= 0 && page === "calculator") {
             return true;
         }
@@ -82,7 +86,19 @@ function NavContent() {
                             <p>Stake</p>
                         </div>
                     </Link>
-
+                    {/* <Link
+                        component={NavLink}
+                        to="/wrap"
+                        isActive={(match: any, location: any) => {
+                            return checkPage(location, "wrap");
+                        }}
+                        className={classnames("button-dapp-menu", { active: isActive })}
+                    >
+                        <div className="dapp-menu-item">
+                            <img alt="" src={WrapIcon} />
+                            <p>Wrap</p>
+                        </div>
+                    </Link> */}
                     <Link
                         component={NavLink}
                         id="bond-nav"

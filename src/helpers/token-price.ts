@@ -14,3 +14,12 @@ export const loadTokenPrices = async () => {
 export const getTokenPrice = (symbol: string): number => {
     return Number(cache[symbol]);
 };
+
+export function formatCurrency(c: number, precision = 0) {
+    return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: precision,
+        minimumFractionDigits: precision,
+    }).format(c);
+}

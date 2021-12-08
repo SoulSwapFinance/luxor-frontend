@@ -7,7 +7,7 @@ import { info, success, warning } from "./messages-slice";
 import { RootState } from "../store";
 import { ethers } from "ethers";
 import { metamaskErrorWrap } from "../../helpers/metamask-error-wrap";
-import { wLumTokenContract } from "../../abi";
+import { IERC20, wLumTokenContract } from "../../abi";
 import { clearPendingTxn, fetchPendingTxns, getWrappingTypeText } from "./pending-txns-slice";
 import { getGasPrice } from "../../helpers/get-gas-price";
 import { fetchAccountSuccess, getBalances } from "./account-slice";
@@ -128,7 +128,7 @@ const calcWrapValue = async ({ isWrap, value, provider, networkID }: IWrapDetail
 
     if (isWrap) {
         const wlumValue = await wlumContract.LUMTowLUM(amountInWei);
-        wrapValue = wlumValue / Math.pow(10, 18);
+        wrapValue = wlumValue / Math.pow(10, 9);
     } else {
         const lumensValue = await wlumContract.wLUMToLUM(amountInWei);
         wrapValue = lumensValue / Math.pow(10, 9);
