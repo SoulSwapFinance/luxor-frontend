@@ -28,10 +28,10 @@ interface IAccountBalances {
 export const getBalances = createAsyncThunk("account/getBalances", async ({ address, networkID, provider }: IGetBalances): Promise<IAccountBalances> => {
     const addresses = getAddresses(networkID);
 
-    const lumensContract = new ethers.Contract(addresses.LUMENS_ADDRESS, LumensTokenContract, provider);
+    const lumensContract = new ethers.Contract(addresses.LUM_ADDRESS, LumensTokenContract, provider);
     const lumensBalance = await lumensContract.balanceOf(address);
 
-    const luxorContract = new ethers.Contract(addresses.LUXOR_ADDRESS, LuxorTokenContract, provider);
+    const luxorContract = new ethers.Contract(addresses.LUX_ADDRESS, LuxorTokenContract, provider);
     const luxorBalance = await luxorContract.balanceOf(address);
 
     const wlumContract = new ethers.Contract(addresses.WLUM_ADDRESS, wLumTokenContract, provider);
@@ -79,14 +79,14 @@ export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails",
 
     const addresses = getAddresses(networkID);
 
-    if (addresses.LUXOR_ADDRESS) {
-        const luxorContract = new ethers.Contract(addresses.LUXOR_ADDRESS, LuxorTokenContract, provider);
+    if (addresses.LUX_ADDRESS) {
+        const luxorContract = new ethers.Contract(addresses.LUX_ADDRESS, LuxorTokenContract, provider);
         luxorBalance = await luxorContract.balanceOf(address);
         stakeAllowance = await luxorContract.allowance(address, addresses.STAKING_HELPER_ADDRESS);
     }
 
-    if (addresses.LUMENS_ADDRESS) {
-        const lumensContract = new ethers.Contract(addresses.LUMENS_ADDRESS, LumensTokenContract, provider);
+    if (addresses.LUM_ADDRESS) {
+        const lumensContract = new ethers.Contract(addresses.LUM_ADDRESS, LumensTokenContract, provider);
         lumensBalance = await lumensContract.balanceOf(address);
         unstakeAllowance = await lumensContract.allowance(address, addresses.STAKING_ADDRESS);
 

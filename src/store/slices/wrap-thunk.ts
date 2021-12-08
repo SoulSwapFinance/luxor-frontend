@@ -48,7 +48,7 @@ export const changeApproval = createAsyncThunk("wrap/changeApproval", async ({ t
 
     const signer = provider.getSigner();
     const addresses = getAddresses(networkID);
-    const lumensAddress = new ethers.Contract(addresses.LUMENS_ADDRESS, IERC20, signer);
+    const lumensAddress = new ethers.Contract(addresses.LUM_ADDRESS, IERC20, signer);
     const wlumensAddress = new ethers.Contract(addresses.WLUM_ADDRESS, wLUM, signer);
     let approveTx;
     let wrapAllowance = await lumensAddress.allowance(address, addresses.WLUM_ADDRESS);

@@ -27,8 +27,8 @@ export const changeApproval = createAsyncThunk("stake/changeApproval", async ({ 
     const addresses = getAddresses(networkID);
 
     const signer = provider.getSigner();
-    const luxorContract = new ethers.Contract(addresses.LUXOR_ADDRESS, LuxorTokenContract, signer);
-    const lumensContract = new ethers.Contract(addresses.LUMENS_ADDRESS, LumensTokenContract, signer);
+    const luxorContract = new ethers.Contract(addresses.LUX_ADDRESS, LuxorTokenContract, signer);
+    const lumensContract = new ethers.Contract(addresses.LUM_ADDRESS, LumensTokenContract, signer);
 
     let approveTx;
     try {
