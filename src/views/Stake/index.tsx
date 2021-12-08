@@ -12,6 +12,7 @@ import { IReduxState } from "../../store/slices/state.interface";
 import { messages } from "../../constants/messages";
 import classnames from "classnames";
 import { warning } from "../../store/slices/messages-slice";
+import { IAppSlice } from "src/store/slices/app-slice";
 
 function Stake() {
     const dispatch = useDispatch();
@@ -21,9 +22,8 @@ function Stake() {
     const [quantity, setQuantity] = useState<string>("");
 
     const isAppLoading = useSelector<IReduxState, boolean>(state => state.app.loading);
-    const currentIndex = useSelector<IReduxState, string>(state => {
-        return state.app.currentIndex;
-    });
+    const app = useSelector<IReduxState, IAppSlice>(state => state.app);
+
     const fiveDayRate = useSelector<IReduxState, number>(state => {
         return state.app.fiveDayRate;
     });
@@ -139,9 +139,20 @@ function Stake() {
                                     </Grid>
 
                                     <Grid item xs={6} sm={4} md={4} lg={4}>
-                                        <div className="stake-card-index">
-                                            <p className="stake-card-metrics-title">Current Index</p>
-                                            <p className="stake-card-metrics-value">{currentIndex ? <>{trim(Number(currentIndex), 2)} LUX</> : <Skeleton width="150px" />}</p>
+                                        <div className="stake-card-tvl">
+                                            <p className="stake-card-metrics-title">LUX Price</p>
+                                            <p className="stake-card-metrics-value">
+                                                {stakingTVL ? (
+                                                    new Intl.NumberFormat("en-US", {
+                                                        style: "currency",
+                                                        currency: "USD",
+                                                        maximumFractionDigits: 0,
+                                                        minimumFractionDigits: 0,
+                                                    }).format(app.marketPrice)
+                                                ) : (
+                                                    <Skeleton width="150px" />
+                                                )}
+                                            </p>
                                         </div>
                                     </Grid>
                                 </Grid>
