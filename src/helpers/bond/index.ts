@@ -51,7 +51,6 @@ export const usdc = new StableBond({
     },
     tokensInStrategy: "00000000000000000000000",
 });
->>>>>>> 3a2c9c4d24c13a24174a8c028b22bbf2dd286502
 
 export const wftm = new CustomBond({
     name: "wftm",

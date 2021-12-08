@@ -41,7 +41,7 @@ export const getBalances = createAsyncThunk("account/getBalances", async ({ addr
         balances: {
             lumens: ethers.utils.formatUnits(lumensBalance, "gwei"),
             luxor: ethers.utils.formatUnits(luxorBalance, "gwei"),
-            wlum: ethers.utils.formatEther(wlumBalance),
+            wlum: ethers.utils.formatUnits(wlumBalance, "gwei"),
         },
     };
 });
@@ -103,7 +103,7 @@ export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails",
         balances: {
             lumens: ethers.utils.formatUnits(lumensBalance, "gwei"),
             luxor: ethers.utils.formatUnits(luxorBalance, "gwei"),
-            wlum: ethers.utils.formatEther(wlumBalance),
+            wlum: ethers.utils.formatUnits(wlumBalance, "gwei"),
         },
         staking: {
             luxor: Number(stakeAllowance),

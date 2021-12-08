@@ -7,7 +7,7 @@ import { info, success, warning } from "./messages-slice";
 import { RootState } from "../store";
 import { ethers } from "ethers";
 import { metamaskErrorWrap } from "../../helpers/metamask-error-wrap";
-import { IERC20, wLumTokenContract } from "../../abi";
+import { wLumTokenContract } from "../../abi";
 import { clearPendingTxn, fetchPendingTxns, getWrappingTypeText } from "./pending-txns-slice";
 import { getGasPrice } from "../../helpers/get-gas-price";
 import { fetchAccountSuccess, getBalances } from "./account-slice";
@@ -26,13 +26,13 @@ export const changeApproval = createAsyncThunk("wrapping/changeApproval", async 
 
     const addresses = getAddresses(networkID);
     const signer = provider.getSigner();
-    const lumensContract = new ethers.Contract(addresses.LUM_ADDRESS, wLumTokenContract, signer);
+    const memoContract = new ethers.Contract(addresses.LUM_ADDRESS, wLumTokenContract, signer);
 
     let approveTx;
     try {
         const gasPrice = await getGasPrice(provider);
 
-        approveTx = await lumensContract.approve(addresses.WLUM_ADDRESS, ethers.constants.MaxUint256, { gasPrice });
+        approveTx = await memoContract.approve(addresses.WLUM_ADDRESS, ethers.constants.MaxUint256, { gasPrice });
 
         const text = "Approve Wrapping";
         const pendingTxnType = "approve_wrapping";
@@ -50,12 +50,12 @@ export const changeApproval = createAsyncThunk("wrapping/changeApproval", async 
 
     await sleep(2);
 
-    const wlumAllowance = await lumensContract.allowance(address, addresses.WLUM_ADDRESS);
+    const wmemoAllowance = await memoContract.allowance(address, addresses.WLUM_ADDRESS);
 
     return dispatch(
         fetchAccountSuccess({
             wrapping: {
-                wlum: Number(wlumAllowance),
+                wmemo: Number(wmemoAllowance),
             },
         }),
     );
@@ -130,8 +130,8 @@ const calcWrapValue = async ({ isWrap, value, provider, networkID }: IWrapDetail
         const wlumValue = await wlumContract.LUMTowLUM(amountInWei);
         wrapValue = wlumValue / Math.pow(10, 9);
     } else {
-        const lumensValue = await wlumContract.wLUMToLUM(amountInWei);
-        wrapValue = lumensValue / Math.pow(10, 9);
+        const lumValue = await wlumContract.wLUMToLUM(amountInWei);
+        wrapValue = lumValue / Math.pow(10, 18);
     }
 
     return wrapValue;
