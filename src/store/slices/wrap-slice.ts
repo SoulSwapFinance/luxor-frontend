@@ -26,13 +26,13 @@ export const changeApproval = createAsyncThunk("wrapping/changeApproval", async 
 
     const addresses = getAddresses(networkID);
     const signer = provider.getSigner();
-    const wLumContract = new ethers.Contract(addresses.WLUM_ADDRESS, wLumTokenContract, signer);
+    const lumensContract = new ethers.Contract(addresses.LUMENS_ADDRESS, wLumTokenContract, signer);
 
     let approveTx;
     try {
         const gasPrice = await getGasPrice(provider);
 
-        approveTx = await wLumContract.approve(addresses.WLUM_ADDRESS, ethers.constants.MaxUint256, { gasPrice });
+        approveTx = await lumensContract.approve(addresses.WLUM_ADDRESS, ethers.constants.MaxUint256, { gasPrice });
 
         const text = "Approve Wrapping";
         const pendingTxnType = "approve_wrapping";
@@ -50,7 +50,7 @@ export const changeApproval = createAsyncThunk("wrapping/changeApproval", async 
 
     await sleep(2);
 
-    const wlumAllowance = await wLumContract.allowance(address, addresses.WLUM_ADDRESS);
+    const wlumAllowance = await lumensContract.allowance(address, addresses.WLUM_ADDRESS);
 
     return dispatch(
         fetchAccountSuccess({
