@@ -39,8 +39,8 @@ function LuxorMenu() {
 
     const addresses = getAddresses(networkID);
 
-    const LUMENS_ADDRESS = addresses.LUMENS_ADDRESS;
-    const LUXOR_ADDRESS = addresses.LUXOR_ADDRESS;
+    const LUM_ADDRESS = addresses.LUM_ADDRESS;
+    const LUX_ADDRESS = addresses.LUX_ADDRESS;
 
     const handleClick = (event: any) => {
         setAnchorEl(anchorEl ? null : event.currentTarget);
@@ -58,7 +58,7 @@ function LuxorMenu() {
                 {({ TransitionProps }) => (
                     <Fade {...TransitionProps} timeout={200}>
                         <div className="tooltip">
-                            <Link className="tooltip-item" href={`https://app.soulswap.finance/swap?inputCurrency=&outputCurrency=${LUXOR_ADDRESS}`} target="_blank">
+                            <Link className="tooltip-item" href={`https://app.soulswap.finance/swap?inputCurrency=&outputCurrency=${LUX_ADDRESS}`} target="_blank">
                                 <p>Buy on SoulSwap</p>
                             </Link>
 
@@ -67,10 +67,10 @@ function LuxorMenu() {
                                     <div className="divider" />
                                     <p className="add-tokens-title">ADD TOKEN TO WALLET</p>
                                     <div className="divider" />
-                                    <div className="tooltip-item" onClick={addTokenToWallet("LUX", LUXOR_ADDRESS)}>
+                                    <div className="tooltip-item" onClick={addTokenToWallet("LUX", LUX_ADDRESS)}>
                                         <p>LUX</p>
                                     </div>
-                                    <div className="tooltip-item" onClick={addTokenToWallet("LUM", LUMENS_ADDRESS)}>
+                                    <div className="tooltip-item" onClick={addTokenToWallet("LUM", LUM_ADDRESS)}>
                                         <p>LUM</p>
                                     </div>
                                 </div>

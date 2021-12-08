@@ -3,6 +3,7 @@ import { CustomLPBond, LPBond } from "./lp-bond";
 import { CustomBond, StableBond } from "./stable-bond";
 
 import DaiIcon from "../../assets/tokens/DAI.svg";
+import UsdcIcon from "../../assets/tokens/USDC.svg";
 import LuxIcon from "../../assets/tokens/LUXOR.svg";
 import FtmIcon from "../../assets/tokens/FTM.svg";
 // import SoulIcon from "../../assets/tokens/SOUL.png";
@@ -35,7 +36,7 @@ export const usdc = new StableBond({
     name: "usdc",
     displayName: "USDC",
     bondToken: "USDC",
-    bondIconSvg: DaiIcon,
+    bondIconSvg: UsdcIcon,
     bondContractABI: StableBondContract,
     reserveContractAbi: StableReserveContract,
     networkAddrs: {
