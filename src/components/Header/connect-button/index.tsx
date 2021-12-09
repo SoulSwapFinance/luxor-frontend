@@ -16,12 +16,12 @@ function ConnectMenu() {
         return state.pendingTransactions;
     });
 
-    let buttonText = "Connect Wallet";
+    let buttonText = "Connect";
     let clickFunc: any = connect;
     let buttonStyle = {};
 
     if (isConnected) {
-        buttonText = "Disconnect";
+        buttonText = "Exit";
         clickFunc = disconnect;
     }
 
