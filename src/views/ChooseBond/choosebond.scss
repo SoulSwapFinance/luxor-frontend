@@ -136,14 +136,14 @@
   }
 
   .bond-table-btn{
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid #767676;
+    background: rgb(246, 198, 0.2);
+    border: 1px solid #ffffff;
     border-radius: 10px;
     padding: 6px 35.5px;
     text-align: center;
 
     &:hover{
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      border: 1px solid rgb(255, 255, 255);
     }
   
     p{
@@ -151,7 +151,7 @@
       font-style: normal;
       font-weight: 600;
       font-size: 16px;
-      color: #FFFFFF;
+      color: #000000;
     }
   }
 
