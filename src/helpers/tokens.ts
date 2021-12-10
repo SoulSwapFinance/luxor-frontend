@@ -1,7 +1,7 @@
 import FtmIcon from "../assets/tokens/FTM.svg";
-import LuxorIcon from "../assets/tokens/LUX.svg";
-import LumensIcon from "../assets/tokens/LUM.svg";
-// import BnbIcon from "../assets/tokens/BNB.png";
+// import LuxorIcon from "../assets/tokens/LUX.svg";
+// import LumensIcon from "../assets/tokens/LUM.svg";
+import BnbIcon from "../assets/tokens/BNB.png";
 // import IceIcon from "../assets/tokens/ICE.png";
 import DaiIcon from "../assets/tokens/DAI.svg";
 // import UsdcIcon from "../assets/tokens/USDC.png";
@@ -26,12 +26,12 @@ export const ftm: IToken = {
     decimals: 18,
 };
 
-// const bnb: IToken = {
-//     name: "BNB",
-//     address: "0xD67de0e0a0Fd7b15dC8348Bb9BE742F3c5850454",
-//     img: BnbIcon,
-//     decimals: 18,
-// };
+const bnb: IToken = {
+    name: "BNB",
+    address: "0xD67de0e0a0Fd7b15dC8348Bb9BE742F3c5850454",
+    img: BnbIcon,
+    decimals: 18,
+};
 
 export const dai: IToken = {
     name: "DAI",
@@ -68,12 +68,12 @@ export const dai: IToken = {
 //     decimals: 9,
 // };
 
-export const wlum: IToken = {
-    name: "wLUM",
-    address: "0xa69557e01B0a6b86E5b29BE66d730c0Bfff68208",
-    img: LumensIcon,
-    decimals: 9,
-};
+// export const wlum: IToken = {
+//     name: "wLUM",
+//     address: "0xa69557e01B0a6b86E5b29BE66d730c0Bfff68208",
+//     img: LumensIcon,
+//     decimals: 9,
+// };
 
 // const usdc: IToken = {
 //     name: "USDC",
@@ -103,4 +103,4 @@ const weth: IToken = {
     decimals: 18,
 };
 
-export default [dai, ftm, wftm];
+export default [bnb, dai, ftm, weth, wftm];
