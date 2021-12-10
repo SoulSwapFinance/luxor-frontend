@@ -50,7 +50,7 @@ function Footer() {
                                     currency: "USD",
                                     maximumFractionDigits: 0,
                                     minimumFractionDigits: 0,
-                                }).format(treasuryBalance)
+                                }).format(treasuryBalance * 0.5)
                             )}
                         </p>
                     </div>
