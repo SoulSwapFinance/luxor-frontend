@@ -32,25 +32,25 @@ export const dai = new StableBond({
     tokensInStrategy: "00000000000000000000000",
 });
 
-export const usdc = new StableBond({
-    name: "usdc",
-    displayName: "USDC",
-    bondToken: "USDC",
-    bondIconSvg: UsdcIcon,
-    bondContractABI: StableBondContract,
-    reserveContractAbi: StableReserveContract,
-    networkAddrs: {
-        [Networks.FTM]: {
-            bondAddress: "0x5351Ca511C2348738728b5E71dd76e905BeCbCb8",
-            reserveAddress: "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75",
-        },
-        [Networks.BSC]: {
-            bondAddress: "",
-            reserveAddress: "",
-        },
-    },
-    tokensInStrategy: "00000000000000000000000",
-});
+// export const usdc = new StableBond({
+//     name: "usdc",
+//     displayName: "USDC",
+//     bondToken: "USDC",
+//     bondIconSvg: UsdcIcon,
+//     bondContractABI: StableBondContract,
+//     reserveContractAbi: StableReserveContract,
+//     networkAddrs: {
+//         [Networks.FTM]: {
+//             bondAddress: "0x5351Ca511C2348738728b5E71dd76e905BeCbCb8",
+//             reserveAddress: "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75",
+//         },
+//         [Networks.BSC]: {
+//             bondAddress: "",
+//             reserveAddress: "",
+//         },
+//     },
+//     tokensInStrategy: "00000000000000000000000",
+// });
 
 export const wftm = new CustomBond({
     name: "wftm",
@@ -62,6 +62,26 @@ export const wftm = new CustomBond({
     networkAddrs: {
         [Networks.FTM]: {
             bondAddress: "0x376969e00621Ebf685fC3D1F216C00d19B162923",
+            reserveAddress: "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+        },
+        [Networks.BSC]: {
+            bondAddress: "",
+            reserveAddress: "",
+        },
+    },
+    tokensInStrategy: "00000000000000000000000",
+});
+
+export const wftm2 = new CustomBond({
+    name: "wftm2",
+    displayName: "WFTM V2",
+    bondToken: "FTM",
+    bondIconSvg: FtmIcon,
+    bondContractABI: WftmBondContract,
+    reserveContractAbi: StableReserveContract,
+    networkAddrs: {
+        [Networks.FTM]: {
+            bondAddress: "0x13729e99A7b77469f7FD204495a7b49e25e8444a",
             reserveAddress: "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
         },
         [Networks.BSC]: {
@@ -134,4 +154,4 @@ export const ftmLuxor = new CustomLPBond({
     lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
 });
 
-export default [dai, daiLuxor, wftm]; // ftmLuxor];
+export default [dai, daiLuxor, wftm, wftm2]; // ftmLuxor];

@@ -125,7 +125,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
     return (
         <Box display="flex" flexDirection="column">
             <Box display="flex" justifyContent="space-around" flexWrap="wrap">
-                {bond.name === "wftm" && (
+                {(bond.name === "wftm" || bond.name === "wftm2") && (
                     <FormControl className="lux-input" variant="outlined" color="primary" fullWidth>
                         <div className="ftm-checkbox">
                             <input type="checkbox" checked={useFtm} onClick={() => setUseFtm(!useFtm)} />

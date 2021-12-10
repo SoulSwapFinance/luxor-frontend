@@ -89,6 +89,13 @@ export const wftm: IToken = {
     decimals: 18,
 };
 
+export const wftm2: IToken = {
+    name: "WFTM2",
+    address: "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+    img: WftmIcon,
+    decimals: 18,
+};
+
 // const wbtc: IToken = {
 //     name: "WBTC",
 //     address: "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
@@ -103,4 +110,4 @@ export const wftm: IToken = {
 //     decimals: 18,
 // };
 
-export default [dai, lux, lum, ftm, wftm];
+export default [dai, lux, lum, ftm, wftm, wftm2];
