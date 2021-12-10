@@ -78,9 +78,9 @@ function ChooseBond() {
                                             <TableCell align="center">
                                                 <p className="choose-bond-view-card-table-title">ROI</p>
                                             </TableCell>
-                                            <TableCell align="right">
+                                            {/* <TableCell align="right">
                                                 <p className="choose-bond-view-card-table-title">Purchased</p>
-                                            </TableCell>
+                                            </TableCell> */}
                                             <TableCell align="right"></TableCell>
                                         </TableRow>
                                     </TableHead>
