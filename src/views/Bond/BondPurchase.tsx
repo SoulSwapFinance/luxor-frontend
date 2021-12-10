@@ -172,9 +172,11 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                     </div>
                 )}
 
-                {/* <div className="transaction-button bond-approve-btn" onClick={handleZapinOpen}>
-                    <p>Zap</p>
-                </div> */}
+                {(bond.name === "wftm" || bond.name === "dai") && (
+                    <div className="transaction-button bond-approve-btn" onClick={handleZapinOpen}>
+                        <p>Zap</p>
+                    </div>
+                )}
 
                 {!hasAllowance() && !useFtm && (
                     <div className="help-text">
