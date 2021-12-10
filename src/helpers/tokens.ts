@@ -89,6 +89,13 @@ export const wftm: IToken = {
     decimals: 18,
 };
 
+export const soul: IToken = {
+    name: "SOUL",
+    address: "0xe2fb177009FF39F52C0134E8007FA0e4BaAcBd07",
+    img: WftmIcon,
+    decimals: 18,
+};
+
 // const wbtc: IToken = {
 //     name: "WBTC",
 //     address: "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
@@ -103,4 +110,4 @@ const weth: IToken = {
     decimals: 18,
 };
 
-export default [bnb, dai, ftm, weth, wftm];
+export default [bnb, dai, ftm, soul, weth, wftm];
