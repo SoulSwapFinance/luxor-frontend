@@ -26,13 +26,13 @@ export const changeApproval = createAsyncThunk("wrapping/changeApproval", async 
 
     const addresses = getAddresses(networkID);
     const signer = provider.getSigner();
-    const memoContract = new ethers.Contract(addresses.LUM_ADDRESS, wLumTokenContract, signer);
+    const lumContract = new ethers.Contract(addresses.LUM_ADDRESS, wLumTokenContract, signer);
 
     let approveTx;
     try {
         const gasPrice = await getGasPrice(provider);
 
-        approveTx = await memoContract.approve(addresses.WLUM_ADDRESS, ethers.constants.MaxUint256, { gasPrice });
+        approveTx = await lumContract.approve(addresses.WLUM_ADDRESS, ethers.constants.MaxUint256, { gasPrice });
 
         const text = "Approve Wrapping";
         const pendingTxnType = "approve_wrapping";
@@ -50,12 +50,12 @@ export const changeApproval = createAsyncThunk("wrapping/changeApproval", async 
 
     await sleep(2);
 
-    const wmemoAllowance = await memoContract.allowance(address, addresses.WLUM_ADDRESS);
+    const wlumAllowance = await lumContract.allowance(address, addresses.WLUM_ADDRESS);
 
     return dispatch(
         fetchAccountSuccess({
             wrapping: {
-                wmemo: Number(wmemoAllowance),
+                wmemo: Number(wlumAllowance),
             },
         }),
     );
@@ -77,7 +77,7 @@ export const changeWrap = createAsyncThunk("wrapping/changeWrap", async ({ isWra
 
     const addresses = getAddresses(networkID);
     const signer = provider.getSigner();
-    const amountInWei = isWrap ? ethers.utils.parseUnits(value, "gwei") : ethers.utils.parseEther(value);
+    const amountInWei = ethers.utils.parseUnits(value, "gwei");
     const wlumContract = new ethers.Contract(addresses.WLUM_ADDRESS, wLumTokenContract, signer);
 
     let wrapTx;
@@ -119,12 +119,10 @@ export interface IWrapDetails {
 
 const calcWrapValue = async ({ isWrap, value, provider, networkID }: IWrapDetails): Promise<number> => {
     const addresses = getAddresses(networkID);
-
     const amountInWei = isWrap ? ethers.utils.parseUnits(value, "gwei") : ethers.utils.parseEther(value);
+    const wlumContract = new ethers.Contract(addresses.WLUM_ADDRESS, wLumTokenContract, provider);
 
     let wrapValue = 0;
-
-    const wlumContract = new ethers.Contract(addresses.WLUM_ADDRESS, wLumTokenContract, provider);
 
     if (isWrap) {
         const wlumValue = await wlumContract.LUMTowLUM(amountInWei);
