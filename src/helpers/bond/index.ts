@@ -164,7 +164,7 @@ export const ftmLuxor = new CustomLPBond({
     networkAddrs: {
         [Networks.FTM]: {
             // token0: WFTM
-            bondAddress: "0x378469B721101C4e0A9949F252BeEF8687f78394",
+            bondAddress: "0xaBAD60240f1a39fce0d828eecf54d790FFF92cec",
             reserveAddress: "0x951BBB838e49F7081072895947735b0892cCcbCD",
         },
         [Networks.BSC]: {
