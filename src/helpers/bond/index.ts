@@ -94,7 +94,7 @@ export const wftm2 = new CustomBond({
 
 export const daiLuxor = new LPBond({
     name: "dai_lux_lp",
-    displayName: "LUX-DAI LP",
+    displayName: "DAI-LUX",
     bondToken: "DAI",
     bondIconSvg: LuxIcon,
     bondContractABI: DaiLpBondContract,
@@ -115,7 +115,7 @@ export const daiLuxor = new LPBond({
 
 export const daiLuxor2 = new LPBond({
     name: "dai_lux_lp2",
-    displayName: "LUX-DAI LP",
+    displayName: "LUX-DAI",
     bondToken: "DAI",
     bondIconSvg: LuxIcon,
     bondContractABI: DaiLpBondContract,
