@@ -142,13 +142,13 @@ function NavContent() {
                             <p>Calculator</p>
                         </div>
                     </Link>
+                    <Link target="_blank" href={"https://luxor-frontend-9zeyoi7l5-soulswap.vercel.app/#/stake"} className={classnames("button-dapp-menu", { active: isActive })}>
+                        <div className="dapp-menu-item">
+                            <img alt="" src={DashboardIcon} />
+                            <p>Legacy UI</p>
+                        </div>
+                    </Link>
                 </div>
-            </div>
-            <div className="dapp-menu-doc-link">
-                <Link href="https://luxor-frontend-9zeyoi7l5-soulswap.vercel.app/#/stake" target="_blank">
-                    <img alt="" src={DocsIcon} />
-                    <p>Claim V1 Bonds</p>
-                </Link>
             </div>
             <div className="dapp-menu-doc-link">
                 <Link href="https://docs.luxor.money" target="_blank">
