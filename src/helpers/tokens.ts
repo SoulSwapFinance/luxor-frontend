@@ -4,6 +4,7 @@ import FtmIcon from "../assets/tokens/FTM.svg";
 import BnbIcon from "../assets/tokens/BNB.png";
 // import IceIcon from "../assets/tokens/ICE.png";
 import DaiIcon from "../assets/tokens/DAI.svg";
+import SoulIcon from "../assets/tokens/SOUL.png";
 // import UsdcIcon from "../assets/tokens/USDC.png";
 // import UsdtIcon from "../assets/tokens/USDT.e.png";
 import WftmIcon from "../assets/tokens/WFTM.png";
@@ -92,7 +93,7 @@ export const wftm: IToken = {
 export const soul: IToken = {
     name: "SOUL",
     address: "0xe2fb177009FF39F52C0134E8007FA0e4BaAcBd07",
-    img: WftmIcon,
+    img: SoulIcon,
     decimals: 18,
 };
 
