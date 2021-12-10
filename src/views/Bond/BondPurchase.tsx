@@ -23,7 +23,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
     const { provider, address, chainID, checkWrongNetwork } = useWeb3Context();
 
     const [quantity, setQuantity] = useState("");
-    const [useFtm, setUseFtm] = useState(false);
+    const [useWFTM, setUseFtm] = useState(false);
 
     const isBondLoading = useSelector<IReduxState, boolean>(state => state.bonding.loading ?? true);
     const [zapinOpen, setZapinOpen] = useState(false);
@@ -56,8 +56,8 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                         bond,
                         networkID: chainID,
                         provider,
-                        address, // : address,
-                        useFtm,
+                        address,
+                        useWFTM,
                     }),
                 );
                 clearInput();
@@ -73,7 +73,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                     networkID: chainID,
                     provider,
                     address,
-                    useFtm,
+                    useWFTM,
                 }),
             );
             clearInput();
@@ -89,7 +89,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
     }, [bond.allowance]);
 
     const setMax = () => {
-        let amount: any = Math.min(bond.maxBondPriceToken * 0.9999, useFtm ? bond.ftmBalance * 0.99 : bond.balance);
+        let amount: any = Math.min(bond.maxBondPriceToken * 0.9999, useWFTM ? bond.balance : bond.ftmBalance * 0.99);
 
         if (amount) {
             amount = trim(amount);
@@ -120,7 +120,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
         setZapinOpen(false);
     };
 
-    const displayUnits = useFtm ? "FTM" : bond.displayUnits;
+    const displayUnits = useWFTM ? "WFTM" : bond.displayUnits;
 
     return (
         <Box display="flex" flexDirection="column">
@@ -128,8 +128,8 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                 {bond.name === "wftm" && (
                     <FormControl className="lux-input" variant="outlined" color="primary" fullWidth>
                         <div className="ftm-checkbox">
-                            <input type="checkbox" checked={useFtm} onClick={() => setUseFtm(!useFtm)} />
-                            <p>Use FTM</p>
+                            <input type="checkbox" checked={useWFTM} onClick={() => setUseFtm(!useWFTM)} />
+                            <p>Use WFTM</p>
                         </div>
                     </FormControl>
                 )}
@@ -150,7 +150,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                         }
                     />
                 </FormControl>
-                {hasAllowance() || useFtm ? (
+                {hasAllowance() || !useWFTM ? (
                     <div
                         className="transaction-button bond-approve-btn"
                         onClick={async () => {
@@ -178,7 +178,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                     </div>
                 )}
 
-                {!hasAllowance() && !useFtm && (
+                {!hasAllowance() && !useWFTM && (
                     <div className="help-text">
                         <p className="help-text-desc">
                             Note: The "Approve" transaction is only needed when minting for the first time; subsequent minting only requires you to perform the "Mint" transaction.
@@ -196,7 +196,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                                 <Skeleton width="100px" />
                             ) : (
                                 <>
-                                    {trim(useFtm ? bond.ftmBalance : bond.balance, 4)} {displayUnits}
+                                    {trim(!useWFTM ? bond.ftmBalance : bond.balance, 4)} {displayUnits}
                                 </>
                             )}
                         </p>

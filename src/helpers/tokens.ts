@@ -8,7 +8,7 @@ import DaiIcon from "../assets/tokens/DAI.svg";
 // import UsdtIcon from "../assets/tokens/USDT.e.png";
 import WftmIcon from "../assets/tokens/WFTM.png";
 // import WBtcIcon from "../assets/tokens/WBTC.e.png";
-// import WethIcon from "../assets/tokens/WETH.e.png";
+import WethIcon from "../assets/tokens/WETH.e.png";
 
 export interface IToken {
     name: string;
@@ -96,11 +96,11 @@ export const wftm: IToken = {
 //     decimals: 8,
 // };
 
-// const weth: IToken = {
-//     name: "WETH",
-//     address: "0x74b23882a30290451A17c44f4F05243b6b58C76d",
-//     img: WethIcon,
-//     decimals: 18,
-// };
+const weth: IToken = {
+    name: "WETH",
+    address: "0x74b23882a30290451A17c44f4F05243b6b58C76d",
+    img: WethIcon,
+    decimals: 18,
+};
 
 export default [dai, ftm, wftm];
