@@ -145,6 +145,12 @@ function NavContent() {
                 </div>
             </div>
             <div className="dapp-menu-doc-link">
+                <Link href="https://luxor-frontend-9zeyoi7l5-soulswap.vercel.app/#/stake" target="_blank">
+                    <img alt="" src={DocsIcon} />
+                    <p>Claim V1 Bonds</p>
+                </Link>
+            </div>
+            <div className="dapp-menu-doc-link">
                 <Link href="https://docs.luxor.money" target="_blank">
                     <img alt="" src={DocsIcon} />
                     <p>Docs</p>

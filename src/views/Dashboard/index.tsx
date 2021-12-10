@@ -137,7 +137,7 @@ function Dashboard() {
                                             currency: "USD",
                                             maximumFractionDigits: 0,
                                             minimumFractionDigits: 0,
-                                        }).format(app.treasuryBalance * 0.8)
+                                        }).format(app.treasuryBalance)
                                     )}
                                 </p>
                             </div>

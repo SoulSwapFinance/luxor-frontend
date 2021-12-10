@@ -10,7 +10,7 @@ import { Bond } from "../../helpers/bond/bond";
 import { Networks } from "../../constants/blockchain";
 import { getBondCalculator } from "../../helpers/bond-calculator";
 import { RootState } from "../store";
-import { ftmLuxor, wftm, wftm2 } from "../../helpers/bond";
+import { ftmLuxor, wftm } from "../../helpers/bond";
 import { error, warning, success, info } from "../slices/messages-slice";
 import { messages } from "../../constants/messages";
 import { getGasPrice } from "../../helpers/get-gas-price";
@@ -176,13 +176,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
 
         if (bond.name === wftm.name) {
             const ftmPrice = getTokenPrice("FTM");
-            purchased = (67 * (purchased * ftmPrice)) / 100;
-            console.log("ftmPrice:%s", ftmPrice);
-        }
-
-        if (bond.name === wftm2.name) {
-            const ftmPrice = getTokenPrice("FTM");
-            purchased = (34 * (purchased * ftmPrice)) / 100;
+            purchased = purchased * ftmPrice;
             console.log("ftmPrice:%s", ftmPrice);
         }
     }

@@ -8,7 +8,7 @@ import LuxIcon from "../../assets/tokens/LUXOR.svg";
 import FtmIcon from "../../assets/tokens/FTM.svg";
 // import SoulIcon from "../../assets/tokens/SOUL.png";
 import DaiLuxorIcon from "../../assets/tokens/DAI.svg";
-import FtmLuxorIcon from "../../assets/tokens/FTM.svg";
+import FtmLuxorIcon from "../../assets/tokens/FTM-LUX.svg";
 
 import { StableBondContract, DaiLpBondContract, FtmLpBondContract, WftmBondContract, StableReserveContract, LpReserveContract } from "../../abi";
 
@@ -52,28 +52,28 @@ export const dai = new StableBond({
 //     tokensInStrategy: "00000000000000000000000",
 // });
 
+// export const wftm = new CustomBond({
+//     name: "wftm",
+//     displayName: "WFTM",
+//     bondToken: "FTM",
+//     bondIconSvg: FtmIcon,
+//     bondContractABI: WftmBondContract,
+//     reserveContractAbi: StableReserveContract,
+//     networkAddrs: {
+//         [Networks.FTM]: {
+//             bondAddress: "0x376969e00621Ebf685fC3D1F216C00d19B162923",
+//             reserveAddress: "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+//         },
+//         [Networks.BSC]: {
+//             bondAddress: "",
+//             reserveAddress: "",
+//         },
+//     },
+//     tokensInStrategy: "00000000000000000000000",
+// });
+
 export const wftm = new CustomBond({
     name: "wftm",
-    displayName: "WFTM",
-    bondToken: "FTM",
-    bondIconSvg: FtmIcon,
-    bondContractABI: WftmBondContract,
-    reserveContractAbi: StableReserveContract,
-    networkAddrs: {
-        [Networks.FTM]: {
-            bondAddress: "0x376969e00621Ebf685fC3D1F216C00d19B162923",
-            reserveAddress: "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
-        },
-        [Networks.BSC]: {
-            bondAddress: "",
-            reserveAddress: "",
-        },
-    },
-    tokensInStrategy: "00000000000000000000000",
-});
-
-export const wftm2 = new CustomBond({
-    name: "wftm2",
     displayName: "FTM",
     bondToken: "FTM",
     bondIconSvg: FtmIcon,
@@ -92,29 +92,29 @@ export const wftm2 = new CustomBond({
     tokensInStrategy: "00000000000000000000000",
 });
 
+// export const daiLuxor = new LPBond({
+//     name: "dai_lux_lp",
+//     displayName: "DAI-LUX (V1)",
+//     bondToken: "DAI",
+//     bondIconSvg: LuxIcon,
+//     bondContractABI: DaiLpBondContract,
+//     reserveContractAbi: LpReserveContract,
+//     networkAddrs: {
+//         [Networks.FTM]: {
+//             // token0: DAI
+//             bondAddress: "0xaC64DC47A1fe52458D3418AC7C568Edc3306130a",
+//             reserveAddress: "0x46729c2AeeabE7774a0E710867df80a6E19Ef851",
+//         },
+//         [Networks.BSC]: {
+//             bondAddress: "",
+//             reserveAddress: "",
+//         },
+//     },
+//     lpUrl: "https://app.soulswap.finance/exchange/add/0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
+// });
+
 export const daiLuxor = new LPBond({
     name: "dai_lux_lp",
-    displayName: "DAI-LUX",
-    bondToken: "DAI",
-    bondIconSvg: LuxIcon,
-    bondContractABI: DaiLpBondContract,
-    reserveContractAbi: LpReserveContract,
-    networkAddrs: {
-        [Networks.FTM]: {
-            // token0: DAI
-            bondAddress: "0xaC64DC47A1fe52458D3418AC7C568Edc3306130a",
-            reserveAddress: "0x46729c2AeeabE7774a0E710867df80a6E19Ef851",
-        },
-        [Networks.BSC]: {
-            bondAddress: "",
-            reserveAddress: "",
-        },
-    },
-    lpUrl: "https://app.soulswap.finance/exchange/add/0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
-});
-
-export const daiLuxor2 = new LPBond({
-    name: "dai_lux_lp2",
     displayName: "LUX-DAI",
     bondToken: "DAI",
     bondIconSvg: LuxIcon,
@@ -175,4 +175,4 @@ export const ftmLuxor = new CustomLPBond({
     lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
 });
 
-export default [dai, daiLuxor, daiLuxor2, ftmLuxor, wftm, wftm2];
+export default [dai, daiLuxor, ftmLuxor, wftm];
