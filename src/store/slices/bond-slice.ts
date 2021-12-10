@@ -174,9 +174,15 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         }
         purchased = purchased / Math.pow(10, 18);
 
-        if (bond.name === wftm.name || bond.name === wftm2.name) {
+        if (bond.name === wftm.name) {
             const ftmPrice = getTokenPrice("FTM");
-            purchased = purchased * ftmPrice;
+            purchased = (67 * (purchased * ftmPrice)) / 100;
+            console.log("ftmPrice:%s", ftmPrice);
+        }
+
+        if (bond.name === wftm2.name) {
+            const ftmPrice = getTokenPrice("FTM");
+            purchased = (34 * (purchased * ftmPrice)) / 100;
             console.log("ftmPrice:%s", ftmPrice);
         }
     }
