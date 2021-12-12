@@ -115,7 +115,7 @@ function NavContent() {
                     </Link>
 
                     <div className="bond-discounts">
-                        <p>Mint Discounts</p>
+                        {/* <p>Mint Discounts</p> */}
                         {bonds.map((bond, i) => (
                             <Link component={NavLink} to={`/mints/${bond.name}`} key={i} className={"bond"}>
                                 {!bond.bondDiscount ? (
@@ -148,13 +148,13 @@ function NavContent() {
                             <p>Legacy UI</p>
                         </div>
                     </Link>
+                    <Link target="_blank" href={"https://docs.luxor.money"} className={classnames("button-dapp-menu", { active: isActive })}>
+                        <div className="dapp-menu-item">
+                            <img alt="" src={DocsIcon} />
+                            <p>Docs</p>
+                        </div>
+                    </Link>
                 </div>
-            </div>
-            <div className="dapp-menu-doc-link">
-                <Link href="https://docs.luxor.money" target="_blank">
-                    <img alt="" src={DocsIcon} />
-                    <p>Docs</p>
-                </Link>
             </div>
             <Social />
         </div>
