@@ -128,7 +128,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                 {bond.name === "wftm" && (
                     <FormControl className="lux-input" variant="outlined" color="primary" fullWidth>
                         <div className="ftm-checkbox">
-                            <input type="checkbox" checked={useWFTM} onClick={() => setUseWFTM(!useWFTM)} />
+                            <input type="checkbox" checked={!useWFTM} onClick={() => setUseWFTM(!useWFTM)} />
                             <p>Use WFTM</p>
                         </div>
                     </FormControl>
@@ -196,7 +196,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                                 <Skeleton width="100px" />
                             ) : (
                                 <>
-                                    {trim(useWFTM ? bond.balance : bond.ftmBalance, 4)} {displayUnits}
+                                    {trim(useWFTM ? bond.ftmBalance : bond.balance, 4)} {displayUnits}
                                 </>
                             )}
                         </p>
