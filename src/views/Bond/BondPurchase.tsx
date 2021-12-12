@@ -196,7 +196,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                                 <Skeleton width="100px" />
                             ) : (
                                 <>
-                                    {trim(useWFTM ? bond.ftmBalance : bond.balance, 4)} {displayUnits}
+                                    {trim(useWFTM ? bond.balance : bond.ftmBalance, 4)} {displayUnits}
                                 </>
                             )}
                         </p>
