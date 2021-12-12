@@ -2,9 +2,11 @@ import FtmIcon from "../assets/tokens/FTM.svg";
 // import LuxorIcon from "../assets/tokens/LUX.svg";
 // import LumensIcon from "../assets/tokens/LUM.svg";
 import BnbIcon from "../assets/tokens/BNB.png";
-// import IceIcon from "../assets/tokens/ICE.png";
+import MimIcon from "../assets/tokens/MIM.svg";
+import IceIcon from "../assets/tokens/ICE.png";
 import DaiIcon from "../assets/tokens/DAI.svg";
 import SoulIcon from "../assets/tokens/SOUL.png";
+// import SeanceIcon from "../assets/tokens/SEANCE.png";
 // import UsdcIcon from "../assets/tokens/USDC.png";
 // import UsdtIcon from "../assets/tokens/USDT.e.png";
 import WftmIcon from "../assets/tokens/WFTM.png";
@@ -41,12 +43,12 @@ export const dai: IToken = {
     decimals: 18,
 };
 
-// const ice: IToken = {
-//     name: "ICE",
-//     address: "0xf16e81dce15B08F326220742020379B855B87DF9",
-//     img: IceIcon,
-//     decimals: 18,
-// };
+const ice: IToken = {
+    name: "ICE",
+    address: "0xf16e81dce15B08F326220742020379B855B87DF9",
+    img: IceIcon,
+    decimals: 18,
+};
 
 // const usdt: IToken = {
 //     name: "USDT",
@@ -83,6 +85,13 @@ export const dai: IToken = {
 //     decimals: 6,
 // };
 
+export const mim: IToken = {
+    name: "MIM",
+    address: "0x82f0B8B456c1A451378467398982d4834b6829c1",
+    img: MimIcon,
+    decimals: 18,
+};
+
 export const wftm: IToken = {
     name: "WFTM",
     address: "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
@@ -96,6 +105,13 @@ export const soul: IToken = {
     img: SoulIcon,
     decimals: 18,
 };
+
+// export const seance: IToken = {
+//     name: "SEANCE",
+//     address: "0x124B06C5ce47De7A6e9EFDA71a946717130079E6",
+//     img: SeanceIcon,
+//     decimals: 18,
+// };
 
 // const wbtc: IToken = {
 //     name: "WBTC",
@@ -111,4 +127,4 @@ const weth: IToken = {
     decimals: 18,
 };
 
-export default [bnb, dai, ftm, soul, weth, wftm];
+export default [bnb, dai, ftm, ice, mim, soul, weth, wftm];

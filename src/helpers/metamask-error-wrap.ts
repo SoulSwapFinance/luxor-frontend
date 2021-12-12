@@ -21,6 +21,10 @@ export const metamaskErrorWrap = (err: any, dispatch: Dispatch) => {
         if (err.data && err.data.message && err.data.message.includes("Bond too small")) {
             text = "Bond too small";
         }
+
+        if (err.data && err.data.message && err.data.message.includes("AnyswapV3ERC20: transfer amount exceeds balance")) {
+            text = "Remove decimals to round down. Try again.";
+        }
     }
 
     if (err.code && err.code === 4001) {
