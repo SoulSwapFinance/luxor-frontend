@@ -76,7 +76,7 @@ function Bond({ bond }: IBondProps) {
                                                 currency: "USD",
                                                 maximumFractionDigits: 0,
                                                 minimumFractionDigits: 0,
-                                            }).format(bond.marketPrice)
+                                            }).format(bond.luxPrice)
                                         )}
                                     </p>
                                 </div>

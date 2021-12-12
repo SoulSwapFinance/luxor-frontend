@@ -7,6 +7,6 @@ export async function getMarketPrice(networkID: Networks, provider: ethers.Signe
     const daiLuxorAddress = daiLuxor.getAddressForReserve(networkID);
     const pairContract = new ethers.Contract(daiLuxorAddress, LpReserveContract, provider);
     const reserves = await pairContract.getReserves();
-    const marketPrice = reserves[1] / reserves[0];
-    return marketPrice;
+    const luxPrice = reserves[1] / reserves[0];
+    return luxPrice;
 }

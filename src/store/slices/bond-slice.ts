@@ -88,7 +88,7 @@ export interface IBondDetails {
     vestingTerm: number;
     maxBondPrice: number;
     bondPrice: number;
-    marketPrice: number;
+    luxPrice: number;
     maxBondPriceToken: number;
 }
 
@@ -112,10 +112,10 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
     const terms = await bondContract.terms();
     const maxBondPrice = (await bondContract.maxPayout()) / Math.pow(10, 9);
 
-    let marketPrice = await getMarketPrice(networkID, provider);
+    let luxPrice = await getMarketPrice(networkID, provider);
 
     const daiPrice = getTokenPrice("DAI");
-    marketPrice = (marketPrice / Math.pow(10, 9)) * daiPrice;
+    luxPrice = (luxPrice / Math.pow(10, 9)) * daiPrice;
 
     try {
         bondPrice = await bondContract.bondPriceInUSD();
@@ -125,7 +125,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
             bondPrice = bondPrice * ftmPrice;
         }
 
-        bondDiscount = (marketPrice * Math.pow(10, 18) - bondPrice) / bondPrice;
+        bondDiscount = (luxPrice * Math.pow(10, 18) - bondPrice) / bondPrice;
     } catch (e) {
         console.log("error getting bondPriceInUSD", e);
     }
@@ -188,7 +188,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         vestingTerm: Number(terms.vestingTerm),
         maxBondPrice,
         bondPrice: bondPrice / Math.pow(10, 18),
-        marketPrice,
+        luxPrice,
         maxBondPriceToken,
     };
 });
@@ -217,9 +217,9 @@ export const bondAsset = createAsyncThunk("bonding/bondAsset", async ({ value, a
         const gasPrice = await getGasPrice(provider);
 
         if (useWFTM) {
-            bondTx = await bondContract.deposit(valueInWei, maxPremium, depositorAddress, { gasPrice });
-        } else {
             bondTx = await bondContract.deposit(valueInWei, maxPremium, depositorAddress, { value: valueInWei, gasPrice });
+        } else {
+            bondTx = await bondContract.deposit(valueInWei, maxPremium, depositorAddress, { gasPrice });
         }
         dispatch(
             fetchPendingTxns({

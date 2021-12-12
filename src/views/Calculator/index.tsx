@@ -9,8 +9,8 @@ import { Skeleton } from "@material-ui/lab";
 
 function Calculator() {
     const isAppLoading = useSelector<IReduxState, boolean>(state => state.app.loading);
-    const marketPrice = useSelector<IReduxState, number>(state => {
-        return state.app.marketPrice;
+    const luxPrice = useSelector<IReduxState, number>(state => {
+        return state.app.luxPrice;
     });
     const stakingAPY = useSelector<IReduxState, number>(state => {
         return state.app.stakingAPY;
@@ -21,7 +21,7 @@ function Calculator() {
 
     const trimmedStakingAPY = trim(stakingAPY * 100, 1);
     const trimmedLumensBalance = trim(Number(lumensBalance), 6);
-    const trimMarketPrice = trim(marketPrice, 2);
+    const trimMarketPrice = trim(luxPrice, 2);
 
     const [lumensAmount, setLumensAmount] = useState(trimmedLumensBalance);
     const [rewardYield, setRewardYield] = useState(trimmedStakingAPY);
@@ -96,7 +96,7 @@ function Calculator() {
                                                         currency: "USD",
                                                         maximumFractionDigits: 0,
                                                         minimumFractionDigits: 0,
-                                                    }).format(marketPrice)
+                                                    }).format(luxPrice)
                                                 )}
                                             </p>
                                         </div>

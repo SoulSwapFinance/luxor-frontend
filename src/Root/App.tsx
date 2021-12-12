@@ -22,7 +22,7 @@ function App() {
     const [walletChecked, setWalletChecked] = useState(false);
 
     const isAppLoading = useSelector<IReduxState, boolean>(state => state.app.loading);
-    const isAppLoaded = useSelector<IReduxState, boolean>(state => !Boolean(state.app.marketPrice));
+    const isAppLoaded = useSelector<IReduxState, boolean>(state => !Boolean(state.app.luxPrice));
 
     const { bonds } = useBonds();
     const { tokens } = useTokens();

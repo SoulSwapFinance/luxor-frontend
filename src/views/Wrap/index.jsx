@@ -44,15 +44,15 @@ function Wrap() {
     });
 
     const LUXPrice = useSelector(state => {
-        return state.app.marketPrice;
+        return state.app.luxPrice;
     });
 
     const LUMPrice = useSelector(state => {
-        return state.app.marketPrice;
+        return state.app.luxPrice;
     });
 
     const wLUMPrice = useSelector(state => {
-        return state.app.marketPrice * state.app.currentIndex;
+        return state.app.luxPrice * state.app.currentIndex;
     });
 
     const LumBalance = useSelector(state => {

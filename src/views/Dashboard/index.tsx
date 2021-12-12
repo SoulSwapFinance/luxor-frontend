@@ -13,7 +13,7 @@ function Dashboard() {
     const trimmedStakingAPY = trim(app.stakingAPY * 100, 0);
     const percStaked = (app.circSupply / app.totalSupply) * 100;
     const wLUMPrice = useSelector(state => {
-        return app.marketPrice * Number(app.currentIndex);
+        return app.luxPrice * Number(app.currentIndex);
     });
 
     return (
@@ -33,7 +33,7 @@ function Dashboard() {
                                             currency: "USD",
                                             maximumFractionDigits: 0,
                                             minimumFractionDigits: 0,
-                                        }).format(app.marketPrice)
+                                        }).format(app.luxPrice)
                                     )}{" "}
                                 </p>
                             </div>
