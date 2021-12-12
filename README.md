@@ -1,4 +1,4 @@
-# luxor-frontend(https://luxo.money)
+# luxor-frontend(https://Luxor.money)
 Frontend repository for the Luxor Economy.
 
 ##  🔧 Setting Up Local Development
