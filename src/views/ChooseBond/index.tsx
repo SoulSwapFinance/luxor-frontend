@@ -13,8 +13,8 @@ function ChooseBond() {
     const isSmallScreen = useMediaQuery("(max-width: 733px)"); // change to breakpoint query
 
     const isAppLoading = useSelector<IReduxState, boolean>(state => state.app.loading);
-    const marketPrice = useSelector<IReduxState, number>(state => {
-        return state.app.marketPrice;
+    const luxPrice = useSelector<IReduxState, number>(state => {
+        return state.app.luxPrice;
     });
 
     const treasuryBalance = useSelector<IReduxState, number>(state => {
@@ -57,7 +57,7 @@ function ChooseBond() {
                                             currency: "USD",
                                             maximumFractionDigits: 0,
                                             minimumFractionDigits: 0,
-                                        }).format(marketPrice)
+                                        }).format(luxPrice)
                                     )}
                                 </p>
                             </Box>

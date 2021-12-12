@@ -23,7 +23,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
     const { provider, address, chainID, checkWrongNetwork } = useWeb3Context();
 
     const [quantity, setQuantity] = useState("");
-    const [useWFTM, setUseFtm] = useState(false);
+    const [useWFTM, setUseWFTM] = useState(false);
 
     const isBondLoading = useSelector<IReduxState, boolean>(state => state.bonding.loading ?? true);
     const [zapinOpen, setZapinOpen] = useState(false);
@@ -89,7 +89,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
     }, [bond.allowance]);
 
     const setMax = () => {
-        let amount: any = Math.min(bond.maxBondPriceToken * 0.9999, useWFTM ? bond.balance : bond.ftmBalance * 0.99);
+        let amount: any = Math.min(bond.maxBondPriceToken * 0.9999, useWFTM ? bond.ftmBalance * 0.99 : bond.balance);
 
         if (amount) {
             amount = trim(amount);
@@ -128,7 +128,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                 {bond.name === "wftm" && (
                     <FormControl className="lux-input" variant="outlined" color="primary" fullWidth>
                         <div className="ftm-checkbox">
-                            <input type="checkbox" checked={useWFTM} onClick={() => setUseFtm(!useWFTM)} />
+                            <input type="checkbox" checked={useWFTM} onClick={() => setUseWFTM(!useWFTM)} />
                             <p>Use WFTM</p>
                         </div>
                     </FormControl>
@@ -150,7 +150,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                         }
                     />
                 </FormControl>
-                {hasAllowance() || !useWFTM ? (
+                {hasAllowance() || useWFTM ? (
                     <div
                         className="transaction-button bond-approve-btn"
                         onClick={async () => {
@@ -196,7 +196,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                                 <Skeleton width="100px" />
                             ) : (
                                 <>
-                                    {trim(!useWFTM ? bond.ftmBalance : bond.balance, 4)} {displayUnits}
+                                    {trim(useWFTM ? bond.ftmBalance : bond.balance, 4)} {displayUnits}
                                 </>
                             )}
                         </p>
