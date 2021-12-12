@@ -120,7 +120,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
         setZapinOpen(false);
     };
 
-    const displayUnits = useWFTM ? "WFTM" : bond.displayUnits;
+    const displayUnits = useWFTM ? "FTM" : bond.displayUnits;
 
     return (
         <Box display="flex" flexDirection="column">
