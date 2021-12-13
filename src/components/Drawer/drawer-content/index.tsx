@@ -107,12 +107,12 @@ function NavContent() {
                             <p>Calculator</p>
                         </div>
                     </Link>
-                    {/* <Link target="_blank" href={"https://luxor-frontend-9zeyoi7l5-soulswap.vercel.app/#/stake"} className={classnames("button-dapp-menu", { active: isActive })}>
+                    <Link target="_blank" href={"https://app.luxor.money"} className={classnames("button-dapp-menu", { active: isActive })}>
                         <div className="dapp-menu-item">
                             <img alt="" src={DashboardIcon} />
-                            <p>Legacy UI</p>
+                            <p>Luxor App</p>
                         </div>
-                    </Link> */}
+                    </Link>
                     <Link target="_blank" href={"https://docs.luxor.money"} className={classnames("button-dapp-menu", { active: isActive })}>
                         <div className="dapp-menu-item">
                             <img alt="" src={DocsIcon} />
