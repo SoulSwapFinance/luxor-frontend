@@ -23,18 +23,12 @@ function NavContent() {
 
     const checkPage = useCallback((location: any, page: string): boolean => {
         const currentPath = location.pathname.replace("/", "");
-        if (currentPath.indexOf("dashboard") >= 0 && page === "dashboard") {
-            return true;
-        }
         if (currentPath.indexOf("stake") >= 0 && page === "stake") {
             return true;
         }
         if (currentPath.indexOf("mints") >= 0 && page === "mints") {
             return true;
         }
-        // if (currentPath.indexOf("wrap") >= 0 && page === "wrap") {
-        //     return true;
-        // }
         if (currentPath.indexOf("calculator") >= 0 && page === "calculator") {
             return true;
         }
@@ -47,7 +41,6 @@ function NavContent() {
                 <Link href="/" target="_blank">
                     <img alt="" src={LuxorIcon} height="125" />
                 </Link>
-
                 {address && (
                     <div className="wallet-link">
                         <Link href={`https://ftmscan.com/address/${address}`} target="_blank">
@@ -61,20 +54,6 @@ function NavContent() {
                 <div className="dapp-nav">
                     <Link
                         component={NavLink}
-                        to="/dashboard"
-                        isActive={(match: any, location: any) => {
-                            return checkPage(location, "dashboard");
-                        }}
-                        className={classnames("button-dapp-menu", { active: isActive })}
-                    >
-                        <div className="dapp-menu-item">
-                            <img alt="" src={DashboardIcon} />
-                            <p>Dashboard</p>
-                        </div>
-                    </Link>
-
-                    <Link
-                        component={NavLink}
                         to="/stake"
                         isActive={(match: any, location: any) => {
                             return checkPage(location, "stake");
@@ -86,19 +65,6 @@ function NavContent() {
                             <p>Stake</p>
                         </div>
                     </Link>
-                    {/* <Link
-                        component={NavLink}
-                        to="/wrap"
-                        isActive={(match: any, location: any) => {
-                            return checkPage(location, "wrap");
-                        }}
-                        className={classnames("button-dapp-menu", { active: isActive })}
-                    >
-                        <div className="dapp-menu-item">
-                            <img alt="" src={WrapIcon} />
-                            <p>Wrap</p>
-                        </div>
-                    </Link> */}
                     <Link
                         component={NavLink}
                         id="bond-nav"
@@ -113,7 +79,6 @@ function NavContent() {
                             <p>Mint</p>
                         </div>
                     </Link>
-
                     <div className="bond-discounts">
                         {/* <p>Mint Discounts</p> */}
                         {bonds.map((bond, i) => (
@@ -142,25 +107,12 @@ function NavContent() {
                             <p>Calculator</p>
                         </div>
                     </Link>
-                    <Link
-                        component={NavLink}
-                        to="/bridge"
-                        isActive={(match: any, location: any) => {
-                            return checkPage(location, "bridge");
-                        }}
-                        className={classnames("button-dapp-menu", { active: isActive })}
-                    >
-                        <div className="dapp-menu-item">
-                            <img alt="" src={WrapIcon} />
-                            <p>Bridge</p>
-                        </div>
-                    </Link>
-                    <Link target="_blank" href={"https://luxor-frontend-9zeyoi7l5-soulswap.vercel.app/#/stake"} className={classnames("button-dapp-menu", { active: isActive })}>
+                    {/* <Link target="_blank" href={"https://luxor-frontend-9zeyoi7l5-soulswap.vercel.app/#/stake"} className={classnames("button-dapp-menu", { active: isActive })}>
                         <div className="dapp-menu-item">
                             <img alt="" src={DashboardIcon} />
                             <p>Legacy UI</p>
                         </div>
-                    </Link>
+                    </Link> */}
                     <Link target="_blank" href={"https://docs.luxor.money"} className={classnames("button-dapp-menu", { active: isActive })}>
                         <div className="dapp-menu-item">
                             <img alt="" src={DocsIcon} />
