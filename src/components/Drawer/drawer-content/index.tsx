@@ -12,7 +12,7 @@ import { Link } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import "./drawer-content.scss";
 import DocsIcon from "../../../assets/icons/stake.svg";
-// import WrapIcon from "../../../assets/icons/wrap.svg";
+import WrapIcon from "../../../assets/icons/wrap.svg";
 import GlobeIcon from "../../../assets/icons/wonderglobe.svg";
 import classnames from "classnames";
 
@@ -140,6 +140,19 @@ function NavContent() {
                         <div className="dapp-menu-item">
                             <img alt="" src={GlobeIcon} />
                             <p>Calculator</p>
+                        </div>
+                    </Link>
+                    <Link
+                        component={NavLink}
+                        to="/bridge"
+                        isActive={(match: any, location: any) => {
+                            return checkPage(location, "bridge");
+                        }}
+                        className={classnames("button-dapp-menu", { active: isActive })}
+                    >
+                        <div className="dapp-menu-item">
+                            <img alt="" src={WrapIcon} />
+                            <p>Bridge</p>
                         </div>
                     </Link>
                     <Link target="_blank" href={"https://luxor-frontend-9zeyoi7l5-soulswap.vercel.app/#/stake"} className={classnames("button-dapp-menu", { active: isActive })}>
