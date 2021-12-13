@@ -41,7 +41,7 @@ function Zapin({ open, handleClose, bond }: IZapinProps) {
 
     let defaultToken = tokens.find(token => token.name === ftm.name);
 
-    if (bond.name === wftm.name) {
+    if (bond.name === wftm.name || bond.name === "wftm2") {
         defaultToken = tokens.find(token => token.name === dai.name);
     }
 

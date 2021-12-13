@@ -43,7 +43,7 @@ function ChooseToken({ open, handleClose, handleSelect, bond }: IChooseTokenProp
             lpFilter = daiToken.address !== address;
         }
 
-        if (bond.name === wftm.name) {
+        if (bond.name === wftm.name || bond.name === "wftm2") {
             lpFilter = isFtm ? false : wftmToken.address !== address;
         }
 

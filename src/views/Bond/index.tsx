@@ -48,7 +48,7 @@ function Bond({ bond }: IBondProps) {
                                     <p className="bond-price-data-value">
                                         {isBondLoading ? (
                                             <Skeleton />
-                                        ) : bond.isLP || bond.name === "wftm" ? (
+                                        ) : bond.isLP || bond.name === "wftm" || bond.name === "wftm2" ? (
                                             new Intl.NumberFormat("en-US", {
                                                 style: "currency",
                                                 currency: "USD",
