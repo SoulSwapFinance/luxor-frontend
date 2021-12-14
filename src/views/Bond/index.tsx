@@ -66,7 +66,7 @@ function Bond({ bond }: IBondProps) {
                                     </p>
                                 </div>
                                 <div className="bond-price-data">
-                                    <p className="bond-price-data-title">LUX Price</p>
+                                    <p className="bond-price-data-title">Market Price</p>
                                     <p className="bond-price-data-value">
                                         {isBondLoading ? (
                                             <Skeleton />
@@ -76,7 +76,7 @@ function Bond({ bond }: IBondProps) {
                                                 currency: "USD",
                                                 maximumFractionDigits: 0,
                                                 minimumFractionDigits: 0,
-                                            }).format(bond.luxPrice)
+                                            }).format(bond.marketPrice)
                                         )}
                                     </p>
                                 </div>

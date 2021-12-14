@@ -88,7 +88,7 @@ export interface IBondDetails {
     vestingTerm: number;
     maxBondPrice: number;
     bondPrice: number;
-    luxPrice: number;
+    marketPrice: number;
     maxBondPriceToken: number;
 }
 
@@ -112,10 +112,10 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
     const terms = await bondContract.terms();
     const maxBondPrice = (await bondContract.maxPayout()) / Math.pow(10, 9);
 
-    let luxPrice = await getMarketPrice(networkID, provider);
+    let marketPrice = await getMarketPrice(networkID, provider);
 
     const daiPrice = getTokenPrice("DAI");
-    luxPrice = (luxPrice / Math.pow(10, 9)) * daiPrice;
+    marketPrice = (marketPrice / Math.pow(10, 9)) * daiPrice;
 
     try {
         bondPrice = await bondContract.bondPriceInUSD();
@@ -123,9 +123,12 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         if (bond.name === ftmLuxor.name || bond.name === ftmLuxor2.name) {
             const ftmPrice = getTokenPrice("FTM");
             bondPrice = bondPrice * ftmPrice;
+            // } else if (bond.name === ftmSoul.name) {
+            //     const soulPrice = getTokenPrice("SOUL");
+            //     bondPrice = bondPrice * soulPrice;
         }
 
-        bondDiscount = (luxPrice * Math.pow(10, 18) - bondPrice) / bondPrice;
+        bondDiscount = (marketPrice * Math.pow(10, 18) - bondPrice) / bondPrice;
     } catch (e) {
         console.log("error getting bondPriceInUSD", e);
     }
@@ -167,6 +170,9 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         if (bond.name === ftmLuxor.name || bond.name === ftmLuxor2.name) {
             const ftmPrice = getTokenPrice("FTM");
             purchased = purchased * ftmPrice;
+            // } else if (bond.name === ftmSoul.name) {
+            //     const soulPrice = getTokenPrice("SOUL");
+            //     purchased = purchased * soulPrice;
         }
     } else {
         if (bond.tokensInStrategy) {
@@ -188,7 +194,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         vestingTerm: Number(terms.vestingTerm),
         maxBondPrice,
         bondPrice: bondPrice / Math.pow(10, 18),
-        luxPrice,
+        marketPrice,
         maxBondPriceToken,
     };
 });

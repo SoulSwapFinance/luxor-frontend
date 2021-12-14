@@ -13,8 +13,8 @@ function ChooseBond() {
     const isSmallScreen = useMediaQuery("(max-width: 733px)"); // change to breakpoint query
 
     const isAppLoading = useSelector<IReduxState, boolean>(state => state.app.loading);
-    const luxPrice = useSelector<IReduxState, number>(state => {
-        return state.app.luxPrice;
+    const marketPrice = useSelector<IReduxState, number>(state => {
+        return state.app.marketPrice;
     });
 
     const treasuryBalance = useSelector<IReduxState, number>(state => {
@@ -33,7 +33,7 @@ function ChooseBond() {
                                         <TableRow>
                                             <TableCell align="center">{/* <p className="choose-bond-view-card-table-title">Bond</p> */}</TableCell>
                                             <TableCell align="center">
-                                                <p className="choose-bond-view-card-table-title">Payout</p>
+                                                <p className="choose-bond-view-card-table-title">Term</p>
                                             </TableCell>
                                             <TableCell align="center">
                                                 <p className="choose-bond-view-card-table-title">Price</p>
