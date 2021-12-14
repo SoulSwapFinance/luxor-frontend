@@ -4,8 +4,8 @@ import { CustomBond, StableBond } from "./stable-bond";
 
 import DaiIcon from "../../assets/tokens/DAI.svg";
 import FtmIcon from "../../assets/tokens/FTM.svg";
-import DaiLuxorIcon from "../../assets/tokens/LUX-FTM.svg";
-import FtmLuxorIcon from "../../assets/tokens/LUX-DAI.svg";
+import DaiLuxorIcon from "../../assets/tokens/LUX-DAI.svg";
+import FtmLuxorIcon from "../../assets/tokens/LUX-FTM.svg";
 
 import { StableBondContract, DaiLpBondContract, FtmLpBondContract, WftmBondContract, StableReserveContract, SoulLpBondContract, LpReserveContract } from "../../abi";
 
