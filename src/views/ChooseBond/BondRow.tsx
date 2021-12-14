@@ -1,10 +1,15 @@
-import { priceUnits, trim } from "../../helpers";
+import { prettyVestingPeriod, priceUnits, prettifySeconds, trim } from "../../helpers";
 import BondLogo from "../../components/BondLogo";
-import { Paper, TableRow, TableCell, Slide, Link } from "@material-ui/core";
+import { Box, Paper, TableRow, TableCell, Slide, Link } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
 import "./choosebond.scss";
 import { Skeleton } from "@material-ui/lab";
+import { IBondDetails, redeemBond } from "../../store/slices/bond-slice";
 import { IAllBondData } from "../../hooks/bonds";
+import { IReduxState } from "src/store/slices/state.interface";
+import { IUserBondDetails } from "src/store/slices/account-slice";
+import { useSelector } from "react-redux";
+import { IPendingTxn } from "src/store/slices/pending-txns-slice";
 
 interface IBondProps {
     bond: IAllBondData;
@@ -52,6 +57,10 @@ export function BondDataCard({ bond }: IBondProps) {
                     <p className="bond-name-title">ROI</p>
                     <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${trim(bond.bondDiscount * 100, 2)}%`}</p>
                 </div>
+                <div className="data-row">
+                    <p className="bond-name-title">Claimable</p>
+                    <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${trim(bond.interestDue, 4)}`}</p>
+                </div>
                 <Link component={NavLink} to={`/mints/${bond.name}`}>
                     <div className="bond-table-btn">
                         <p>Mint with {bond.displayName}</p>
@@ -64,6 +73,33 @@ export function BondDataCard({ bond }: IBondProps) {
 
 export function BondTableData({ bond }: IBondProps) {
     const isBondLoading = !bond.bondPrice ?? true;
+
+    const currentBlockTime = useSelector<IReduxState, number>(state => {
+        return state.app.currentBlockTime;
+    });
+
+    const pendingTransactions = useSelector<IReduxState, IPendingTxn[]>(state => {
+        return state.pendingTransactions;
+    });
+
+    const bondingState = useSelector<IReduxState, IBondDetails>(state => {
+        return state.bonding && state.bonding[bond.name];
+    });
+
+    const bondDetails = useSelector<IReduxState, IUserBondDetails>(state => {
+        return state.account.bonds && state.account.bonds[bond.name];
+    });
+
+    const vestingTime = () => {
+        if (!bondDetails) {
+            return "";
+        }
+        return prettyVestingPeriod(currentBlockTime, bondDetails.bondMaturationBlock);
+    };
+
+    const vestingPeriod = () => {
+        return prettifySeconds(bondingState.vestingTerm, "day");
+    };
 
     return (
         <TableRow>
@@ -98,12 +134,20 @@ export function BondTableData({ bond }: IBondProps) {
             <TableCell align="right">
                 <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${trim(bond.bondDiscount * 100, 2)}%`}</p>
             </TableCell>
+            <TableCell align="right">
+                <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${trim(bond.interestDue, 4)}`}</p>
+            </TableCell>
             <TableCell>
                 <Link component={NavLink} to={`/mints/${bond.name}`}>
                     <div className="bond-table-btn">
                         <p>Mint</p>
                     </div>
                 </Link>
+                {/* <Link component={NavLink} to={`/mints/${bond.name}`}>
+                    <div className="bond-table-btn">
+                        <p>Claim and Autostake</p>
+                    </div>
+                </Link> */}
             </TableCell>
         </TableRow>
     );
