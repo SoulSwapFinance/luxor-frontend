@@ -179,7 +179,7 @@ function NavContent() {
                     <Link target="_blank" href={"https://exchange.soulswap.finance"} className={classnames("button-dapp-menu", { active: isActive })}>
                         <div className="dapp-menu-item">
                             <img alt="" src={ExchangeIcon} />
-                            <p>Exchange App</p>
+                            <p>Exchange</p>
                         </div>
                     </Link>
                     <Link target="_blank" href={"https://docs.luxor.money"} className={classnames("button-dapp-menu", { active: isActive })}>
