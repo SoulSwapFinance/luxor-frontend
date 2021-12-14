@@ -5,6 +5,7 @@ import BridgeIcon from "../../../assets/icons/bridge.png";
 import MarketIcon from "../../../assets/icons/marketplace.png";
 import RebaseIcon from "../../../assets/icons/rebase.png";
 import GoldIcon from "../../../assets/icons/gold.png";
+import ExchangeIcon from "../../../assets/icons/exchange.png";
 import LuxorIcon from "../../../assets/icons/logo.png";
 import AnalyticsIcon from "../../../assets/icons/analytics.png";
 import { trim, shorten } from "../../../helpers";
@@ -141,6 +142,19 @@ function NavContent() {
                         <div className="dapp-menu-item">
                             <img alt="" src={CalculatorIcon} />
                             <p>Calculator</p>
+                        </div>
+                    </Link>
+                    <Link
+                        component={NavLink}
+                        to="/swap"
+                        isActive={(match: any, location: any) => {
+                            return checkPage(location, "swap");
+                        }}
+                        className={classnames("button-dapp-menu", { active: isActive })}
+                    >
+                        <div className="dapp-menu-item">
+                            <img alt="" src={ExchangeIcon} />
+                            <p>Exchange</p>
                         </div>
                     </Link>
                     <Link
