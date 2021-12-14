@@ -10,7 +10,7 @@ import { Bond } from "../../helpers/bond/bond";
 import { Networks } from "../../constants/blockchain";
 import { getBondCalculator } from "../../helpers/bond-calculator";
 import { RootState } from "../store";
-import { ftmLuxor, ftmLuxor2, wftm, wftm2 } from "../../helpers/bond";
+import { ftmLuxor, ftmLuxor2, wftm, wftm2, wftm3 } from "../../helpers/bond";
 import { error, warning, success, info } from "../slices/messages-slice";
 import { messages } from "../../constants/messages";
 import { getGasPrice } from "../../helpers/get-gas-price";
@@ -180,7 +180,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         }
         purchased = purchased / Math.pow(10, 18);
 
-        if (bond.name === wftm.name || bond.name === wftm2.name) {
+        if (bond.name === wftm.name || bond.name === wftm2.name || bond.name === wftm3.name) {
             const ftmPrice = getTokenPrice("FTM");
             purchased = purchased * ftmPrice;
             console.log("ftmPrice:%s", ftmPrice);

@@ -94,6 +94,27 @@ export const wftm2 = new CustomBond({
     tokensInStrategy: "00000000000000000000000",
 });
 
+export const wftm3 = new CustomBond({
+    name: "wftm3",
+    displayName: "WFTM",
+    bondToken: "FTM",
+    rewardToken: "LUX",
+    bondIconSvg: FtmIcon,
+    bondContractABI: WftmBondContract,
+    reserveContractAbi: StableReserveContract,
+    networkAddrs: {
+        [Networks.FTM]: {
+            bondAddress: "0xc421072646C51FF8983714F28e4253ad8B44bb1E",
+            reserveAddress: "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+        },
+        [Networks.BSC]: {
+            bondAddress: "",
+            reserveAddress: "",
+        },
+    },
+    tokensInStrategy: "00000000000000000000000",
+});
+
 // export const ftmSoul = new CustomLPBond({
 //     name: "soul_ftm_lp",
 //     displayName: "SOUL-FTM",
@@ -203,4 +224,4 @@ export const ftmLuxor2 = new CustomLPBond({
     lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
 });
 
-export default [dai, dai2, daiLuxor, daiLuxor2, ftmLuxor, ftmLuxor2, wftm, wftm2];
+export default [dai, dai2, daiLuxor, daiLuxor2, ftmLuxor, ftmLuxor2, wftm, wftm2, wftm3];
