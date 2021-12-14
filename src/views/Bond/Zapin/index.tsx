@@ -15,7 +15,7 @@ import { IReduxState } from "../../../store/slices/state.interface";
 import { changeApproval, calcZapinDetails, ITokenZapinResponse, zapinMint } from "../../../store/slices/zapin-thunk";
 import { IPendingTxn, isPendingTxn, txnButtonText } from "../../../store/slices/pending-txns-slice";
 import { useWeb3Context } from "../../../hooks";
-import { wftm } from "../../../helpers/bond";
+import { wftm, wftm2, wftm3 } from "../../../helpers/bond";
 import AdvancedSettings from "../AdvancedSettings";
 import { ReactComponent as SettingsIcon } from "../../../assets/icons/settings.svg";
 import { warning } from "../../../store/slices/messages-slice";
@@ -41,7 +41,7 @@ function Zapin({ open, handleClose, bond }: IZapinProps) {
 
     let defaultToken = tokens.find(token => token.name === ftm.name);
 
-    if (bond.name === wftm.name || bond.name === "wftm2") {
+    if (bond.name === wftm.name || bond.name === wftm2.name || bond.name === wftm3.name) {
         defaultToken = tokens.find(token => token.name === dai.name);
     }
 

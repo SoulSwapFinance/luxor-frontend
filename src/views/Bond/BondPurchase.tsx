@@ -125,7 +125,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
     return (
         <Box display="flex" flexDirection="column">
             <Box display="flex" justifyContent="space-around" flexWrap="wrap">
-                {(bond.name === "wftm" || bond.name === "wftm2") && (
+                {(bond.name === "wftm" || bond.name === "wftm2" || bond.name === "wftm3") && (
                     <FormControl className="lux-input" variant="outlined" color="primary" fullWidth>
                         <div className="ftm-checkbox">
                             <input type="checkbox" checked={!useWFTM} onClick={() => setUseWFTM(!useWFTM)} />
@@ -172,7 +172,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                     </div>
                 )}
 
-                {(bond.name === "wftm" || bond.name === "wftm2" || bond.name === "dai" || bond.name === "dai2") && (
+                {(bond.name === "wftm" || bond.name === "wftm2" || bond.name === "wftm3" || bond.name === "dai" || bond.name === "dai2") && (
                     <div className="transaction-button bond-approve-btn" onClick={handleZapinOpen}>
                         <p>Zap</p>
                     </div>
