@@ -118,6 +118,14 @@ export function BondTableData({ bond }: IBondProps) {
                 <p className="bond-name-title">
                     <>
                         {/* <span className="currency-icon">{priceUnits(bond)}</span>{" "} */}
+                        {isBondLoading ? <Skeleton width="50px" /> : bond.rewardToken}
+                    </>
+                </p>
+            </TableCell>
+            <TableCell align="center">
+                <p className="bond-name-title">
+                    <>
+                        {/* <span className="currency-icon">{priceUnits(bond)}</span>{" "} */}
                         {isBondLoading ? (
                             <Skeleton width="50px" />
                         ) : (

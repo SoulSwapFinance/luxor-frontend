@@ -8,6 +8,7 @@ import { getTokenPrice } from "../token-price";
 export interface BondOpts {
     readonly name: string; // Internal name used for references
     readonly displayName: string; // Displayname on UI
+    readonly rewardToken: string; // Token given to reward bonding.
     readonly bondIconSvg: string; //  SVG path for icons
     readonly bondContractABI: ContractInterface; // ABI for contract
     readonly networkAddrs: NetworkAddresses; // Mapping of network --> Addresses
@@ -17,6 +18,7 @@ export interface BondOpts {
 export abstract class Bond {
     public readonly name: string;
     public readonly displayName: string;
+    public readonly rewardToken: string;
     public readonly type: BondType;
     public readonly bondIconSvg: string;
     public readonly bondContractABI: ContractInterface; // Bond ABI
@@ -38,6 +40,7 @@ export abstract class Bond {
     constructor(type: BondType, bondOpts: BondOpts) {
         this.name = bondOpts.name;
         this.displayName = bondOpts.displayName;
+        this.rewardToken = bondOpts.rewardToken;
         this.type = type;
         this.bondIconSvg = bondOpts.bondIconSvg;
         this.bondContractABI = bondOpts.bondContractABI;
