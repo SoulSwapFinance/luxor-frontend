@@ -102,10 +102,7 @@ function Stake() {
                 <div className="stake-card">
                     <Grid className="stake-card-grid" container direction="column" spacing={2}>
                         <Grid item>
-                            <div className="stake-card-header">
-                                <p className="stake-card-header-title">Luxor Staking</p>
-                                <RebaseTimer />
-                            </div>
+                            <div className="stake-card-header">{/* <p className="stake-card-header-title">Luxor Staking</p> */}</div>
                         </Grid>
 
                         <Grid item>
@@ -191,7 +188,7 @@ function Stake() {
                                                 endAdornment={
                                                     <InputAdornment position="end">
                                                         <div onClick={setMax} className="stake-card-action-input-btn">
-                                                            <p>Max</p>
+                                                            <p>MAX</p>
                                                         </div>
                                                     </InputAdornment>
                                                 }
@@ -260,6 +257,7 @@ function Stake() {
                                         </div>
                                     </div>
 
+                                    <RebaseTimer />
                                     <div className="stake-user-data">
                                         <div className="data-row">
                                             <p className="data-row-name">Your Balance</p>

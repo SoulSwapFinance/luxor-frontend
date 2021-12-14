@@ -1,10 +1,12 @@
 .rebase-timer {
-  position: relative;
+  position: flex;
 
   p{
+    justify-content: center;
+    align-items: center;
     font-family: Montserrat SemiBold;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 13px;
     color: #FFFFFF;
   }
 }
