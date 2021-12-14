@@ -101,7 +101,7 @@ function NavContent() {
                             <p>Rebase</p>
                         </div>
                     </Link>
-                    <Link
+                    {/* <Link
                         component={NavLink}
                         to="/swap"
                         isActive={(match: any, location: any) => {
@@ -113,7 +113,7 @@ function NavContent() {
                             <img alt="" src={ExchangeIcon} />
                             <p>Exchange</p>
                         </div>
-                    </Link>
+                    </Link> */}
                     <Link
                         component={NavLink}
                         to="/calculator"
@@ -127,12 +127,12 @@ function NavContent() {
                             <p>Calculator</p>
                         </div>
                     </Link>
-                    {/* <Link target="_blank" href={"https://app.luxor.money"} className={classnames("button-dapp-menu", { active: isActive })}>
+                    <Link target="_blank" href={"https://exchange.soulswap.finance"} className={classnames("button-dapp-menu", { active: isActive })}>
                         <div className="dapp-menu-item">
-                            <img alt="" src={AppIcon} />
-                            <p>Luxor App</p>
+                            <img alt="" src={ExchangeIcon} />
+                            <p>Exchange</p>
                         </div>
-                    </Link> */}
+                    </Link>
                     <Link target="_blank" href={"https://docs.luxor.money"} className={classnames("button-dapp-menu", { active: isActive })}>
                         <div className="dapp-menu-item">
                             <img alt="" src={DocsIcon} />
