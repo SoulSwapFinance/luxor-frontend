@@ -1,19 +1,18 @@
 import { useCallback, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Social from "./social";
-import StakeIcon from "../../../assets/icons/stake.svg";
-import BondIcon from "../../../assets/icons/bond.svg";
+import RebaseIcon from "../../../assets/icons/rebase.png";
+import GoldIcon from "../../../assets/icons/gold.png";
 import LuxorIcon from "../../../assets/icons/logo.png";
-import DashboardIcon from "../../../assets/icons/dashboard.svg";
+import AppIcon from "../../../assets/icons/app.png";
 import { trim, shorten } from "../../../helpers";
 import { useAddress } from "../../../hooks";
 import useBonds from "../../../hooks/bonds";
 import { Link } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import "./drawer-content.scss";
-import DocsIcon from "../../../assets/icons/stake.svg";
-import WrapIcon from "../../../assets/icons/wrap.svg";
-import GlobeIcon from "../../../assets/icons/wonderglobe.svg";
+import DocsIcon from "../../../assets/icons/docs.png";
+import CalculatorIcon from "../../../assets/icons/calculator.png"; //
 import classnames from "classnames";
 
 function NavContent() {
@@ -61,8 +60,8 @@ function NavContent() {
                         className={classnames("button-dapp-menu", { active: isActive })}
                     >
                         <div className="dapp-menu-item">
-                            <img alt="" src={StakeIcon} />
-                            <p>Stake</p>
+                            <img alt="" src={RebaseIcon} />
+                            <p>Rebase</p>
                         </div>
                     </Link>
                     <Link
@@ -75,8 +74,8 @@ function NavContent() {
                         className={classnames("button-dapp-menu", { active: isActive })}
                     >
                         <div className="dapp-menu-item">
-                            <img alt="" src={BondIcon} />
-                            <p>Mint</p>
+                            <img alt="" src={GoldIcon} />
+                            <p>Bonds</p>
                         </div>
                     </Link>
                     <div className="bond-discounts">
@@ -103,13 +102,13 @@ function NavContent() {
                         className={classnames("button-dapp-menu", { active: isActive })}
                     >
                         <div className="dapp-menu-item">
-                            <img alt="" src={GlobeIcon} />
+                            <img alt="" src={CalculatorIcon} />
                             <p>Calculator</p>
                         </div>
                     </Link>
                     <Link target="_blank" href={"https://app.luxor.money"} className={classnames("button-dapp-menu", { active: isActive })}>
                         <div className="dapp-menu-item">
-                            <img alt="" src={DashboardIcon} />
+                            <img alt="" src={AppIcon} />
                             <p>Luxor App</p>
                         </div>
                     </Link>
