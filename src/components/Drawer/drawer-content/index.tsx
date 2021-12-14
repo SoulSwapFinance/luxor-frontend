@@ -48,6 +48,13 @@ function NavContent() {
                         </Link>
                     </div>
                 )}
+                {address && (
+                    <div className="app-link">
+                        <Link href={`https://app.luxor.money`} target="_blank">
+                            <p>Luxor App</p>
+                        </Link>
+                    </div>
+                )}
             </div>
 
             <div className="dapp-menu-links">
@@ -120,12 +127,12 @@ function NavContent() {
                             <p>Calculator</p>
                         </div>
                     </Link>
-                    <Link target="_blank" href={"https://app.luxor.money"} className={classnames("button-dapp-menu", { active: isActive })}>
+                    {/* <Link target="_blank" href={"https://app.luxor.money"} className={classnames("button-dapp-menu", { active: isActive })}>
                         <div className="dapp-menu-item">
                             <img alt="" src={AppIcon} />
                             <p>Luxor App</p>
                         </div>
-                    </Link>
+                    </Link> */}
                     <Link target="_blank" href={"https://docs.luxor.money"} className={classnames("button-dapp-menu", { active: isActive })}>
                         <div className="dapp-menu-item">
                             <img alt="" src={DocsIcon} />
