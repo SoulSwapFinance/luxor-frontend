@@ -52,6 +52,27 @@ export const dai2 = new StableBond({
     tokensInStrategy: "00000000000000000000000",
 });
 
+export const dai3 = new StableBond({
+    name: "dai3",
+    displayName: "DAI",
+    bondToken: "DAI",
+    rewardToken: "LUX",
+    bondIconSvg: DaiIcon,
+    bondContractABI: StableBondContract,
+    reserveContractAbi: StableReserveContract,
+    networkAddrs: {
+        [Networks.FTM]: {
+            bondAddress: "0x73eE5Fcd1336246C74f6448B1d528aeacF5404f2",
+            reserveAddress: "0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E",
+        },
+        [Networks.BSC]: {
+            bondAddress: "",
+            reserveAddress: "",
+        },
+    },
+    tokensInStrategy: "00000000000000000000000",
+});
+
 export const wftm = new CustomBond({
     name: "wftm",
     displayName: "WFTM",
@@ -114,27 +135,6 @@ export const wftm3 = new CustomBond({
     },
     tokensInStrategy: "00000000000000000000000",
 });
-
-// export const ftmSoul = new CustomLPBond({
-//     name: "soul_ftm_lp",
-//     displayName: "SOUL-FTM",
-//     bondToken: "SOUL",
-//     rewardToken: "SOUL",
-//     bondIconSvg: SoulIcon,
-//     bondContractABI: SoulLpBondContract,
-//     reserveContractAbi: LpReserveContract,
-//     networkAddrs: {
-//         [Networks.FTM]: {
-//             bondAddress: "0x742429687DD80ccc02Ff61109f2293b7a08Aa245",
-//             reserveAddress: "0xa2527Af9DABf3E3B4979d7E0493b5e2C6e63dC57",
-//         },
-//         [Networks.BSC]: {
-//             bondAddress: "",
-//             reserveAddress: "",
-//         },
-//     },
-//     lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0xe2fb177009FF39F52C0134E8007FA0e4BaAcBd07",
-// });
 
 export const daiLuxor = new LPBond({
     name: "dai_lux_lp",
@@ -224,4 +224,4 @@ export const ftmLuxor2 = new CustomLPBond({
     lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
 });
 
-export default [dai, dai2, daiLuxor, daiLuxor2, ftmLuxor, ftmLuxor2, wftm, wftm2, wftm3];
+export default [dai, dai2, dai3, daiLuxor, daiLuxor2, ftmLuxor, ftmLuxor2, wftm, wftm2, wftm3];
