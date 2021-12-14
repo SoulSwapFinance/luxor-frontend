@@ -133,4 +133,25 @@ export const ftmLuxor = new CustomLPBond({
     lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
 });
 
-export default [dai, daiLuxor, daiLuxor2, ftmLuxor, wftm, wftm2];
+export const ftmLuxor2 = new CustomLPBond({
+    name: "ftm_lux_lp2",
+    displayName: "LUX-FTM",
+    bondToken: "FTM",
+    bondIconSvg: FtmLuxorIcon,
+    bondContractABI: FtmLpBondContract,
+    reserveContractAbi: LpReserveContract,
+    networkAddrs: {
+        [Networks.FTM]: {
+            // token0: WFTM
+            bondAddress: "0x8dF4f6e20C64DA8DAFC8c43E434f2cFda9C3FCAE",
+            reserveAddress: "0x951BBB838e49F7081072895947735b0892cCcbCD",
+        },
+        [Networks.BSC]: {
+            bondAddress: "",
+            reserveAddress: "",
+        },
+    },
+    lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
+});
+
+export default [dai, daiLuxor, daiLuxor2, ftmLuxor, ftmLuxor2, wftm, wftm2];
