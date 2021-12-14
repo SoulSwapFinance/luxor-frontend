@@ -31,6 +31,27 @@ export const dai = new StableBond({
     tokensInStrategy: "00000000000000000000000",
 });
 
+export const dai2 = new StableBond({
+    name: "dai2",
+    displayName: "DAI",
+    bondToken: "DAI",
+    rewardToken: "LUX",
+    bondIconSvg: DaiIcon,
+    bondContractABI: StableBondContract,
+    reserveContractAbi: StableReserveContract,
+    networkAddrs: {
+        [Networks.FTM]: {
+            bondAddress: "0x80C61168e1F02e1835b541e9Ca6Bb3416a36Af6F",
+            reserveAddress: "0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E",
+        },
+        [Networks.BSC]: {
+            bondAddress: "",
+            reserveAddress: "",
+        },
+    },
+    tokensInStrategy: "00000000000000000000000",
+});
+
 export const wftm = new CustomBond({
     name: "wftm",
     displayName: "WFTM",
@@ -182,4 +203,4 @@ export const ftmLuxor2 = new CustomLPBond({
     lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
 });
 
-export default [dai, daiLuxor, daiLuxor2, ftmLuxor, ftmLuxor2, wftm, wftm2];
+export default [dai, dai2, daiLuxor, daiLuxor2, ftmLuxor, ftmLuxor2, wftm, wftm2];
