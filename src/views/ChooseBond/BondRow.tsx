@@ -28,7 +28,7 @@ export function BondDataCard({ bond }: IBondProps) {
                         {bond.isLP && (
                             <div>
                                 <Link href={bond.lpUrl} target="_blank">
-                                    <p className="bond-name-title">Create SoulSwap LP</p>
+                                    <p className="bond-name-title">Create Pair</p>
                                 </Link>
                             </div>
                         )}
