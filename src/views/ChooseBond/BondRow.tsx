@@ -59,7 +59,7 @@ export function BondDataCard({ bond }: IBondProps) {
                 </div>
                 <div className="data-row">
                     <p className="bond-name-title">Claimable</p>
-                    <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${trim(bond.interestDue, 4)}`}</p>
+                    <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${trim(bond.pendingPayout, 4)}`}</p>
                 </div>
                 <Link component={NavLink} to={`/mints/${bond.name}`}>
                     <div className="bond-table-btn">
@@ -135,7 +135,7 @@ export function BondTableData({ bond }: IBondProps) {
                 <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${trim(bond.bondDiscount * 100, 2)}%`}</p>
             </TableCell>
             <TableCell align="right">
-                <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${trim(bond.interestDue, 4)}`}</p>
+                <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${trim(bond.pendingPayout, 4)}`}</p>
             </TableCell>
             <TableCell>
                 <Link component={NavLink} to={`/mints/${bond.name}`}>
