@@ -118,7 +118,7 @@ export function BondTableData({ bond }: IBondProps) {
                 <p className="bond-name-title">
                     <>
                         {/* <span className="currency-icon">{priceUnits(bond)}</span>{" "} */}
-                        {isBondLoading ? <Skeleton width="50px" /> : bond.rewardToken}
+                        {isBondLoading ? <Skeleton width="50px" /> : vestingPeriod()}
                     </>
                 </p>
             </TableCell>

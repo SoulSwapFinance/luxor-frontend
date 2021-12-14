@@ -33,7 +33,7 @@ function ChooseBond() {
                                         <TableRow>
                                             <TableCell align="center">{/* <p className="choose-bond-view-card-table-title">Bond</p> */}</TableCell>
                                             <TableCell align="center">
-                                                <p className="choose-bond-view-card-table-title">Payout</p>
+                                                <p className="choose-bond-view-card-table-title">Term</p>
                                             </TableCell>
                                             <TableCell align="center">
                                                 <p className="choose-bond-view-card-table-title">Price</p>
