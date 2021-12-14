@@ -111,7 +111,7 @@ function NavContent() {
                     >
                         <div className="dapp-menu-item">
                             <img alt="" src={GoldIcon} />
-                            <p>Mint</p>
+                            <p>Bonds</p>
                         </div>
                     </Link>
 

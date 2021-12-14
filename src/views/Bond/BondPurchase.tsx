@@ -223,7 +223,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                     </div>
 
                     <div className="data-row">
-                        <p className="bond-balance-title">Minimum purchase</p>
+                        <p className="bond-balance-title">Minimum Purchase</p>
                         <p className="bond-balance-title">0.01 LUX</p>
                     </div>
                 </Box>

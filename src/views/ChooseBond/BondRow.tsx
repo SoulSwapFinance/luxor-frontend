@@ -23,7 +23,7 @@ export function BondDataCard({ bond }: IBondProps) {
                         {bond.isLP && (
                             <div>
                                 <Link href={bond.lpUrl} target="_blank">
-                                    <p className="bond-name-title">Create SoulSwap LP</p>
+                                    <p className="bond-name-title">Create Pair</p>
                                 </Link>
                             </div>
                         )}
@@ -68,6 +68,11 @@ export function BondDataCard({ bond }: IBondProps) {
                         )}
                     </p>
                 </div>
+                <div className="data-row">
+                    <p className="bond-name-title">Claimable</p>
+                    <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${trim(bond.interestDue, 4)}`}</p>
+                </div>
+
                 <Link component={NavLink} to={`/mints/${bond.name}`}>
                     <div className="bond-table-btn">
                         <p>Mint with {bond.displayName}</p>
@@ -127,6 +132,9 @@ export function BondTableData({ bond }: IBondProps) {
                         }).format(bond.purchased)
                     )}
                 </p>
+            </TableCell>
+            <TableCell align="right">
+                <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${trim(bond.interestDue, 4)}`}</p>
             </TableCell>
             <TableCell>
                 <Link component={NavLink} to={`/mints/${bond.name}`}>

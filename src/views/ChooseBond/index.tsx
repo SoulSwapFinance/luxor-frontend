@@ -69,9 +69,10 @@ function ChooseBond() {
                                 <Table>
                                     <TableHead>
                                         <TableRow>
-                                            <TableCell align="center">
+                                            {/* <TableCell align="center">
                                                 <p className="choose-bond-view-card-table-title">Mint</p>
-                                            </TableCell>
+                                            </TableCell> */}
+                                            <TableCell></TableCell>
                                             <TableCell align="center">
                                                 <p className="choose-bond-view-card-table-title">Price</p>
                                             </TableCell>
@@ -80,6 +81,9 @@ function ChooseBond() {
                                             </TableCell>
                                             <TableCell align="right">
                                                 <p className="choose-bond-view-card-table-title">Purchased</p>
+                                            </TableCell>
+                                            <TableCell align="right">
+                                                <p className="choose-bond-view-card-table-title">Claimable</p>
                                             </TableCell>
                                             <TableCell align="right"></TableCell>
                                         </TableRow>
