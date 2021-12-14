@@ -156,7 +156,7 @@ function NavContent() {
                             <p>Bridge</p>
                         </div>
                     </Link>
-                    <Link target="_blank" href={"https://luxor-frontend-9zeyoi7l5-soulswap.vercel.app/#/stake"} className={classnames("button-dapp-menu", { active: isActive })}>
+                    <Link target="_blank" href={"https://bonds.luxor.money"} className={classnames("button-dapp-menu", { active: isActive })}>
                         <div className="dapp-menu-item">
                             <img alt="" src={MarketIcon} />
                             <p>Bond Market</p>
