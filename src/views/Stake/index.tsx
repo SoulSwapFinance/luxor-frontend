@@ -145,7 +145,7 @@ function Stake() {
                                                         currency: "USD",
                                                         maximumFractionDigits: 0,
                                                         minimumFractionDigits: 0,
-                                                    }).format(app.luxPrice)
+                                                    }).format(app.marketPrice)
                                                 ) : (
                                                     <Skeleton width="150px" />
                                                 )}

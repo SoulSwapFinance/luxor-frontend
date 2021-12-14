@@ -3,7 +3,7 @@ import { CustomLPBond, LPBond } from "./lp-bond";
 import { CustomBond, StableBond } from "./stable-bond";
 
 import DaiIcon from "../../assets/tokens/DAI.svg";
-import LuxIcon from "../../assets/tokens/LUXOR.svg";
+// import SoulIcon from "../../assets/tokens/SOUL.png";
 import FtmIcon from "../../assets/tokens/FTM.svg";
 import DaiLuxorIcon from "../../assets/tokens/LUX-DAI.svg";
 import FtmLuxorIcon from "../../assets/tokens/LUX-FTM.svg";
@@ -72,6 +72,27 @@ export const wftm2 = new CustomBond({
     },
     tokensInStrategy: "00000000000000000000000",
 });
+
+// export const ftmSoul = new CustomLPBond({
+//     name: "soul_ftm_lp",
+//     displayName: "SOUL-FTM",
+//     bondToken: "SOUL",
+//     rewardToken: "SOUL",
+//     bondIconSvg: SoulIcon,
+//     bondContractABI: SoulLpBondContract,
+//     reserveContractAbi: LpReserveContract,
+//     networkAddrs: {
+//         [Networks.FTM]: {
+//             bondAddress: "0x742429687DD80ccc02Ff61109f2293b7a08Aa245",
+//             reserveAddress: "0xa2527Af9DABf3E3B4979d7E0493b5e2C6e63dC57",
+//         },
+//         [Networks.BSC]: {
+//             bondAddress: "",
+//             reserveAddress: "",
+//         },
+//     },
+//     lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0xe2fb177009FF39F52C0134E8007FA0e4BaAcBd07",
+// });
 
 export const daiLuxor = new LPBond({
     name: "dai_lux_lp",

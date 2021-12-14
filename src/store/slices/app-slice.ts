@@ -28,14 +28,14 @@ export const loadAppDetails = createAsyncThunk(
         const lumensContract = new ethers.Contract(addresses.LUM_ADDRESS, LumensTokenContract, provider);
         const luxorContract = new ethers.Contract(addresses.LUX_ADDRESS, LuxorTokenContract, provider);
 
-        const luxPrice = ((await getMarketPrice(networkID, provider)) / Math.pow(10, 9)) * daiPrice;
-        console.log("luxPrice:%s", await Number(luxPrice));
+        const marketPrice = ((await getMarketPrice(networkID, provider)) / Math.pow(10, 9)) * daiPrice;
+        console.log("luxPrice:%s", await Number(marketPrice));
 
         const totalSupply = (await luxorContract.totalSupply()) / Math.pow(10, 9);
         const circSupply = (await lumensContract.circulatingSupply()) / Math.pow(10, 9);
 
-        const stakingTVL = circSupply * luxPrice;
-        const marketCap = totalSupply * luxPrice;
+        const stakingTVL = circSupply * marketPrice;
+        const marketCap = totalSupply * marketPrice;
 
         const tokenBalPromises = allBonds.map(bond => bond.getTreasuryBalance(networkID, provider));
         const tokenBalances = await Promise.all(tokenBalPromises);
@@ -76,7 +76,7 @@ export const loadAppDetails = createAsyncThunk(
             stakingAPY,
             stakingTVL,
             stakingRebase,
-            luxPrice,
+            marketPrice,
             currentBlockTime,
             nextRebase,
             rfv,
@@ -92,7 +92,7 @@ const initialState = {
 export interface IAppSlice {
     loading: boolean;
     stakingTVL: number;
-    luxPrice: number;
+    marketPrice: number;
     marketCap: number;
     circSupply: number;
     currentIndex: string;
