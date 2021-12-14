@@ -1,19 +1,20 @@
 import { useCallback, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Social from "./social";
-import StakeIcon from "../../../assets/icons/stake.svg";
-import BondIcon from "../../../assets/icons/bond.svg";
+import BridgeIcon from "../../../assets/icons/bridge.png";
+import MarketIcon from "../../../assets/icons/marketplace.png";
+import RebaseIcon from "../../../assets/icons/rebase.png";
+import GoldIcon from "../../../assets/icons/gold.png";
 import LuxorIcon from "../../../assets/icons/logo.png";
-import DashboardIcon from "../../../assets/icons/dashboard.svg";
+import AnalyticsIcon from "../../../assets/icons/analytics.png";
 import { trim, shorten } from "../../../helpers";
 import { useAddress } from "../../../hooks";
 import useBonds from "../../../hooks/bonds";
 import { Link } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import "./drawer-content.scss";
-import DocsIcon from "../../../assets/icons/stake.svg";
-import WrapIcon from "../../../assets/icons/wrap.svg";
-import GlobeIcon from "../../../assets/icons/wonderglobe.svg";
+import DocsIcon from "../../../assets/icons/docs.png";
+import CalculatorIcon from "../../../assets/icons/calculator.png";
 import classnames from "classnames";
 
 function NavContent() {
@@ -68,8 +69,8 @@ function NavContent() {
                         className={classnames("button-dapp-menu", { active: isActive })}
                     >
                         <div className="dapp-menu-item">
-                            <img alt="" src={DashboardIcon} />
-                            <p>Dashboard</p>
+                            <img alt="" src={AnalyticsIcon} />
+                            <p>Analytics</p>
                         </div>
                     </Link>
 
@@ -82,8 +83,8 @@ function NavContent() {
                         className={classnames("button-dapp-menu", { active: isActive })}
                     >
                         <div className="dapp-menu-item">
-                            <img alt="" src={StakeIcon} />
-                            <p>Stake</p>
+                            <img alt="" src={RebaseIcon} />
+                            <p>Rebase</p>
                         </div>
                     </Link>
                     {/* <Link
@@ -109,7 +110,7 @@ function NavContent() {
                         className={classnames("button-dapp-menu", { active: isActive })}
                     >
                         <div className="dapp-menu-item">
-                            <img alt="" src={BondIcon} />
+                            <img alt="" src={GoldIcon} />
                             <p>Mint</p>
                         </div>
                     </Link>
@@ -138,7 +139,7 @@ function NavContent() {
                         className={classnames("button-dapp-menu", { active: isActive })}
                     >
                         <div className="dapp-menu-item">
-                            <img alt="" src={GlobeIcon} />
+                            <img alt="" src={CalculatorIcon} />
                             <p>Calculator</p>
                         </div>
                     </Link>
@@ -151,14 +152,14 @@ function NavContent() {
                         className={classnames("button-dapp-menu", { active: isActive })}
                     >
                         <div className="dapp-menu-item">
-                            <img alt="" src={WrapIcon} />
+                            <img alt="" src={BridgeIcon} />
                             <p>Bridge</p>
                         </div>
                     </Link>
                     <Link target="_blank" href={"https://luxor-frontend-9zeyoi7l5-soulswap.vercel.app/#/stake"} className={classnames("button-dapp-menu", { active: isActive })}>
                         <div className="dapp-menu-item">
-                            <img alt="" src={DashboardIcon} />
-                            <p>Legacy UI</p>
+                            <img alt="" src={MarketIcon} />
+                            <p>Bond Market</p>
                         </div>
                     </Link>
                     <Link target="_blank" href={"https://docs.luxor.money"} className={classnames("button-dapp-menu", { active: isActive })}>
