@@ -14,6 +14,7 @@ export { abi as DaiTokenContract } from "./tokens/DaiContract.json";
 export { abi as wLumTokenContract } from "./tokens/wLumContract.json";
 
 export { abi as BondingCalcContract } from "./BondingCalcContract.json";
+export { abi as BondHelperContract } from "./BondHelper.json";
 export { abi as StakingContract } from "./StakingContract.json";
 export { abi as StakingHelperContract } from "./StakingHelperContract.json";
 export { abi as TreasuryContract } from "./TreasuryContract.json";
