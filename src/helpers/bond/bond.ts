@@ -1,5 +1,6 @@
 import { BondType, NetworkAddresses } from "./constants";
 import { Networks } from "../../constants/blockchain";
+import bondContractHelperABI from "src/abi/BondHelper.json";
 import { ContractInterface, Contract } from "ethers";
 import React from "react";
 import { JsonRpcSigner, StaticJsonRpcProvider } from "@ethersproject/providers";
@@ -11,6 +12,7 @@ export interface BondOpts {
     readonly rewardToken: string; // Token given to reward bonding.
     readonly bondIconSvg: string; //  SVG path for icons
     readonly bondContractABI: ContractInterface; // ABI for contract
+    readonly bondContractHelperABI: ContractInterface; // ABI for contract
     readonly networkAddrs: NetworkAddresses; // Mapping of network --> Addresses
     readonly bondToken: string; // Unused, but native token to buy the bond.
 }
@@ -31,6 +33,7 @@ export abstract class Bond {
     public abstract isLP: boolean;
     protected abstract reserveContractAbi: ContractInterface; // Token ABI
     public abstract displayUnits: string;
+    bondContractHelperABI;
 
     // Async method that returns a Promise
     public abstract getTreasuryBalance(networkID: Networks, provider: StaticJsonRpcProvider): Promise<number>;
@@ -44,6 +47,7 @@ export abstract class Bond {
         this.type = type;
         this.bondIconSvg = bondOpts.bondIconSvg;
         this.bondContractABI = bondOpts.bondContractABI;
+        this.bondContractHelperABI = bondOpts.bondContractHelperABI;
         this.networkAddrs = bondOpts.networkAddrs;
         this.bondToken = bondOpts.bondToken;
     }
@@ -55,6 +59,11 @@ export abstract class Bond {
     public getContractForBond(networkID: Networks, provider: StaticJsonRpcProvider | JsonRpcSigner) {
         const bondAddress = this.getAddressForBond(networkID);
         return new Contract(bondAddress, this.bondContractABI, provider);
+    }
+
+    public getContractForBondHelper(networkID: Networks, provider: StaticJsonRpcProvider | JsonRpcSigner) {
+        const bondHelperAddress = "0xc7c9A5789759C61c1469b81990e1380C8fB84e5D";
+        return new Contract(bondHelperAddress, this.bondContractHelperABI, provider);
     }
 
     public getAddressForReserve(networkID: Networks) {
