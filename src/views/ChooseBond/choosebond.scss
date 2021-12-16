@@ -136,8 +136,9 @@
   }
 
   .bond-table-btn{
-    background: rgb(246, 198, 0.2);
-    border: 1px solid #F5C500;
+    background: rgb(0, 0, 0);
+    box-shadow: 0px 0px 10px rgb(245, 197, 0);
+    // border: 1px solid #F5C500;
     border-radius: 10px;
     padding: 6px 35.5px;
     text-align: center;
@@ -151,7 +152,7 @@
       font-style: normal;
       font-weight: 600;
       font-size: 16px;
-      color: #000000;
+      color: #ffffff;
     }
   }
 
