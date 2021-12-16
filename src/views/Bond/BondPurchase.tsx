@@ -174,7 +174,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
 
                 {(bond.name === "wftm" || bond.name === "wftm2" || bond.name === "wftm3" || bond.name === "dai" || bond.name === "dai2" || bond.name === "dai3") && (
                     <div className="transaction-button bond-approve-btn" onClick={handleZapinOpen}>
-                        <p>Zap</p>
+                        <p>ZAP</p>
                     </div>
                 )}
 
