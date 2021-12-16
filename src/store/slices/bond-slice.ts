@@ -107,6 +107,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
     const addresses = getAddresses(networkID);
 
     const bondContract = bond.getContractForBond(networkID, provider);
+    const bondHelperContract = bond.getContractForBondHelper(networkID, provider);
     const bondCalcContract = getBondCalculator(networkID, provider);
 
     const terms = await bondContract.terms();
@@ -208,6 +209,7 @@ export const bondAsset = createAsyncThunk("bonding/bondAsset", async ({ value, a
     const valueInWei = ethers.utils.parseUnits(value, "ether");
     const signer = provider.getSigner();
     const bondContract = bond.getContractForBond(networkID, signer);
+    const bondHelperContract = bond.getContractForBondHelper(networkID, signer);
 
     const calculatePremium = await bondContract.bondPrice();
     const maxPremium = Math.round(calculatePremium * (1 + acceptedSlippage));
@@ -259,13 +261,14 @@ export const redeemBond = createAsyncThunk("bonding/redeemBond", async ({ addres
     }
 
     const signer = provider.getSigner();
-    const bondContract = bond.getContractForBond(networkID, signer);
+    // const bondContract = bond.getContractForBond(networkID, signer);
+    const bondHelperContract = bond.getContractForBondHelper(networkID, signer);
 
     let redeemTx;
     try {
         const gasPrice = await getGasPrice(provider);
 
-        redeemTx = await bondContract.redeem(address, autostake === true, { gasPrice });
+        redeemTx = await bondHelperContract.redeemAll(address, autostake === true, { gasPrice });
         const pendingTxnType = "redeem_bond_" + bond.name + (autostake === true ? "_autostake" : "");
         dispatch(
             fetchPendingTxns({

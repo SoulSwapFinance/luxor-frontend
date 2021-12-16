@@ -7,7 +7,16 @@ import FtmIcon from "../../assets/tokens/FTM.svg";
 import DaiLuxorIcon from "../../assets/tokens/LUX-DAI.svg";
 import FtmLuxorIcon from "../../assets/tokens/LUX-FTM.svg";
 
-import { StableBondContract, DaiLpBondContract, FtmLpBondContract, WftmBondContract, StableReserveContract, SoulLpBondContract, LpReserveContract } from "../../abi";
+import {
+    BondHelperContract,
+    StableBondContract,
+    DaiLpBondContract,
+    FtmLpBondContract,
+    WftmBondContract,
+    StableReserveContract,
+    SoulLpBondContract,
+    LpReserveContract,
+} from "../../abi";
 
 export const dai = new StableBond({
     name: "dai",
@@ -16,6 +25,7 @@ export const dai = new StableBond({
     bondIconSvg: DaiIcon,
     bondContractABI: StableBondContract,
     reserveContractAbi: StableReserveContract,
+    bondContractHelperABI: BondHelperContract,
     networkAddrs: {
         [Networks.FTM]: {
             bondAddress: "0xCf994423b39A6991e82443a8011Bf6749e19434b",
@@ -36,6 +46,7 @@ export const wftm = new CustomBond({
     bondIconSvg: FtmIcon,
     bondContractABI: WftmBondContract,
     reserveContractAbi: StableReserveContract,
+    bondContractHelperABI: BondHelperContract,
     networkAddrs: {
         [Networks.FTM]: {
             bondAddress: "0x13729e99A7b77469f7FD204495a7b49e25e8444a",
@@ -56,6 +67,7 @@ export const daiLuxor = new LPBond({
     bondIconSvg: DaiLuxorIcon,
     bondContractABI: DaiLpBondContract,
     reserveContractAbi: LpReserveContract,
+    bondContractHelperABI: BondHelperContract,
     networkAddrs: {
         [Networks.FTM]: {
             // token0: DAI
@@ -77,6 +89,7 @@ export const ftmLuxor = new CustomLPBond({
     bondIconSvg: FtmLuxorIcon,
     bondContractABI: FtmLpBondContract,
     reserveContractAbi: LpReserveContract,
+    bondContractHelperABI: BondHelperContract,
     networkAddrs: {
         [Networks.FTM]: {
             // token0: WFTM

@@ -59,7 +59,7 @@ function LuxorMenu() {
                     <Fade {...TransitionProps} timeout={200}>
                         <div className="tooltip">
                             <Link className="tooltip-item" href={`https://app.soulswap.finance/swap?inputCurrency=&outputCurrency=${LUX_ADDRESS}`} target="_blank">
-                                <p>Buy on SoulSwap</p>
+                                <p>MARKET BUY LUXOR</p>
                             </Link>
 
                             {isEthereumAPIAvailable && (
@@ -68,10 +68,10 @@ function LuxorMenu() {
                                     <p className="add-tokens-title">ADD TOKEN TO WALLET</p>
                                     <div className="divider" />
                                     <div className="tooltip-item" onClick={addTokenToWallet("LUX", LUX_ADDRESS)}>
-                                        <p>LUX</p>
+                                        <p>ADD LUXOR</p>
                                     </div>
                                     <div className="tooltip-item" onClick={addTokenToWallet("LUM", LUM_ADDRESS)}>
-                                        <p>LUM</p>
+                                        <p>ADD LUMENS</p>
                                     </div>
                                 </div>
                             )}

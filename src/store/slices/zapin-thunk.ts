@@ -172,6 +172,7 @@ export const zapinMint = createAsyncThunk(
         const valueInWei = trim(Number(value) * Math.pow(10, token.decimals));
 
         const bondContract = bond.getContractForBond(networkID, signer);
+        // const bondHelperContract = bond.getContractForBondHelper(networkID, signer);
 
         const calculatePremium = await bondContract.bondPrice();
         const maxPremium = Math.round(calculatePremium * (1 + acceptedSlippage));

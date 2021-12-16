@@ -69,7 +69,7 @@ function BondRedeem({ bond }: IBondRedeem) {
                         onRedeem(false);
                     }}
                 >
-                    <p>{txnButtonText(pendingTransactions, "redeem_bond_" + bond.name, "Claim")}</p>
+                    <p>{txnButtonText(pendingTransactions, "redeem_bond_" + bond.name, "Claim All Rewards")}</p>
                 </div>
                 <div
                     className="transaction-button bond-approve-btn"
@@ -78,7 +78,7 @@ function BondRedeem({ bond }: IBondRedeem) {
                         onRedeem(true);
                     }}
                 >
-                    <p>{txnButtonText(pendingTransactions, "redeem_bond_" + bond.name + "_autostake", "Claim and Autostake")}</p>
+                    <p>{txnButtonText(pendingTransactions, "redeem_bond_" + bond.name + "_autostake", "Claim All and Autostake")}</p>
                 </div>
             </Box>
 
