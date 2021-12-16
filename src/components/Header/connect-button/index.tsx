@@ -16,12 +16,12 @@ function ConnectMenu() {
         return state.pendingTransactions;
     });
 
-    let buttonText = "🔓";
+    let buttonText = "🔴";
     let clickFunc: any = connect;
     let buttonStyle = {};
 
     if (isConnected) {
-        buttonText = "🔒";
+        buttonText = "🟢";
         clickFunc = disconnect;
     }
 
