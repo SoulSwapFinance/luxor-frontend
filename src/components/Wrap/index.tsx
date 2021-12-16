@@ -183,7 +183,7 @@ function Wrap({ open, handleClose }: IAdvancedSettingsProps) {
                                 handleOnWrap();
                             }}
                         >
-                            <p>{isWrap ? txnButtonText(pendingTransactions, "wrapping", "Wrap") : txnButtonText(pendingTransactions, "unwrapping", "Unwrap")}</p>
+                            <p>{isWrap ? txnButtonText(pendingTransactions, "wrapping", "WRAP LUMENS") : txnButtonText(pendingTransactions, "unwrapping", "UNWRAP LUMENS")}</p>
                         </div>
                     ) : (
                         <div
@@ -193,7 +193,7 @@ function Wrap({ open, handleClose }: IAdvancedSettingsProps) {
                                 onSeekApproval();
                             }}
                         >
-                            <p>{txnButtonText(pendingTransactions, "approve_wrapping", "Approve")}</p>
+                            <p>{txnButtonText(pendingTransactions, "approve_wrapping", "APPROVE")}</p>
                         </div>
                     )}
                     {!hasAllowance() && (
