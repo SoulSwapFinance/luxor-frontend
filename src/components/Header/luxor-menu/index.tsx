@@ -51,7 +51,7 @@ function LuxorMenu() {
     return (
         <div className="luxor-menu-root" onMouseEnter={e => handleClick(e)} onMouseLeave={e => handleClick(e)}>
             <div className="luxor-menu-btn">
-                <p>LUX</p>
+                <p>BUY</p>
             </div>
 
             <Popper className="luxor-menu-popper" open={open} anchorEl={anchorEl} transition>
