@@ -58,6 +58,7 @@ function LuxorMenu() {
                 {({ TransitionProps }) => (
                     <Fade {...TransitionProps} timeout={200}>
                         <div className="tooltip">
+                            <div className="divider" />
                             <Link className="tooltip-item" href={`https://app.soulswap.finance/swap?inputCurrency=&outputCurrency=${LUX_ADDRESS}`} target="_blank">
                                 <p>MARKET BUY LUXOR</p>
                             </Link>
@@ -73,12 +74,12 @@ function LuxorMenu() {
                                     <div className="tooltip-item" onClick={addTokenToWallet("LUM", LUM_ADDRESS)}>
                                         <p>ADD LUMENS</p>
                                     </div>
-                                    <div className="divider" />
-                                    <p className="add-tokens-title">CLAIM REWARDS</p>
-                                    <div className="divider" />
-                                    <div className="tooltip-item" onClick={addTokenToWallet("LUM", LUM_ADDRESS)}>
+                                    {/* <div className="divider" /> */}
+                                    {/* <p className="add-tokens-title">CLAIM REWARDS</p> */}
+                                    {/* <div className="divider" /> */}
+                                    {/* <div className="tooltip-item" onClick={addTokenToWallet("LUM", LUM_ADDRESS)}>
                                         <p>CLAIM & RESTAKE</p>
-                                    </div>
+                                    </div> */}
                                 </div>
                             )}
                         </div>
