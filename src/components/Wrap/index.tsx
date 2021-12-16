@@ -183,7 +183,7 @@ function Wrap({ open, handleClose }: IAdvancedSettingsProps) {
                                 handleOnWrap();
                             }}
                         >
-                            <p>{isWrap ? txnButtonText(pendingTransactions, "wrapping", "Wrap") : txnButtonText(pendingTransactions, "unwrapping", "Unwrap")}</p>
+                            <p>{isWrap ? txnButtonText(pendingTransactions, "wrapping", "WRAP LUMENS") : txnButtonText(pendingTransactions, "unwrapping", "UNWRAP LUMENS")}</p>
                         </div>
                     ) : (
                         <div
