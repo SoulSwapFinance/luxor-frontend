@@ -188,6 +188,29 @@ export const daiLuxor2 = new LPBond({
     lpUrl: "https://app.soulswap.finance/exchange/add/0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
 });
 
+export const daiLuxor3 = new LPBond({
+    name: "dai_lux_lp3",
+    displayName: "LUX-DAI",
+    bondToken: "DAI",
+    rewardToken: "LUX",
+    bondIconSvg: DaiLuxorIcon,
+    bondContractABI: DaiLpBondContract,
+    reserveContractAbi: LpReserveContract,
+    bondContractHelperABI: BondHelperContract,
+    networkAddrs: {
+        [Networks.FTM]: {
+            // token0: DAI
+            bondAddress: "0xaFADcDca5Aa1F187B357499f2e3BA94D3Cc32ad1",
+            reserveAddress: "0x46729c2AeeabE7774a0E710867df80a6E19Ef851",
+        },
+        [Networks.BSC]: {
+            bondAddress: "",
+            reserveAddress: "",
+        },
+    },
+    lpUrl: "https://app.soulswap.finance/exchange/add/0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
+});
+
 export const ftmLuxor = new CustomLPBond({
     name: "ftm_lux_lp",
     displayName: "LUX-FTM",
@@ -234,4 +257,27 @@ export const ftmLuxor2 = new CustomLPBond({
     lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
 });
 
-export default [dai, dai2, dai3, daiLuxor, daiLuxor2, ftmLuxor, ftmLuxor2, wftm, wftm2, wftm3];
+export const ftmLuxor3 = new CustomLPBond({
+    name: "ftm_lux_lp3",
+    displayName: "LUX-FTM",
+    bondToken: "FTM",
+    rewardToken: "LUX",
+    bondIconSvg: FtmLuxorIcon,
+    bondContractABI: FtmLpBondContract,
+    reserveContractAbi: LpReserveContract,
+    bondContractHelperABI: BondHelperContract,
+    networkAddrs: {
+        [Networks.FTM]: {
+            // token0: WFTM
+            bondAddress: "0x0A98e728f0537f40e8dC261D633fe4a00E1aFA72",
+            reserveAddress: "0x951BBB838e49F7081072895947735b0892cCcbCD",
+        },
+        [Networks.BSC]: {
+            bondAddress: "",
+            reserveAddress: "",
+        },
+    },
+    lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
+});
+
+export default [dai, dai2, dai3, daiLuxor, daiLuxor2, daiLuxor3, ftmLuxor, ftmLuxor2, ftmLuxor3, wftm, wftm2, wftm3];

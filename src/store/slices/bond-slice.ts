@@ -10,7 +10,7 @@ import { Bond } from "../../helpers/bond/bond";
 import { Networks } from "../../constants/blockchain";
 import { getBondCalculator } from "../../helpers/bond-calculator";
 import { RootState } from "../store";
-import { ftmLuxor, ftmLuxor2, wftm, wftm2, wftm3 } from "../../helpers/bond";
+import { ftmLuxor, ftmLuxor2, ftmLuxor3, wftm, wftm2, wftm3 } from "../../helpers/bond";
 import { error, warning, success, info } from "../slices/messages-slice";
 import { messages } from "../../constants/messages";
 import { getGasPrice } from "../../helpers/get-gas-price";
@@ -121,7 +121,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
     try {
         bondPrice = await bondContract.bondPriceInUSD();
 
-        if (bond.name === ftmLuxor.name || bond.name === ftmLuxor2.name) {
+        if (bond.name === ftmLuxor.name || bond.name === ftmLuxor2.name || bond.name === ftmLuxor3.name) {
             const ftmPrice = getTokenPrice("FTM");
             bondPrice = bondPrice * ftmPrice;
             // } else if (bond.name === ftmSoul.name) {
@@ -168,7 +168,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         purchased = await bondCalcContract.valuation(assetAddress, purchased);
         purchased = (markdown / Math.pow(10, 18)) * (purchased / Math.pow(10, 9));
 
-        if (bond.name === ftmLuxor.name || bond.name === ftmLuxor2.name) {
+        if (bond.name === ftmLuxor.name || bond.name === ftmLuxor2.name || bond.name === ftmLuxor3.name) {
             const ftmPrice = getTokenPrice("FTM");
             purchased = purchased * ftmPrice;
             // } else if (bond.name === ftmSoul.name) {
