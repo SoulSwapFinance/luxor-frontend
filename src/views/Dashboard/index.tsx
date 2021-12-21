@@ -5,12 +5,15 @@ import "./dashboard.scss";
 import { Skeleton } from "@material-ui/lab";
 import { IReduxState } from "../../store/slices/state.interface";
 import { IAppSlice } from "../../store/slices/app-slice";
+import { ethers } from "ethers";
 
 function Dashboard() {
     const isAppLoading = useSelector<IReduxState, boolean>(state => state.app.loading);
     const app = useSelector<IReduxState, IAppSlice>(state => state.app);
 
     const trimmedStakingAPY = trim(app.stakingAPY * 100, 0);
+    // const staked = app.totalSupply - app.circSupply;
+    // const normalizedIndex = Number(app.currentIndex) / 4.5;
     const percStaked = (app.circSupply / app.totalSupply) * 100;
     const wLUMPrice = useSelector(state => {
         return app.luxPrice * Number(app.currentIndex);
@@ -77,24 +80,6 @@ function Dashboard() {
 
                         <Grid item lg={6} md={6} sm={6} xs={12}>
                             <div className="dashboard-card">
-                                <p className="card-title">Percent Staked</p>
-                                <p className="card-value">
-                                    {isAppLoading ? (
-                                        <Skeleton width="250px" />
-                                    ) : (
-                                        `${
-                                            new Intl.NumberFormat("en-US", {
-                                                maximumFractionDigits: 2,
-                                                minimumFractionDigits: 0,
-                                            }).format(percStaked) + "%"
-                                        }`
-                                    )}
-                                </p>
-                            </div>
-                        </Grid>
-
-                        <Grid item lg={6} md={6} sm={6} xs={12}>
-                            <div className="dashboard-card">
                                 <p className="card-title">TVL</p>
                                 <p className="card-value">
                                     {isAppLoading ? (
@@ -113,15 +98,56 @@ function Dashboard() {
 
                         <Grid item lg={6} md={6} sm={6} xs={12}>
                             <div className="dashboard-card">
-                                <p className="card-title">APY</p>
-                                <p className="card-value">{isAppLoading ? <Skeleton width="250px" /> : `${new Intl.NumberFormat("en-US").format(Number(trimmedStakingAPY))}%`}</p>
+                                <p className="card-title">Percent Staked</p>
+                                <p className="card-value">
+                                    {isAppLoading ? (
+                                        <Skeleton width="250px" />
+                                    ) : (
+                                        `${
+                                            new Intl.NumberFormat("en-US", {
+                                                maximumFractionDigits: 2,
+                                                minimumFractionDigits: 0,
+                                            }).format(percStaked) + "%"
+                                        }`
+                                    )}
+                                </p>
                             </div>
                         </Grid>
 
                         <Grid item lg={6} md={6} sm={6} xs={12}>
                             <div className="dashboard-card">
-                                <p className="card-title">Current Index</p>
+                                <p className="card-title">Total Supply</p>
+                                <p className="card-value">
+                                    {isAppLoading ? (
+                                        <Skeleton width="250px" />
+                                    ) : (
+                                        `${new Intl.NumberFormat("en-US", {
+                                            maximumFractionDigits: 2,
+                                            minimumFractionDigits: 0,
+                                        }).format(app.totalSupply)}`
+                                    )}
+                                </p>
+                            </div>
+                        </Grid>
+
+                        <Grid item lg={6} md={6} sm={6} xs={12}>
+                            <div className="dashboard-card">
+                                <p className="card-title">Index</p>
+                                <p className="card-value">{isAppLoading ? <Skeleton width="250px" /> : `${trim(Number(app.currentIndex) / 4.5, 2)} LUX`}</p>
+                            </div>
+                        </Grid>
+
+                        <Grid item lg={6} md={6} sm={6} xs={12}>
+                            <div className="dashboard-card">
+                                <p className="card-title">LUM Index</p>
                                 <p className="card-value">{isAppLoading ? <Skeleton width="250px" /> : `${trim(Number(app.currentIndex), 2)} LUX`}</p>
+                            </div>
+                        </Grid>
+
+                        <Grid item lg={6} md={6} sm={6} xs={12}>
+                            <div className="dashboard-card">
+                                <p className="card-title">APY</p>
+                                <p className="card-value">{isAppLoading ? <Skeleton width="250px" /> : `${new Intl.NumberFormat("en-US").format(Number(trimmedStakingAPY))}%`}</p>
                             </div>
                         </Grid>
 
