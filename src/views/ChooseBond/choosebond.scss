@@ -10,6 +10,7 @@
   margin: auto;
 
   .choose-bond-view-card{
+    box-shadow: 0 0 10px rgb(245 197 0 / 20%);
     border-radius: 10px;
     padding: 20px;
     width: 100%;
@@ -136,23 +137,31 @@
   }
 
   .bond-table-btn{
-    background: rgb(0, 0, 0);
-    box-shadow: 0px 0px 10px rgb(245, 197, 0);
-    // border: 1px solid #F5C500;
+    box-shadow: 0 0 10px rgb(245 197 0 / 20%);
     border-radius: 10px;
     padding: 6px 35.5px;
     text-align: center;
+    background: rgb(227,175,0);
+    background: linear-gradient(
+90deg, rgba(227,175,0,1) 0%, rgba(230,198,0,1) 100%);
+    transition: all .2s;
+    filter: brightness(0.85);
 
     &:hover{
-      border: 1px solid rgb(255, 255, 255);
-    }
+      box-shadow: 0 0 10px rgb(245 197 0 / 60%);
+      background: #e6c600;
+      background: linear-gradient(
+  90deg, rgba(227,175,0,1) 89%, rgba(230,198,0,1) 100%);
+      transition: all .2s;
+      filter: brightness(1);
+  }
   
     p{
       font-family: Montserrat Semibold;
       font-style: normal;
       font-weight: 600;
       font-size: 16px;
-      color: #ffffff;
+      color: #000000;
     }
   }
 
