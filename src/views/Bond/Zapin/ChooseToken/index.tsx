@@ -9,7 +9,7 @@ import { Skeleton } from "@material-ui/lab";
 import useTokens, { IAllTokenData } from "../../../../hooks/tokens";
 import { trim } from "../../../../helpers";
 import { IAllBondData } from "../../../../hooks/bonds";
-import { dai, dai2, dai3, wftm } from "../../../../helpers/bond";
+import { dai, dai7, dai14, dai28, wftm } from "../../../../helpers/bond";
 import { dai as daiToken, wftm as wftmToken } from "../../../../helpers/tokens";
 
 interface IChooseTokenProps {
@@ -39,11 +39,11 @@ function ChooseToken({ open, handleClose, handleSelect, bond }: IChooseTokenProp
 
         let lpFilter = true;
 
-        if (bond.name === dai.name || bond.name === dai2.name || bond.name === dai3.name) {
+        if (bond.name === dai.name || bond.name === dai7.name || bond.name === dai14.name || bond.name === dai28.name) {
             lpFilter = daiToken.address !== address;
         }
 
-        if (bond.name === wftm.name || bond.name === "wftm2") {
+        if (bond.name === wftm.name || bond.name === "wftm7") {
             lpFilter = isFtm ? false : wftmToken.address !== address;
         }
 
