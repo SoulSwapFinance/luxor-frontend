@@ -370,4 +370,4 @@ export const ftmLuxor28 = new CustomLPBond({
     lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
 });
 
-export default [dai, dai7, dai14, dai28, daiLuxor, daiLuxor7, daiLuxor14, ftmLuxor, ftmLuxor7, ftmLuxor14, wftm, wftm7, wftm14, wftm28]; // daiLuxor28, ftmLuxor28
+export default [dai, dai7, dai14, dai28, daiLuxor, daiLuxor7, daiLuxor14, ftmLuxor, ftmLuxor7, ftmLuxor14, ftmLuxor28, wftm, wftm7, wftm14, wftm28]; // daiLuxor28, ftmLuxor28
