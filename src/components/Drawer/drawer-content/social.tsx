@@ -19,7 +19,7 @@ export default function Social() {
             <Link href="https://t.me/SoulSwapDeFi" target="_blank">
                 <SvgIcon viewBox="0 0 32 32" color="primary" component={Telegram} />
             </Link>
-            
+
             <Link href="SoulSwapFinance@gmail.com" target="_blank">
                 <SvgIcon viewBox="0 0 32 32" color="primary" component={Gmail} />
             </Link>
