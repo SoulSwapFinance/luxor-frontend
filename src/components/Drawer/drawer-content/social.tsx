@@ -3,7 +3,6 @@ import { ReactComponent as GitHub } from "../../../assets/icons/github.svg";
 import { ReactComponent as Twitter } from "../../../assets/icons/twitter.svg";
 import { ReactComponent as Telegram } from "../../../assets/icons/telegram.svg";
 import { ReactComponent as Discord } from "../../../assets/icons/discord.svg";
-import { ReactComponent as Gmail } from "../../../assets/icons/mail.svg";
 
 export default function Social() {
     return (
@@ -20,13 +19,11 @@ export default function Social() {
                 <SvgIcon viewBox="0 0 32 32" color="primary" component={Telegram} />
             </Link>
 
-            <Link href="mailto:SoulSwapFinance@gmail.com" target="_blank">
-                <SvgIcon color="primary" component={Gmail} />
-            </Link>
-
             <Link href="https://discord.gg/DQjChB6Wa6" target="_blank">
                 <SvgIcon color="primary" component={Discord} />
             </Link>
         </div>
+            <Link href="mailto:SoulSwapFinance@gmail.com" target="_blank"> SoulSwapFinance
+            </Link>
     );
 }
