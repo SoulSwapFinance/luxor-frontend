@@ -6,6 +6,7 @@ import { ReactComponent as GitHub } from "../../../../assets/icons/github.svg";
 import { ReactComponent as Twitter } from "../../../../assets/icons/twitter.svg";
 import { ReactComponent as Telegram } from "../../../../assets/icons/telegram.svg";
 import { ReactComponent as Discord } from "../../../../assets/icons/discord.svg";
+import { ReactComponent as Gmail } from "../../../../assets/icons/mail.svg";
 
 function Header() {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -37,6 +38,10 @@ function Header() {
                                     <Link className="tooltip-item" href="https://t.me/SoulSwapDeFi" target="_blank">
                                         <SvgIcon viewBox="0 0 32 32" color="primary" component={Telegram} />
                                         <p>Telegram</p>
+                                    </Link>
+                                    <Link className="tooltip-item" href="soulswapfinance@gmail.com" target="_blank">
+                                        <SvgIcon viewBox="0 0 32 32" color="primary" component={Gmail} />
+                                        <p>Gmail</p>
                                     </Link>
                                     <Link className="tooltip-item" href="https://discord.gg/DQjChB6Wa6" target="_blank">
                                         <SvgIcon color="primary" component={Discord} />
