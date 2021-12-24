@@ -21,7 +21,7 @@ export default function Social() {
             </Link>
 
             <Link href="mailto:SoulSwapFinance@gmail.com" target="_blank">
-                <SvgIcon viewBox="0 0 32 32" color="primary" component={Gmail} />
+                <SvgIcon color="primary" component={Gmail} />
             </Link>
 
             <Link href="https://discord.gg/DQjChB6Wa6" target="_blank">

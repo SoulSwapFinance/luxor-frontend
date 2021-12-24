@@ -40,7 +40,7 @@ function Header() {
                                         <p>Telegram</p>
                                     </Link>
                                     <Link className="tooltip-item" href="mailto:SoulSwapFinance@gmail.com" target="_blank">
-                                        <SvgIcon viewBox="0 0 32 32" color="primary" component={Gmail} />
+                                        <SvgIcon color="primary" component={Gmail} />
                                         <p>Gmail</p>
                                     </Link>
                                     <Link className="tooltip-item" href="https://discord.gg/DQjChB6Wa6" target="_blank">
