@@ -20,7 +20,7 @@ export default function Social() {
                 <SvgIcon viewBox="0 0 32 32" color="primary" component={Telegram} />
             </Link>
 
-            <Link href="SoulSwapFinance@gmail.com" target="_blank">
+            <Link href="mailto:SoulSwapFinance@gmail.com" target="_blank">
                 <SvgIcon viewBox="0 0 32 32" color="primary" component={Gmail} />
             </Link>
 
