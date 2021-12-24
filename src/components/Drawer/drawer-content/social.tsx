@@ -23,11 +23,5 @@ export default function Social() {
                 <SvgIcon color="primary" component={Discord} />
             </Link>
   </div>
-            <br/>
-            <br/>
-
-
-            <Link href="mailto:SoulSwapFinance@gmail.com" target="_blank"> <p>SoulSwapFinance@gmail.com</p>
-            </Link>
     );
 }
