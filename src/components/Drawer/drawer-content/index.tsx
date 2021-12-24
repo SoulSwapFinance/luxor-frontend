@@ -188,6 +188,12 @@ function NavContent() {
                             <p>Docs</p>
                         </div>
                     </Link>
+                  <Link target="_blank" href={"mailto:SoulSwapFinance@gmail.com"} className={classnames("button-dapp-menu", { active: isActive })}>
+                        <div className="dapp-menu-item">
+                            <img alt="" src={LuxorIcon} />
+                            <p>Email</p>
+                        </div>
+                    </Link>
                 </div>
             </div>
             <Social />
