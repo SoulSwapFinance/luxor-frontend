@@ -24,7 +24,7 @@ export function BondDataCard({ bond }: IBondProps) {
                 <div className="bond-pair">
                     <BondLogo bond={bond} />
                     <div className="bond-name">
-                        <p className="bond-name-title">{bond.displayName}</p>
+                        <p className="centered bond-name-title">{bond.displayName}</p>
                         {bond.isLP && (
                             <div>
                                 <Link href={bond.lpUrl} target="_blank">
@@ -58,12 +58,17 @@ export function BondDataCard({ bond }: IBondProps) {
                     <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${trim(bond.bondDiscount * 100, 2)}%`}</p>
                 </div>
                 <div className="data-row">
+                    <p className="bond-name-title">Term</p>
+                    <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${prettifySeconds(bond.vestingTerm, "day")}`}</p>
+                </div>
+                <div className="data-row">
                     <p className="bond-name-title">Claimable</p>
                     <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${trim(bond.pendingPayout, 4)}`}</p>
                 </div>
                 <Link component={NavLink} to={`/mints/${bond.name}`}>
                     <div className="bond-table-btn">
-                        <p>Mint with {bond.displayName}</p>
+                        <p>MINT {bond.rewardToken}</p>
+                        {/* <p>Mint with {bond.displayName}</p> */}
                     </div>
                 </Link>
             </Paper>
