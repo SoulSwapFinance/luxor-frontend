@@ -10,6 +10,7 @@ import { IAllBondData } from "../../hooks/bonds";
 import { IUserBondDetails } from "../../store/slices/account-slice";
 import { messages } from "../../constants/messages";
 import { warning } from "../../store/slices/messages-slice";
+import "./bond.scss";
 
 interface IBondRedeem {
     bond: IAllBondData;
@@ -99,7 +100,13 @@ function BondRedeem({ bond }: IBondRedeem) {
 
                     <div className="data-row">
                         <p className="bond-balance-title">ROI</p>
-                        <p className="bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.bondDiscount * 100, 2)}%`}</p>
+                        {isBondLoading ? (
+                            <Skeleton width="50px" />
+                        ) : bond.bondDiscount * 100 > 1 ? (
+                            <p className="bond-balance-title-discount-positive"> {trim(bond.bondDiscount * 100, 2)}% </p>
+                        ) : (
+                            <p className="bond-balance-title-discount-negative">{trim(bond.bondDiscount * 100, 2)}% </p>
+                        )}
                     </div>
 
                     <div className="data-row">

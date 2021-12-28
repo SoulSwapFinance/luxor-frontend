@@ -12,6 +12,7 @@ import useDebounce from "../../hooks/debounce";
 import { messages } from "../../constants/messages";
 import { warning } from "../../store/slices/messages-slice";
 import Zapin from "./Zapin";
+import "./bond.scss";
 
 interface IBondPurchaseProps {
     bond: IAllBondData;
@@ -221,7 +222,13 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
 
                     <div className="data-row">
                         <p className="bond-balance-title">ROI</p>
-                        <p className="bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.bondDiscount * 100, 2)}%`}</p>
+                        {isBondLoading ? (
+                            <Skeleton width="50px" />
+                        ) : bond.bondDiscount * 100 > 1 ? (
+                            <p className="bond-balance-title-discount-positive"> {trim(bond.bondDiscount * 100, 2)}% </p>
+                        ) : (
+                            <p className="bond-balance-title-discount-negative">{trim(bond.bondDiscount * 100, 2)}% </p>
+                        )}{" "}
                     </div>
 
                     <div className="data-row">
