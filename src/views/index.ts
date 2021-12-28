@@ -1,4 +1,5 @@
 export { default as Analytics } from "./Analytics";
+export { default as Bridge } from "./Bridge";
 export { default as Calculator } from "./Calculator";
 export { default as Bond } from "./Bond";
 export { default as ChooseBond } from "./ChooseBond";
