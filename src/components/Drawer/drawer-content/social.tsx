@@ -22,6 +22,6 @@ export default function Social() {
             <Link href="https://discord.gg/DQjChB6Wa6" target="_blank">
                 <SvgIcon color="primary" component={Discord} />
             </Link>
-  </div>
+        </div>
     );
 }
