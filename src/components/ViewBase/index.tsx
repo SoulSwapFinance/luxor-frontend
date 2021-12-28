@@ -3,8 +3,6 @@ import "./view-base.scss";
 import Header from "../Header";
 import { Hidden, makeStyles, useMediaQuery } from "@material-ui/core";
 import { DRAWER_WIDTH, TRANSITION_DURATION } from "../../constants/style";
-import MobileDrawer from "../Drawer/mobile-drawer";
-import Drawer from "../Drawer";
 import { cubesImage } from "src/constants/img";
 import Messages from "../Messages";
 
@@ -43,25 +41,12 @@ function ViewBase({ children }: IViewBaseProps) {
 
     const [mobileOpen, setMobileOpen] = useState(false);
 
-    const isSmallerScreen = useMediaQuery("(max-width: 960px)");
-    const isSmallScreen = useMediaQuery("(max-width: 600px)");
-
-    const handleDrawerToggle = () => {
-        setMobileOpen(!mobileOpen);
-    };
+    const isSmallerScreen = useMediaQuery("(max-width: 4600px)");
 
     return (
         <div className="view-base-root">
             <Messages />
-            <Header drawe={!isSmallerScreen} handleDrawerToggle={handleDrawerToggle} />
-            <div className={classes.drawer}>
-                <Hidden mdUp>
-                    <MobileDrawer mobileOpen={mobileOpen} handleDrawerToggle={handleDrawerToggle} />
-                </Hidden>
-                <Hidden smDown>
-                    <Drawer />
-                </Hidden>
-            </div>
+            {/* <Header drawe={!isSmallerScreen} handleDrawerToggle={handleDrawerToggle} /> */}
             <div className={`${classes.content} ${isSmallerScreen && classes.contentShift}`}>
                 {/* {!isSmallerScreen && (
                     <div className="cubes-top">

@@ -46,22 +46,7 @@ function Header({ handleDrawerToggle, drawe }: IHeader) {
     const isVerySmallScreen = useMediaQuery("(max-width: 400px)");
     const isWrapShow = useMediaQuery("(max-width: 300px)");
 
-    return (
-        <div className={`${classes.topBar} ${!drawe && classes.topBarShift}`}>
-            <AppBar position="sticky" className={classes.appBar} elevation={0}>
-                <Toolbar disableGutters className="dapp-topbar">
-                    {/* <div onClick={handleDrawerToggle} className="dapp-topbar-slider-btn">
-                        <img src={MenuIcon} alt="" />
-                    </div> */}
-                    <div className="dapp-topbar-btns-wrap">
-                        {/* {!isVerySmallScreen && <LuxorMenu />}
-                        {!isWrapShow && <WrapButton />} */}
-                        {/* <ConnectButton /> */}
-                    </div>
-                </Toolbar>
-            </AppBar>
-        </div>
-    );
+    return <div className={`${classes.topBar} ${!drawe && classes.topBarShift}`}></div>;
 }
 
 export default Header;
