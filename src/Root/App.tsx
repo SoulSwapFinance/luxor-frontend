@@ -9,7 +9,8 @@ import { IReduxState } from "../store/slices/state.interface";
 import Loading from "../components/Loader";
 import useBonds from "../hooks/bonds";
 import ViewBase from "../components/ViewBase";
-import { Stake, ChooseBond, Bond, Dashboard, NotFound, Calculator, Bridge, Swap } from "../views"; // TODO: Wrap
+// import { Stake, ChooseBond, Bond, Dashboard, NotFound, Calculator, Bridge, Swap } from "../views"; // TODO: Wrap
+import { Dashboard, NotFound } from "../views"; // TODO: Wrap
 import "./style.scss";
 import useTokens from "../hooks/tokens";
 
@@ -29,24 +30,19 @@ function App() {
 
     async function loadDetails(whichDetails: string) {
         let loadProvider = provider;
-
         if (whichDetails === "app") {
             loadApp(loadProvider);
         }
-
         if (whichDetails === "account" && address && connected) {
             loadAccount(loadProvider);
             if (isAppLoaded) return;
-
             loadApp(loadProvider);
         }
-
         if (whichDetails === "userBonds" && address && connected) {
             bonds.map(bond => {
                 dispatch(calculateUserBondDetails({ address, bond, provider, networkID: chainID }));
             });
         }
-
         if (whichDetails === "userTokens" && address && connected) {
             tokens.map(token => {
                 dispatch(calculateUserTokenDetails({ address, token, provider, networkID: chainID }));
@@ -111,37 +107,9 @@ function App() {
                     <Dashboard />
                 </Route>
 
-                <Route exact path="/bridge">
-                    <Bridge />
-                </Route>
-
                 <Route exact path="/">
-                    <Redirect to="/stake" />
+                    <Redirect to="/dashboard" />
                 </Route>
-
-                <Route path="/stake">
-                    <Stake />
-                </Route>
-
-                <Route path="/swap">
-                    <Swap />
-                </Route>
-
-                <Route path="/mints">
-                    {bonds.map(bond => {
-                        return (
-                            <Route exact key={bond.name} path={`/mints/${bond.name}`}>
-                                <Bond bond={bond} />
-                            </Route>
-                        );
-                    })}
-                    <ChooseBond />
-                </Route>
-
-                <Route path="/calculator">
-                    <Calculator />
-                </Route>
-
                 <Route component={NotFound} />
             </Switch>
         </ViewBase>

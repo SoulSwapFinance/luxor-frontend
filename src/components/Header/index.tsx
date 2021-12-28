@@ -50,13 +50,13 @@ function Header({ handleDrawerToggle, drawe }: IHeader) {
         <div className={`${classes.topBar} ${!drawe && classes.topBarShift}`}>
             <AppBar position="sticky" className={classes.appBar} elevation={0}>
                 <Toolbar disableGutters className="dapp-topbar">
-                    <div onClick={handleDrawerToggle} className="dapp-topbar-slider-btn">
+                    {/* <div onClick={handleDrawerToggle} className="dapp-topbar-slider-btn">
                         <img src={MenuIcon} alt="" />
-                    </div>
+                    </div> */}
                     <div className="dapp-topbar-btns-wrap">
-                        {!isVerySmallScreen && <LuxorMenu />}
-                        {!isWrapShow && <WrapButton />}
-                        <ConnectButton />
+                        {/* {!isVerySmallScreen && <LuxorMenu />}
+                        {!isWrapShow && <WrapButton />} */}
+                        {/* <ConnectButton /> */}
                     </div>
                 </Toolbar>
             </AppBar>

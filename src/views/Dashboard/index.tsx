@@ -5,7 +5,7 @@ import "./dashboard.scss";
 import { Skeleton } from "@material-ui/lab";
 import { IReduxState } from "../../store/slices/state.interface";
 import { IAppSlice } from "../../store/slices/app-slice";
-import { ethers } from "ethers";
+// import { ethers } from "ethers";
 
 function Dashboard() {
     const isAppLoading = useSelector<IReduxState, boolean>(state => state.app.loading);
