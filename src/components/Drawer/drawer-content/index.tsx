@@ -70,7 +70,7 @@ function NavContent() {
                     >
                         <div className="dapp-menu-item">
                             <img alt="" src={GoldIcon} />
-                            <p>Bonds</p>
+                            <p>Bonds | 5 Day</p>
                         </div>
                     </Link>
                     <div className="bond-discounts">
@@ -79,10 +79,105 @@ function NavContent() {
                             <Link component={NavLink} to={`/mints/${bond.name}`} key={i} className={"bond"}>
                                 {!bond.bondDiscount ? (
                                     <Skeleton variant="text" width={"150px"} />
+                                ) : !(bond.vestingTerm == 432000) ? (
+                                    "" // <Skeleton variant="text" width={"150px"} />
                                 ) : (
                                     <p>
                                         {bond.displayName}
-                                        <span className="bond-pair-roi">{bond.bondDiscount && trim(bond.bondDiscount * 100, 2)}%</span>
+                                        <span className="bond-pair-roi">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
+                                    </p>
+                                )}
+                            </Link>
+                        ))}
+                    </div>
+                    <Link
+                        component={NavLink}
+                        id="bond-nav"
+                        to="/mints"
+                        isActive={(match: any, location: any) => {
+                            return checkPage(location, "mints");
+                        }}
+                        className={classnames("button-dapp-menu", { active: isActive })}
+                    >
+                        <div className="dapp-menu-item">
+                            <img alt="" src={GoldIcon} />
+                            <p>Bonds | 7 Day</p>
+                        </div>
+                    </Link>
+                    <div className="bond-discounts">
+                        {/* <p>Mint Discounts</p> */}
+                        {bonds.map((bond, i) => (
+                            <Link component={NavLink} to={`/mints/${bond.name}`} key={i} className={"bond"}>
+                                {!bond.bondDiscount ? (
+                                    <Skeleton variant="text" width={"150px"} />
+                                ) : !(bond.vestingTerm == 604800) ? (
+                                    "" // <Skeleton variant="text" width={"150px"} />
+                                ) : (
+                                    <p>
+                                        {bond.displayName}
+                                        <span className="bond-pair-roi">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
+                                    </p>
+                                )}
+                            </Link>
+                        ))}
+                    </div>
+                    <Link
+                        component={NavLink}
+                        id="bond-nav"
+                        to="/mints"
+                        isActive={(match: any, location: any) => {
+                            return checkPage(location, "mints");
+                        }}
+                        className={classnames("button-dapp-menu", { active: isActive })}
+                    >
+                        <div className="dapp-menu-item">
+                            <img alt="" src={GoldIcon} />
+                            <p>Bonds | 14 Day</p>
+                        </div>
+                    </Link>
+                    <div className="bond-discounts">
+                        {/* <p>Mint Discounts</p> */}
+                        {bonds.map((bond, i) => (
+                            <Link component={NavLink} to={`/mints/${bond.name}`} key={i} className={"bond"}>
+                                {!bond.bondDiscount ? (
+                                    <Skeleton variant="text" width={"150px"} />
+                                ) : !(bond.vestingTerm == 1209600) ? (
+                                    "" // <Skeleton variant="text" width={"150px"} />
+                                ) : (
+                                    <p>
+                                        {bond.displayName}
+                                        <span className="bond-pair-roi">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
+                                    </p>
+                                )}
+                            </Link>
+                        ))}
+                    </div>
+                    <Link
+                        component={NavLink}
+                        id="bond-nav"
+                        to="/mints"
+                        isActive={(match: any, location: any) => {
+                            return checkPage(location, "mints");
+                        }}
+                        className={classnames("button-dapp-menu", { active: isActive })}
+                    >
+                        <div className="dapp-menu-item">
+                            <img alt="" src={GoldIcon} />
+                            <p>Bonds | 28 Day</p>
+                        </div>
+                    </Link>
+                    <div className="bond-discounts">
+                        {/* <p>Mint Discounts</p> */}
+                        {bonds.map((bond, i) => (
+                            <Link component={NavLink} to={`/mints/${bond.name}`} key={i} className={"bond"}>
+                                {!bond.bondDiscount ? (
+                                    <Skeleton variant="text" width={"150px"} />
+                                ) : !(bond.vestingTerm == 2419200) ? (
+                                    "" // <Skeleton variant="text" width={"150px"} />
+                                ) : (
+                                    <p>
+                                        {bond.displayName}
+                                        <span className="bond-pair-roi">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
                                     </p>
                                 )}
                             </Link>
