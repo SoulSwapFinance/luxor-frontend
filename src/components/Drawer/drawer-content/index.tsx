@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Social from "./social";
 import RebaseIcon from "../../../assets/icons/rebase.png";
+import BridgeIcon from "../../../assets/icons/bridge.png";
 import ExchangeIcon from "../../../assets/icons/exchange.png";
 import GoldIcon from "../../../assets/icons/gold.png";
 import LuxorIcon from "../../../assets/icons/logo.png";
@@ -250,6 +251,19 @@ function NavContent() {
                         <div className="dapp-menu-item">
                             <img alt="" src={CalculatorIcon} />
                             <p>Calculator</p>
+                        </div>
+                    </Link>
+                    <Link
+                        component={NavLink}
+                        to="/bridge"
+                        isActive={(match: any, location: any) => {
+                            return checkPage(location, "bridge");
+                        }}
+                        className={classnames("button-dapp-menu", { active: isActive })}
+                    >
+                        <div className="dapp-menu-item">
+                            <img alt="" src={BridgeIcon} />
+                            <p>Bridge</p>
                         </div>
                     </Link>
                     <Link target="_blank" href={"https://exchange.soulswap.finance"} className={classnames("button-dapp-menu", { active: isActive })}>
