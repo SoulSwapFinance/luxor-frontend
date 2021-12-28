@@ -5,7 +5,7 @@ import RebaseIcon from "../../../assets/icons/rebase.png";
 import ExchangeIcon from "../../../assets/icons/exchange.png";
 import GoldIcon from "../../../assets/icons/gold.png";
 import LuxorIcon from "../../../assets/icons/logo.png";
-import AppIcon from "../../../assets/icons/app.png";
+import AnalyticsIcon from "../../../assets/icons/analytics.png";
 import { trim, shorten } from "../../../helpers";
 import { useAddress } from "../../../hooks";
 import useBonds from "../../../hooks/bonds";
@@ -56,9 +56,34 @@ function NavContent() {
                     </div>
                 )}
             </div>
-
             <div className="dapp-menu-links">
                 <div className="dapp-nav">
+                    <Link
+                        component={NavLink}
+                        to="/analytics"
+                        isActive={(match: any, location: any) => {
+                            return checkPage(location, "analytics");
+                        }}
+                        className={classnames("button-dapp-menu", { active: isActive })}
+                    >
+                        <div className="dapp-menu-item">
+                            <img alt="" src={AnalyticsIcon} />
+                            <p>Analytics</p>
+                        </div>
+                    </Link>
+                    <Link
+                        component={NavLink}
+                        to="/stake"
+                        isActive={(match: any, location: any) => {
+                            return checkPage(location, "stake");
+                        }}
+                        className={classnames("button-dapp-menu", { active: isActive })}
+                    >
+                        <div className="dapp-menu-item">
+                            <img alt="" src={RebaseIcon} />
+                            <p>Rebase</p>
+                        </div>
+                    </Link>
                     <Link
                         component={NavLink}
                         id="bond-nav"
@@ -199,19 +224,6 @@ function NavContent() {
                             </Link>
                         ))}
                     </div>
-                    <Link
-                        component={NavLink}
-                        to="/stake"
-                        isActive={(match: any, location: any) => {
-                            return checkPage(location, "stake");
-                        }}
-                        className={classnames("button-dapp-menu", { active: isActive })}
-                    >
-                        <div className="dapp-menu-item">
-                            <img alt="" src={RebaseIcon} />
-                            <p>Rebase</p>
-                        </div>
-                    </Link>
                     {/* <Link
                         component={NavLink}
                         to="/swap"
