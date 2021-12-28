@@ -15,6 +15,7 @@ import "./drawer-content.scss";
 import DocsIcon from "../../../assets/icons/docs.png";
 import CalculatorIcon from "../../../assets/icons/calculator.png"; //
 import classnames from "classnames";
+import ConnectButton from "../../Header/connect-button-side";
 
 function NavContent() {
     const [isActive] = useState();
@@ -48,12 +49,13 @@ function NavContent() {
                         </Link>
                     </div>
                 )}
-                {address && (
-                    <div className="app-link">
-                        <Link href={`https://app.luxor.money`} target="_blank">
-                            <p>Luxor Money</p>
-                        </Link>
-                    </div>
+                {!address && (
+                    // <div className="app-link">
+                    //     {/* <Link href={`https://app.luxor.money`} target="_blank">
+                    //         <p>Connect Wallet</p>
+                    //     </Link> */}
+                    // </div>
+                    <ConnectButton />
                 )}
             </div>
             <div className="dapp-menu-links">
