@@ -51,7 +51,7 @@ function NavContent() {
                 {address && (
                     <div className="app-link">
                         <Link href={`https://app.luxor.money`} target="_blank">
-                            <p>Luxor App</p>
+                            <p>Luxor Money</p>
                         </Link>
                     </div>
                 )}

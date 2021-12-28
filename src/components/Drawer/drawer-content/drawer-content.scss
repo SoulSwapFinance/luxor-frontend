@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    margin: 20px 0 63px 0;
+    margin: 20px 0 28px 0;
 
     .wallet-link {
       margin: 10px;
@@ -27,7 +27,7 @@
   
       p{
         font-family: Montserrat SemiBold;
-        font-size: 12px;
+        font-size: 24px;
         color: #FFD900;
       }
     }
@@ -42,10 +42,10 @@
       flex-flow: column;
 
       a {
-        margin-top: 20px;
+        margin-top: 12px;
         margin-left: 20px;
         align-items: center;
-        margin-bottom: 20px;
+        margin-bottom: 12px;
 
         img {
           width: 20px;
@@ -73,7 +73,7 @@
       .button-dapp-menu.active {
         .dapp-menu-item{
           p{
-            text-decoration: underline;
+            // text-decoration: underline;
           }
         }
       }
