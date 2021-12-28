@@ -55,7 +55,13 @@ export function BondDataCard({ bond }: IBondProps) {
 
                 <div className="data-row">
                     <p className="bond-name-title">ROI</p>
-                    <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${trim(bond.bondDiscount * 100, 2)}%`}</p>
+                    {isBondLoading ? (
+                        <Skeleton width="50px" />
+                    ) : bond.bondDiscount * 100 > 1 ? (
+                        <p className="bond-name-title-discount-positive"> {trim(bond.bondDiscount * 100, 2)}% </p>
+                    ) : (
+                        <p className="bond-name-title-discount-negative">{trim(bond.bondDiscount * 100, 2)}% </p>
+                    )}
                 </div>
                 <div className="data-row">
                     <p className="bond-name-title">Term</p>
@@ -145,7 +151,13 @@ export function BondTableData({ bond }: IBondProps) {
                 </p>
             </TableCell>
             <TableCell align="right">
-                <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${trim(bond.bondDiscount * 100, 2)}%`}</p>
+                <p className="bond-name-title-discount">
+                    {bond.bondDiscount * 100 > 1 ? (
+                        <span className="bond-name-title-discount-positive">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
+                    ) : (
+                        <span className="bond-name-title-discount-negative">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
+                    )}
+                </p>
             </TableCell>
             <TableCell align="right">
                 <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${trim(bond.pendingPayout, 4)}`}</p>
