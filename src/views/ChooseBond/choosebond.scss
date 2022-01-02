@@ -1,3 +1,5 @@
+@import "src/utilities/variables";
+
 .choose-bond-view{
   display: flex;
   align-items: center;
@@ -32,7 +34,7 @@
         font-family: Montserrat Bold;
         font-weight: bold;
         font-size: 20px;
-        color: #F5C500;
+        color: $color-primary;
       }
     }
 
@@ -44,7 +46,7 @@
         font-weight: 500;
         font-size: 20px;
         line-height: 24px;
-        color: rgb(246, 198, 0.2);
+        color: $color-primary;
       }
     
       .choose-bond-view-card-metrics-value{
@@ -161,17 +163,15 @@
     border-radius: 10px;
     padding: 6px 35.5px;
     text-align: center;
-    background: rgb(227,175,0);
-    background: linear-gradient(
-90deg, rgba(227,175,0,1) 0%, rgba(230,198,0,1) 100%);
+    background: darken($color-primary, 20%);
+    background: $gradient-primary;
     transition: all .2s;
     filter: brightness(0.85);
 
     &:hover{
       box-shadow: 0 0 10px rgb(245 197 0 / 60%);
-      background: #e6c600;
-      background: linear-gradient(
-  90deg, rgba(227,175,0,1) 89%, rgba(230,198,0,1) 100%);
+      background: $color-primary;
+      background: $gradient-primary;
       transition: all .2s;
       filter: brightness(1);
   }

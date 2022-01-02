@@ -1,3 +1,5 @@
+@import "src/utilities/variables";
+
 .dapp-sidebar {
   height: 100vh;
   min-width: 280px;
@@ -28,7 +30,7 @@
       p{
         font-family: Montserrat SemiBold;
         font-size: 24px;
-        color: #FFD900;
+        color: $color-primary;
       }
     }
   }
@@ -64,7 +66,7 @@
           p{
             font-weight: 600;
             font-size: 16px;
-            color: #ffd900;
+            color: $color-primary;
             font-family: Montserrat SemiBold;
           }
         }

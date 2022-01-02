@@ -1,3 +1,5 @@
+@import "src/utilities/variables";
+
 .bond-view {
   position: absolute !important;
   width: 100%;
@@ -56,7 +58,7 @@
         font-style: normal;
         font-weight: 600;
         font-size: 18px;
-        color: #F5C500;
+        color: $color-primary;
       }
     }
   }
@@ -71,7 +73,7 @@
       font-weight: 500;
       font-size: 20px;
       line-height: 24px;
-      color:  rgb(246, 197, 0.2);
+      color:  $color-primary;
     }
 
     .bond-price-data-value {
@@ -156,7 +158,7 @@
       border-bottom: 1px solid #FFFFFF;
 
       p{
-        color: rgb(246, 197, 0.2);
+        color: $color-primary;
       }
     }
   }
@@ -182,8 +184,14 @@
     }
 
     .MuiOutlinedInput-notchedOutline {
-      border-color: rgb(0, 0, 0) !important;
-      box-shadow: 0px 0px 10px rgb(245, 197, 0);
+      border-color: transparent !important;
+
+      transition: all .2s;
+      @include neumorph(4px, $color-background);
+      background: transparent;
+      &:hover {
+        @include neumorph(2px, $color-background);
+      }
     }
 
     .stake-input-btn {
@@ -193,14 +201,14 @@
         font-family: Montserrat SemiBold;
         font-weight: 600;
         font-size: 18px;
-        color: #F5C500;
+        color: $color-primary;
       }
     }
   }
 
   .bond-approve-btn {
-    background: rgb(0, 0, 0);
-    box-shadow: 0px 0px 10px rgb(245, 197, 0);
+    background: darken($color-primary, 20%);
+    background: $gradient-primary;
     border-radius: 10px;
     
     height: 58px;
@@ -208,6 +216,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    filter: brightness(0.85);
+
+    &:hover{
+      box-shadow: 0 0 10px rgb(245 197 0 / 60%);
+      background: $color-primary;
+      background: $gradient-primary;
+      transition: all .2s;
+      filter: brightness(1);
+    }
 
     p {
       font-family: Montserrat SemiBold;
