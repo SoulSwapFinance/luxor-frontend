@@ -1,3 +1,5 @@
+@import "src/utilities/variables";
+
 .dashboard-view {
     display: flex;
     align-items: center;
@@ -36,7 +38,7 @@
           font-family: Montserrat Medium;
           font-weight: 500;
           font-size: 20px;
-          color: rgb(255, 196, 0);
+          color: $color-primary;
         }
     
         .card-value {

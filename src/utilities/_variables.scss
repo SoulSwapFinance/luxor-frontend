@@ -1,0 +1,24 @@
+// Color Variables
+$color-primary: #f6c600 !default;
+$color-background: #121415 !default;
+
+$gradient-primary: linear-gradient(90deg, darken($color-primary, 10%), $color-primary);
+$gradient-primary-hover: linear-gradient(90deg, darken($color-primary, 10%) 90%, $color-primary);
+
+
+// Mixins 
+@mixin neumorph($distance, $color, $transparent:"false") {
+  box-shadow: -#{$distance} -#{$distance} calc(#{$distance} * 2) 0 rgba(lighten($color, 10%), 0.43), 
+    $distance $distance calc(#{$distance} * 2) 0 rgba(darken($color, 30%), 0.41);
+    @if $transparent == "false" {
+      background: linear-gradient(145deg, darken($color, 5%), lighten($color, 5%));
+  }
+}
+
+  @mixin inset-neumorph($distance, $color) {
+    box-shadow: inset -#{$distance} -#{$distance} calc(#{$distance} * 2) 0 rgba(lighten($color, 10%), 0.43),
+    inset $distance $distance calc(#{$distance} * 2) 0 rgba(darken($color, 30%), 0.41);
+    @if $transparent == "false" {
+      background: linear-gradient(145deg, lighten($color, 5%), darken($color, 5%));
+  }  
+}

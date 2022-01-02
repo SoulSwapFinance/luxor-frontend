@@ -1,0 +1,8 @@
+@import "src/utilities/variables";
+
+#root {
+
+    .MuiTypography-colorPrimary {
+        color: $color-primary;
+    }
+}
