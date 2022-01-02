@@ -1,7 +1,16 @@
 @import "src/utilities/variables";
 
+@keyframes glow {
+  from {
+    @include neumorph(1px, $color-primary);
+  }
+  to {
+    @include neumorph(4px, $color-primary);
+  }
+}
+
 .connect-button{
-    background:  #000000;
+    background:  transparent;
     border-radius: 10px;
     padding: 9px 20px;
     cursor: pointer;
@@ -10,9 +19,8 @@
     align-items: center;
     
     transition: all .2s;
-    @include neumorph(4px, $color-background);
-    &:hover {
-      @include neumorph(2px, $color-background);
+    &[data-focus="true"] {
+      animation: glow 2s alternate infinite;
     }
 
     .connect-button-progress{
@@ -20,10 +28,10 @@
       margin-top: 4px;
     }
   
-    p{
+    p {
       font-family: Montserrat SemiBold;
       font-weight: 600;
       font-size: 18px;
-      color: #000000;
+      color: #fff;
     }
   }
