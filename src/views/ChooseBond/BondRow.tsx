@@ -31,7 +31,7 @@ export function BondDataCard({ bond }: IBondProps) {
                     <div className="bond-name">
                         <p className="centered bond-name-title">{bond.displayName}</p>
                         <Link href={`https://ftmscan.com/address/${bondAddress}`} target="_blank">
-                            <p className="bond-name-title">Smart Contract</p>
+                            <p className="bond-name-title-gold">Smart Contract</p>
                         </Link>
                         {/* {bond.isLP && (
                             <div>
@@ -44,7 +44,7 @@ export function BondDataCard({ bond }: IBondProps) {
                 </div>
 
                 <div className="data-row">
-                    <p className="bond-name-title">Price</p>
+                    <p className="bond-name-title">Bond Price</p>
                     <p className="bond-price bond-name-title">
                         <>
                             {isBondLoading ? (
@@ -62,7 +62,7 @@ export function BondDataCard({ bond }: IBondProps) {
                 </div>
 
                 <div className="data-row">
-                    <p className="bond-name-title">ROI</p>
+                    <p className="bond-name-title">Price Discount</p>
                     {isBondLoading ? (
                         <Skeleton width="50px" />
                     ) : bond.bondDiscount * 100 > 1 ? (
@@ -72,21 +72,25 @@ export function BondDataCard({ bond }: IBondProps) {
                     )}
                 </div>
                 <div className="data-row">
-                    <p className="bond-name-title">Term</p>
+                    <p className="bond-name-title">Vesting Term</p>
                     <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${prettifySeconds(bond.vestingTerm, "day")}`}</p>
                 </div>
                 <div className="data-row">
                     <p className="bond-name-title">Claimable</p>
-                    <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${trim(bond.pendingPayout, 4)}`}</p>
+                    {Number(bond.pendingPayout) == 0 ? (
+                        <p className="bond-name-title">0</p>
+                    ) : (
+                        <p className="bond-name-title-gold">{isBondLoading ? <Skeleton width="100px" /> : trim(bond.pendingPayout, 4)}</p>
+                    )}
                 </div>
-                <div className="data-row">
+                {/* <div className="data-row">
                     <p className="bond-name-title">Available</p>
                     {Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) ? (
                         <p className="bond-name-title-red">OUT OF STOCK</p>
                     ) : (
                         <p className="bond-name-title-green">{isBondLoading ? <Skeleton width="100px" /> : trim(100 - (totalBondedDebt / maxBondDebt) * 100, 2)}%</p>
                     )}
-                </div>
+                </div> */}
                 <Link component={NavLink} to={`/mints/${bond.name}`}>
                     <div className="bond-table-btn">
                         <p>Mint {bond.rewardToken}</p>
@@ -179,17 +183,15 @@ export function BondTableData({ bond }: IBondProps) {
                 </p>
             </TableCell>
             <TableCell align="right">
-                <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${trim(bond.pendingPayout, 2)}`}</p>
-            </TableCell>
-            <TableCell align="right">
                 <p className="bond-name-title">
-                    {totalBondedDebt > maxBondDebt ? (
-                        <p className="bond-name-title-red">MAXED</p>
+                    {Number(bond.pendingPayout) == 0 ? (
+                        <p className="bond-name-title">0</p>
                     ) : (
-                        <p className="bond-name-title-green">{isBondLoading ? <Skeleton width="100px" /> : trim(100 - (totalBondedDebt / maxBondDebt) * 100, 2)}%</p>
-                    )}{" "}
+                        <p className="bond-name-title-gold">{isBondLoading ? <Skeleton width="100px" /> : trim(bond.pendingPayout, 4)}</p>
+                    )}
                 </p>
             </TableCell>
+
             <TableCell>
                 <Link component={NavLink} to={`/mints/${bond.name}`}>
                     <div className="bond-table-btn">

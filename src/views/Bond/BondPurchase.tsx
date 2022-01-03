@@ -222,7 +222,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                         <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.maxBondPrice, 4)} LUX`}</p>
                     </div>
                     <div className="data-row">
-                        <p className="bond-balance-title">ROI</p>
+                        <p className="bond-balance-title">Discount</p>
                         {isBondLoading ? (
                             <Skeleton width="50px" />
                         ) : bond.bondDiscount * 100 > 1 ? (

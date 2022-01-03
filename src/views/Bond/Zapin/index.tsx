@@ -280,7 +280,7 @@ function Zapin({ open, handleClose, bond }: IZapinProps) {
                                 <p className="data-row-value">{isLoading ? <Skeleton width="100px" /> : `${trim(bond.maxBondPrice, 4)} LUX`}</p>
                             </div>
                             <div className="data-row">
-                                <p className="data-row-name">ROI</p>
+                                <p className="data-row-name">Price Discount</p>
                                 <p className="data-row-value">
                                     {isBondLoading ? (
                                         <Skeleton width="50px" />
