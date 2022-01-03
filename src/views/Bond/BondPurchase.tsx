@@ -159,7 +159,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                             await onBond();
                         }}
                     >
-                        <p>{txnButtonText(pendingTransactions, "bond_" + bond.name, "Mint LUXOR")}</p>
+                        <p>{txnButtonText(pendingTransactions, "bond_" + bond.name, "MINT LUXOR")}</p>
                     </div>
                 ) : (
                     <div
@@ -169,7 +169,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                             await onSeekApproval();
                         }}
                     >
-                        <p>{txnButtonText(pendingTransactions, "approve_" + bond.name, "Approve")}</p>
+                        <p>{txnButtonText(pendingTransactions, "approve_" + bond.name, "APPROVE")}</p>
                     </div>
                 )}
 

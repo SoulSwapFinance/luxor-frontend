@@ -174,7 +174,7 @@ function Zapin({ open, handleClose, bond }: IZapinProps) {
     const isLoading = isBondLoading || loading;
 
     return (
-        <Modal id="hades" open={open} onClose={handleClose} hideBackdrop>
+        <Modal id="isis" open={open} onClose={handleClose} hideBackdrop>
             <Paper className="lux-card lux-popover zapin-poper">
                 <div className="cross-wrap">
                     <IconButton onClick={handleClose}>
