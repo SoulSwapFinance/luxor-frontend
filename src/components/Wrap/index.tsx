@@ -113,7 +113,7 @@ function Wrap({ open, handleClose }: IAdvancedSettingsProps) {
     };
 
     return (
-        <Modal id="hades" open={open} onClose={onClose} hideBackdrop>
+        <Modal id="isis" open={open} onClose={onClose} hideBackdrop>
             <Paper className="lux-card lux-popover wrap-token-poper">
                 <div className="cross-wrap wrap-cros-wrap">
                     <IconButton onClick={onClose}>

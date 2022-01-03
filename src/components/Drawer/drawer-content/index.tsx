@@ -113,9 +113,9 @@ function NavContent() {
                                     <p>
                                         {bond.displayName}
                                         {bond.bondDiscount * 100 > 1 ? (
-                                            <span className="bond-pair-roi-positive">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
+                                            <span className="bond-pair-roi-green">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
                                         ) : (
-                                            <span className="bond-pair-roi-negative">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
+                                            <span className="bond-pair-roi-red">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
                                         )}
                                     </p>
                                 )}
@@ -148,9 +148,9 @@ function NavContent() {
                                     <p>
                                         {bond.displayName}
                                         {bond.bondDiscount * 100 > 1 ? (
-                                            <span className="bond-pair-roi-positive">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
+                                            <span className="bond-pair-roi-green">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
                                         ) : (
-                                            <span className="bond-pair-roi-negative">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
+                                            <span className="bond-pair-roi-red">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
                                         )}
                                     </p>
                                 )}
@@ -183,9 +183,9 @@ function NavContent() {
                                     <p>
                                         {bond.displayName}
                                         {bond.bondDiscount * 100 > 1 ? (
-                                            <span className="bond-pair-roi-positive">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
+                                            <span className="bond-pair-roi-green">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
                                         ) : (
-                                            <span className="bond-pair-roi-negative">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
+                                            <span className="bond-pair-roi-red">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
                                         )}
                                     </p>
                                 )}
@@ -218,9 +218,9 @@ function NavContent() {
                                     <p>
                                         {bond.displayName}
                                         {bond.bondDiscount * 100 > 1 ? (
-                                            <span className="bond-pair-roi-positive">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
+                                            <span className="bond-pair-roi-green">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
                                         ) : (
-                                            <span className="bond-pair-roi-negative">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
+                                            <span className="bond-pair-roi-red">{bond.vestingTerm && trim(bond.bondDiscount * 100, 2)}%</span>
                                         )}
                                     </p>
                                 )}

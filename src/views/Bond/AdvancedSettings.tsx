@@ -22,7 +22,7 @@ function AdvancedSettings({ open, handleClose, slippage, onSlippageChange }: IAd
     }, [value]);
 
     return (
-        <Modal id="hades" open={open} onClose={handleClose} hideBackdrop>
+        <Modal id="isis" open={open} onClose={handleClose} hideBackdrop>
             <Paper className="lux-card lux-popover">
                 <div className="cross-wrap">
                     <IconButton onClick={handleClose}>
@@ -30,7 +30,7 @@ function AdvancedSettings({ open, handleClose, slippage, onSlippageChange }: IAd
                     </IconButton>
                 </div>
 
-                <p className="hades-title">Settings</p>
+                <p className="isis-title">Settings</p>
 
                 <Box className="card-content">
                     <InputLabel htmlFor="slippage">

@@ -103,9 +103,9 @@ function BondRedeem({ bond }: IBondRedeem) {
                         {isBondLoading ? (
                             <Skeleton width="50px" />
                         ) : bond.bondDiscount * 100 > 1 ? (
-                            <p className="bond-balance-title-discount-positive"> {trim(bond.bondDiscount * 100, 2)}% </p>
+                            <p className="bond-balance-title-green"> {trim(bond.bondDiscount * 100, 2)}% </p>
                         ) : (
-                            <p className="bond-balance-title-discount-negative">{trim(bond.bondDiscount * 100, 2)}% </p>
+                            <p className="bond-balance-title-red">{trim(bond.bondDiscount * 100, 2)}% </p>
                         )}
                     </div>
 
