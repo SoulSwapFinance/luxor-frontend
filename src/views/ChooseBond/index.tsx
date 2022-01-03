@@ -44,6 +44,9 @@ function ChooseBond() {
                                             <TableCell align="center">
                                                 <p className="choose-bond-view-card-table-title">Claimable</p>
                                             </TableCell>
+                                            <TableCell align="center">
+                                                <p className="choose-bond-view-card-table-title">Available</p>
+                                            </TableCell>
                                             <TableCell align="right"></TableCell>
                                         </TableRow>
                                     </TableHead>

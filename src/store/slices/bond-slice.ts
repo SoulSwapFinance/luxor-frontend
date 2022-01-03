@@ -86,6 +86,8 @@ export interface IBondDetails {
     bondQuote: number;
     purchased: number;
     vestingTerm: number;
+    maxDebt: number;
+    totalBondDebt: number;
     maxBondPrice: number;
     bondPrice: number;
     marketPrice: number;
@@ -112,6 +114,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
 
     const terms = await bondContract.terms();
     const maxBondPrice = (await bondContract.maxPayout()) / Math.pow(10, 9);
+    const totalBondDebt = (await bondContract.totalDebt()) / Math.pow(10, 9);
 
     let marketPrice = await getMarketPrice(networkID, provider);
 
@@ -193,7 +196,9 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         bondQuote,
         purchased,
         vestingTerm: Number(terms.vestingTerm),
+        maxDebt: Number(terms.maxDebt),
         maxBondPrice,
+        totalBondDebt,
         bondPrice: bondPrice / Math.pow(10, 18),
         marketPrice,
         maxBondPriceToken,

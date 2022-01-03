@@ -39,6 +39,9 @@ function Zapin({ open, handleClose, bond }: IZapinProps) {
         return state.pendingTransactions;
     });
 
+    const maxBondDebt = Number(bond.maxDebt / 1e9);
+    const totalBondedDebt = Number(bond.totalBondDebt);
+
     let defaultToken = tokens.find(token => token.name === ftm.name);
 
     if (bond.name === wftm.name || bond.name === wftm7.name || bond.name === wftm14.name || bond.name === wftm28.name) {
@@ -278,11 +281,31 @@ function Zapin({ open, handleClose, bond }: IZapinProps) {
                             </div>
                             <div className="data-row">
                                 <p className="data-row-name">ROI</p>
-                                <p className="data-row-value">{isLoading ? <Skeleton width="100px" /> : `${trim(bond.bondDiscount * 100, 2)}%`}</p>
+                                <p className="data-row-value">
+                                    {isBondLoading ? (
+                                        <Skeleton width="50px" />
+                                    ) : bond.bondDiscount * 100 > 1 ? (
+                                        <p className="data-row-name-green"> {trim(bond.bondDiscount * 100, 2)}% </p>
+                                    ) : (
+                                        <p className="data-row-name-red">{trim(bond.bondDiscount * 100, 2)}% </p>
+                                    )}
+                                </p>
                             </div>
                             <div className="data-row">
-                                <p className="data-row-name">Minimum purchase</p>
+                                <p className="data-row-name">Minimum Purchase</p>
                                 <p className="data-row-value">0.01 LUX</p>
+                            </div>
+                            <div className="data-row">
+                                <p className="data-row-name">Bonds Available</p>
+                                {Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) ? (
+                                    <p className="data-row-name-red">OUT OF STOCK</p>
+                                ) : (
+                                    <p className="data-row-name-green">
+                                        <p className="bond-name-title-green">
+                                            {isBondLoading ? <Skeleton width="100px" /> : trim(100 - (totalBondedDebt / maxBondDebt) * 100, 2)}%
+                                        </p>
+                                    </p>
+                                )}
                             </div>
                         </div>
                     </div>

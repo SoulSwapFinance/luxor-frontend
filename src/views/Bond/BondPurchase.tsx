@@ -37,6 +37,9 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
         return prettifySeconds(bond.vestingTerm, "day");
     };
 
+    const maxBondDebt = Number(bond.maxDebt / 1e9);
+    const totalBondedDebt = Number(bond.totalBondDebt);
+
     async function onBond() {
         if (await checkWrongNetwork()) return;
 
@@ -89,6 +92,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
         return bond.allowance > 0;
     }, [bond.allowance]);
 
+    // todo?
     const setMax = () => {
         let amount: any = Math.min(bond.maxBondPriceToken * 0.9999, useWFTM ? bond.ftmBalance * 0.99 : bond.balance);
 
@@ -209,36 +213,51 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                             )}
                         </p>
                     </div>
-
                     <div className="data-row">
                         <p className="bond-balance-title">You Will Get</p>
                         <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.bondQuote, 4)} LUX`}</p>
                     </div>
-
                     <div className={`data-row`}>
                         <p className="bond-balance-title">Purchase Limit</p>
                         <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.maxBondPrice, 4)} LUX`}</p>
                     </div>
-
                     <div className="data-row">
                         <p className="bond-balance-title">ROI</p>
                         {isBondLoading ? (
                             <Skeleton width="50px" />
                         ) : bond.bondDiscount * 100 > 1 ? (
-                            <p className="bond-balance-title-discount-positive"> {trim(bond.bondDiscount * 100, 2)}% </p>
+                            <p className="bond-balance-title-green"> {trim(bond.bondDiscount * 100, 2)}% </p>
                         ) : (
-                            <p className="bond-balance-title-discount-negative">{trim(bond.bondDiscount * 100, 2)}% </p>
+                            <p className="bond-balance-title-red">{trim(bond.bondDiscount * 100, 2)}% </p>
                         )}{" "}
                     </div>
-
                     <div className="data-row">
                         <p className="bond-balance-title">Vesting Term</p>
                         <p className="bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : vestingPeriod()}</p>
                     </div>
-
                     <div className="data-row">
                         <p className="bond-balance-title">Minimum Purchase</p>
                         <p className="bond-balance-title">0.01 LUX</p>
+                    </div>
+                    {/* <div className="data-row">
+                        <p className="bond-balance-title">Bond Limit Reached</p>
+                        <p className="bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : vestingPeriod()}</p>
+                    </div> */}
+                    {/* <div className="data-row">
+                        <p className="bond-balance-title">Bonds Max Debt</p>
+                        <p className="bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : trim(maxBondDebt, 2)}</p>
+                    </div> */}
+                    {/* <div className="data-row">
+                        <p className="bond-balance-title">Bonds Purchased</p>
+                        <p className="bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : trim(totalBondedDebt, 2)}</p>
+                    </div> */}
+                    <div className="data-row">
+                        <p className="bond-balance-title">Bonds Available</p>
+                        {totalBondedDebt > maxBondDebt ? (
+                            <p className="bond-balance-title-red">MAX REACHED</p>
+                        ) : (
+                            <p className="bond-balance-title-green">{isBondLoading ? <Skeleton width="100px" /> : trim(100 - (totalBondedDebt / maxBondDebt) * 100, 2)}%</p>
+                        )}
                     </div>
                 </Box>
             </Slide>
