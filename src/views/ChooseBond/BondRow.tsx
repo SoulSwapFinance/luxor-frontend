@@ -30,16 +30,16 @@ export function BondDataCard({ bond }: IBondProps) {
                     <BondLogo bond={bond} />
                     <div className="bond-name">
                         <p className="centered bond-name-title">{bond.displayName}</p>
-                        <Link href={`https://ftmscan.com/address/${bondAddress}`} target="_blank">
+                        {/* <Link href={`https://ftmscan.com/address/${bondAddress}`} target="_blank">
                             <p className="bond-name-title-gold">Smart Contract</p>
-                        </Link>
-                        {/* {bond.isLP && (
+                        </Link> */}
+                        {bond.isLP && (
                             <div>
                                 <Link href={bond.lpUrl} target="_blank">
-                                    <p className="bond-name-title">Create Pair</p>
+                                    <p className="bond-name-title-gold">Create Pair</p>
                                 </Link>
                             </div>
-                        )} */}
+                        )}
                     </div>
                 </div>
 
