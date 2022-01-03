@@ -99,7 +99,7 @@ function BondRedeem({ bond }: IBondRedeem) {
                     </div>
 
                     <div className="data-row">
-                        <p className="bond-balance-title">ROI</p>
+                        <p className="bond-balance-title">Return (ROI)</p>
                         {isBondLoading ? (
                             <Skeleton width="50px" />
                         ) : bond.bondDiscount * 100 > 1 ? (
