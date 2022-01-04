@@ -139,7 +139,7 @@ function Dashboard() {
 
                         <Grid item lg={6} md={6} sm={6} xs={12}>
                             <div className="dashboard-card">
-                                <p className="card-title">LUM Index</p>
+                                <p className="card-title">wLUM Index</p>
                                 <p className="card-value">{isAppLoading ? <Skeleton width="250px" /> : `${trim(Number(app.currentIndex), 2)} LUX`}</p>
                             </div>
                         </Grid>
