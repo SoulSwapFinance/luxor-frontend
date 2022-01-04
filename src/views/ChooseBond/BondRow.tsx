@@ -76,21 +76,21 @@ export function BondDataCard({ bond }: IBondProps) {
                     <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${prettifySeconds(bond.vestingTerm, "day")}`}</p>
                 </div>
                 <div className="data-row">
-                    <p className="bond-name-title">Claimable</p>
+                    <p className="bond-name-title">Bonds Available</p>
+                    {Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) ? (
+                        <p className="bond-name-title-red">SOLD OUT</p>
+                    ) : (
+                        <p className="bond-name-title-green">{isBondLoading ? <Skeleton width="100px" /> : trim(100 - (totalBondedDebt / maxBondDebt) * 100, 2)}%</p>
+                    )}
+                </div>
+                <div className="data-row">
+                    <p className="bond-name-title">Claimable Luxor</p>
                     {Number(bond.pendingPayout) == 0 ? (
                         <p className="bond-name-title">0</p>
                     ) : (
                         <p className="bond-name-title-gold">{isBondLoading ? <Skeleton width="100px" /> : trim(bond.pendingPayout, 4)}</p>
                     )}
                 </div>
-                {/* <div className="data-row">
-                    <p className="bond-name-title">Available</p>
-                    {Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) ? (
-                        <p className="bond-name-title-red">OUT OF STOCK</p>
-                    ) : (
-                        <p className="bond-name-title-green">{isBondLoading ? <Skeleton width="100px" /> : trim(100 - (totalBondedDebt / maxBondDebt) * 100, 2)}%</p>
-                    )}
-                </div> */}
                 <Link component={NavLink} to={`/mints/${bond.name}`}>
                     <div className="bond-table-btn">
                         <p>Mint {bond.rewardToken}</p>
