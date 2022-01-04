@@ -143,7 +143,7 @@ export function BondTableData({ bond }: IBondProps) {
                     <p className="bond-name-title">{bond.displayName}</p>
                     {bond.isLP && (
                         <Link color="primary" href={bond.lpUrl} target="_blank">
-                            <p className="bond-name-title">Create Pair</p>
+                            <p className="bond-name-title-gold">Create Pair</p>
                         </Link>
                     )}
                 </div>
