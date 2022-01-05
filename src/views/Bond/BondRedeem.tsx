@@ -45,7 +45,6 @@ function BondRedeem({ bond }: IBondRedeem) {
             dispatch(warning({ text: messages.nothing_to_claim }));
             return;
         }
-
         await dispatch(redeemBond({ address, bond, networkID: chainID, provider, autostake }));
     }
 

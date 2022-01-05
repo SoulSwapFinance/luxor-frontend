@@ -128,7 +128,7 @@ export interface IUserBondDetails {
     ftmBalance: number;
     interestDue: number;
     bondMaturationBlock: number;
-    pendingPayout: number; //Payout formatted in gwei.
+    pendingPayout: number; // payout formatted in gwei.
 }
 
 export const calculateUserBondDetails = createAsyncThunk("account/calculateUserBondDetails", async ({ address, bond, networkID, provider }: ICalcUserBondDetails) => {
