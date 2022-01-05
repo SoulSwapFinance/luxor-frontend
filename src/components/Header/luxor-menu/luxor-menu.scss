@@ -10,7 +10,7 @@
     transition: all .2s;
     @include neumorph(4px, $color-background);
     &:hover {
-      @include neumorph(2px, $color-background);
+      @include neumorph(2px, $color-secondary);
     }
 
     p{

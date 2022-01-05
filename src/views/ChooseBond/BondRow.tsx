@@ -196,7 +196,7 @@ export function BondTableData({ bond }: IBondProps) {
                     {Number(bond.pendingPayout) == 0 ? (
                         <p className="bond-name-title">0</p>
                     ) : (
-                        <p className="bond-name-title-gold">{isBondLoading ? <Skeleton width="100px" /> : trim(bond.pendingPayout, 5)}</p>
+                        <p className="bond-name-title-gold">{isBondLoading ? <Skeleton width="100px" /> : trim(bond.pendingPayout, 4)}</p>
                     )}
                 </p>
             </TableCell>

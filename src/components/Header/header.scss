@@ -1,3 +1,5 @@
+@import "src/utilities/variables";
+
 .dapp-topbar {
   width: 89%;
   max-width: 833px;
@@ -6,7 +8,7 @@
 
   .dapp-topbar-slider-btn{
     background: rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 0px 10px rgba(245, 197, 0);
+    box-shadow: 0px 0px 10px $color-primary;
     border-radius: 10px;
     padding: 10px;
     display: flex;
@@ -14,6 +16,10 @@
     justify-content: center;
     cursor: pointer;
     margin-right: 16px;
+    @include neumorph(4px, $color-background);
+    &:hover {
+      @include neumorph(2px, $color-secondary);
+    }
   }
 
   .dapp-topbar-btns-wrap{
