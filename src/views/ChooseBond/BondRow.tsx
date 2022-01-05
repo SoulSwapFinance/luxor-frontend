@@ -89,16 +89,16 @@ export function BondDataCard({ bond }: IBondProps) {
                         <p className="bond-name-title-gold">{isBondLoading ? <Skeleton width="100px" /> : trim(bond.pendingPayout, 3)}</p>
                     )}
                 </div>
-                {Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) && bond.pendingPayout == 0 ? (
-                    <div className="bond-table-btn-red">
-                        <p>Sold Out</p>
-                    </div>
-                ) : Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) && bond.pendingPayout != 0 ? (
+                {Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) && bond.pendingPayout > 0 ? (
                     <Link component={NavLink} to={`/mints/${bond.name}`}>
                         <div className="bond-table-btn-red">
                             <p>Claim {bond.rewardToken}</p>
                         </div>
                     </Link>
+                ) : Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) ? (
+                    <div className="bond-table-btn-red">
+                        <p>Sold Out</p>
+                    </div>
                 ) : (
                     <Link component={NavLink} to={`/mints/${bond.name}`}>
                         <div className="bond-table-btn">
@@ -202,16 +202,16 @@ export function BondTableData({ bond }: IBondProps) {
             </TableCell>
             <TableCell align="right">
                 <p className="bond-name-title">
-                    {Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) && bond.pendingPayout == 0 ? (
-                        <div className="bond-table-btn-red">
-                            <p>Sold Out</p>
-                        </div>
-                    ) : Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) && bond.pendingPayout != 0 ? (
+                    {Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) && bond.pendingPayout > 0 ? (
                         <Link component={NavLink} to={`/mints/${bond.name}`}>
                             <div className="bond-table-btn-red">
                                 <p>Redeem</p>
                             </div>
                         </Link>
+                    ) : Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) ? (
+                        <div className="bond-table-btn-red">
+                            <p>Sold Out</p>
+                        </div>
                     ) : (
                         <Link component={NavLink} to={`/mints/${bond.name}`}>
                             <div className="bond-table-btn">
