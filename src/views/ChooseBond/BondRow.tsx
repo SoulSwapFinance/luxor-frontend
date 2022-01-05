@@ -86,7 +86,7 @@ export function BondDataCard({ bond }: IBondProps) {
                     {Number(bond.pendingPayout) == 0 ? (
                         <p className="bond-name-title">0</p>
                     ) : (
-                        <p className="bond-name-title-gold">{isBondLoading ? <Skeleton width="100px" /> : trim(bond.pendingPayout, 4)}</p>
+                        <p className="bond-name-title-gold">{isBondLoading ? <Skeleton width="100px" /> : trim(bond.pendingPayout, 3)}</p>
                     )}
                 </div>
                 {Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) && bond.pendingPayout == 0 ? (
@@ -96,13 +96,13 @@ export function BondDataCard({ bond }: IBondProps) {
                 ) : Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) && bond.pendingPayout != 0 ? (
                     <Link component={NavLink} to={`/mints/${bond.name}`}>
                         <div className="bond-table-btn-red">
-                            <p>Sold Out</p>
+                            <p>Claim {bond.rewardToken}</p>
                         </div>
                     </Link>
                 ) : (
                     <Link component={NavLink} to={`/mints/${bond.name}`}>
                         <div className="bond-table-btn">
-                            <p>Mint with {bond.displayName}</p>
+                            <p>Mint {bond.displayName}</p>
                         </div>
                     </Link>
                 )}{" "}
@@ -196,7 +196,7 @@ export function BondTableData({ bond }: IBondProps) {
                     {Number(bond.pendingPayout) == 0 ? (
                         <p className="bond-name-title">0</p>
                     ) : (
-                        <p className="bond-name-title-gold">{isBondLoading ? <Skeleton width="100px" /> : trim(bond.pendingPayout, 4)}</p>
+                        <p className="bond-name-title-gold">{isBondLoading ? <Skeleton width="100px" /> : trim(bond.pendingPayout, 5)}</p>
                     )}
                 </p>
             </TableCell>
@@ -209,7 +209,7 @@ export function BondTableData({ bond }: IBondProps) {
                     ) : Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) && bond.pendingPayout != 0 ? (
                         <Link component={NavLink} to={`/mints/${bond.name}`}>
                             <div className="bond-table-btn-red">
-                                <p>Sold Out</p>
+                                <p>Redeem</p>
                             </div>
                         </Link>
                     ) : (
