@@ -106,8 +106,8 @@ function NavContent() {
                         {bonds.map((bond, i) => (
                             <Link component={NavLink} to={`/mints/${bond.name}`} key={i} className={"bond"}>
                                 {!bond.bondDiscount ? (
-                                    <Skeleton variant="text" width={"150px"} />
-                                ) : !(bond.vestingTerm == 432000) ? (
+                                    "" // <Skeleton variant="text" width={"150px"} />
+                                ) : !(bond.vestingTerm == 432000 && Number(bond.totalBondDebt) < Number(bond.maxDebt / 1e9)) ? (
                                     ""
                                 ) : (
                                     <p>
@@ -142,7 +142,7 @@ function NavContent() {
                             <Link component={NavLink} to={`/mints/${bond.name}`} key={i} className={"bond"}>
                                 {!bond.bondDiscount ? (
                                     <Skeleton variant="text" width={"150px"} />
-                                ) : !(bond.vestingTerm == 604800) ? (
+                                ) : !(bond.vestingTerm == 604800 && Number(bond.totalBondDebt) < Number(bond.maxDebt / 1e9)) ? (
                                     "" // <Skeleton variant="text" width={"150px"} />
                                 ) : (
                                     <p>
@@ -177,7 +177,7 @@ function NavContent() {
                             <Link component={NavLink} to={`/mints/${bond.name}`} key={i} className={"bond"}>
                                 {!bond.bondDiscount ? (
                                     <Skeleton variant="text" width={"150px"} />
-                                ) : !(bond.vestingTerm == 1209600) ? (
+                                ) : !(bond.vestingTerm == 1209600 && Number(bond.totalBondDebt) < Number(bond.maxDebt / 1e9)) ? (
                                     "" // <Skeleton variant="text" width={"150px"} />
                                 ) : (
                                     <p>
@@ -212,7 +212,7 @@ function NavContent() {
                             <Link component={NavLink} to={`/mints/${bond.name}`} key={i} className={"bond"}>
                                 {!bond.bondDiscount ? (
                                     <Skeleton variant="text" width={"150px"} />
-                                ) : !(bond.vestingTerm == 2419200) ? (
+                                ) : !(bond.vestingTerm == 2419200 && Number(bond.totalBondDebt) < Number(bond.maxDebt / 1e9)) ? (
                                     "" // <Skeleton variant="text" width={"150px"} />
                                 ) : (
                                     <p>
