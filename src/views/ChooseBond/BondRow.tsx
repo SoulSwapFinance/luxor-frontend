@@ -42,7 +42,6 @@ export function BondDataCard({ bond }: IBondProps) {
                         )}
                     </div>
                 </div>
-
                 <div className="data-row">
                     <p className="bond-name-title">Bond Price</p>
                     <p className="bond-price bond-name-title">
@@ -60,7 +59,6 @@ export function BondDataCard({ bond }: IBondProps) {
                         </>
                     </p>
                 </div>
-
                 <div className="data-row">
                     <p className="bond-name-title">Price Discount</p>
                     {isBondLoading ? (
@@ -75,14 +73,14 @@ export function BondDataCard({ bond }: IBondProps) {
                     <p className="bond-name-title">Vesting Term</p>
                     <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${prettifySeconds(bond.vestingTerm, "day")}`}</p>
                 </div>
-                <div className="data-row">
+                {/* <div className="data-row">
                     <p className="bond-name-title">Bonds Available</p>
                     {Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) ? (
                         <p className="bond-name-title-red">SOLD OUT</p>
                     ) : (
                         <p className="bond-name-title-green">{isBondLoading ? <Skeleton width="100px" /> : trim(100 - (totalBondedDebt / maxBondDebt) * 100, 2)}%</p>
                     )}
-                </div>
+                </div> */}
                 <div className="data-row">
                     <p className="bond-name-title">Claimable Luxor</p>
                     {Number(bond.pendingPayout) == 0 ? (
@@ -91,12 +89,23 @@ export function BondDataCard({ bond }: IBondProps) {
                         <p className="bond-name-title-gold">{isBondLoading ? <Skeleton width="100px" /> : trim(bond.pendingPayout, 4)}</p>
                     )}
                 </div>
-                <Link component={NavLink} to={`/mints/${bond.name}`}>
-                    <div className="bond-table-btn">
-                        <p>Mint {bond.rewardToken}</p>
-                        {/* <p>Mint with {bond.displayName}</p> */}
+                {Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) && bond.pendingPayout == 0 ? (
+                    <div className="bond-table-btn-red">
+                        <p>Sold Out</p>
                     </div>
-                </Link>
+                ) : Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) && bond.pendingPayout != 0 ? (
+                    <Link component={NavLink} to={`/mints/${bond.name}`}>
+                        <div className="bond-table-btn-red">
+                            <p>Sold Out</p>
+                        </div>
+                    </Link>
+                ) : (
+                    <Link component={NavLink} to={`/mints/${bond.name}`}>
+                        <div className="bond-table-btn">
+                            <p>Mint with {bond.displayName}</p>
+                        </div>
+                    </Link>
+                )}{" "}
             </Paper>
         </Slide>
     );
@@ -191,13 +200,30 @@ export function BondTableData({ bond }: IBondProps) {
                     )}
                 </p>
             </TableCell>
+            <TableCell align="right">
+                <p className="bond-name-title">
+                    {Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) && bond.pendingPayout == 0 ? (
+                        <div className="bond-table-btn-red">
+                            <p>Sold Out</p>
+                        </div>
+                    ) : Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) && bond.pendingPayout != 0 ? (
+                        <Link component={NavLink} to={`/mints/${bond.name}`}>
+                            <div className="bond-table-btn-red">
+                                <p>Sold Out</p>
+                            </div>
+                        </Link>
+                    ) : (
+                        <Link component={NavLink} to={`/mints/${bond.name}`}>
+                            <div className="bond-table-btn">
+                                <p>Mint LUX</p>
+                            </div>
+                        </Link>
+                    )}
+                </p>
+                {/* </TableCell> */}
 
-            <TableCell>
-                <Link component={NavLink} to={`/mints/${bond.name}`}>
-                    <div className="bond-table-btn">
-                        <p>Mint</p>
-                    </div>
-                </Link>
+                {/* <TableCell> */}
+
                 {/* <Link component={NavLink} to={`/mints/${bond.name}`}>
                     <div className="bond-table-btn">
                         <p>Claim and Autostake</p>
