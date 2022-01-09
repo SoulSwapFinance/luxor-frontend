@@ -50,8 +50,8 @@ export const loadAppDetails = createAsyncThunk(
         const luxorAmount = luxorBondsAmounts.reduce((luxorAmount0, luxorAmount1) => luxorAmount0 + luxorAmount1, 0);
         const luxorSupply = totalSupply - luxorAmount;
 
-        const rfvTreasuryAdjusted = rfvTreasury / 4;
-        const rfv = rfvTreasury / luxorSupply;
+        const rfvTreasuryAdjusted = rfvTreasury / 2;
+        const rfv = rfvTreasuryAdjusted / luxorSupply;
 
         const epoch = await stakingContract.epoch();
         const stakingReward = epoch.distribute;
@@ -63,7 +63,7 @@ export const loadAppDetails = createAsyncThunk(
         const currentIndex = await stakingContract.index();
         const nextRebase = epoch.endTime;
 
-        const treasuryRunway = rfvTreasuryAdjusted / circSupply;
+        const treasuryRunway = rfvTreasury / circSupply;
         const runway = Math.log(treasuryRunway) / Math.log(1 + stakingRebase) / 3;
 
         return {
