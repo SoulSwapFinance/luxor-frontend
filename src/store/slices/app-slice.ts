@@ -1,12 +1,13 @@
 import { ethers } from "ethers";
 import { getAddresses } from "../../constants";
-import { StakingContract, LumensTokenContract, LuxorTokenContract } from "../../abi";
+import { IERC20, DaiTokenContract, StakingContract, LumensTokenContract, LuxorTokenContract } from "../../abi";
 import { setAll } from "../../helpers";
 import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit";
 import { JsonRpcProvider } from "@ethersproject/providers";
 import { getMarketPrice, getTokenPrice } from "../../helpers";
 import { RootState } from "../store";
 import allBonds from "../../helpers/bond";
+import { dai, wftm } from "src/helpers/tokens";
 
 interface ILoadAppDetails {
     networkID: number;
@@ -18,7 +19,9 @@ export const loadAppDetails = createAsyncThunk(
     //@ts-ignore
     async ({ networkID, provider }: ILoadAppDetails) => {
         const daiPrice = getTokenPrice("DAI");
+        const ftmPrice = getTokenPrice("FTM");
         console.log("DAI:%s", daiPrice);
+        console.log("FTM:%s", ftmPrice);
 
         const addresses = getAddresses(networkID);
 
@@ -27,12 +30,17 @@ export const loadAppDetails = createAsyncThunk(
         const currentBlockTime = (await provider.getBlock(currentBlock)).timestamp;
         const lumensContract = new ethers.Contract(addresses.LUM_ADDRESS, LumensTokenContract, provider);
         const luxorContract = new ethers.Contract(addresses.LUX_ADDRESS, LuxorTokenContract, provider);
+        const daiContract = new ethers.Contract(addresses.DAI_ADDRESS, DaiTokenContract, provider);
+        const wftmContract = new ethers.Contract(addresses.WFTM_ADDRESS, IERC20, provider);
 
         const marketPrice = ((await getMarketPrice(networkID, provider)) / Math.pow(10, 9)) * daiPrice;
         console.log("luxPrice:%s", await Number(marketPrice));
 
         const totalSupply = (await luxorContract.totalSupply()) / Math.pow(10, 9);
         const circSupply = (await lumensContract.circulatingSupply()) / Math.pow(10, 9);
+        const daiReserves = (await daiContract.balanceOf(addresses.TREASURY_ADDRESS)) / Math.pow(10, 18);
+        const wftmBalance = (await wftmContract.balanceOf(addresses.TREASURY_ADDRESS)) / Math.pow(10, 18);
+        const wftmReserves = wftmBalance * ftmPrice;
 
         const stakingTVL = circSupply * marketPrice;
         const marketCap = totalSupply * marketPrice;
@@ -50,8 +58,15 @@ export const loadAppDetails = createAsyncThunk(
         const luxorAmount = luxorBondsAmounts.reduce((luxorAmount0, luxorAmount1) => luxorAmount0 + luxorAmount1, 0);
         const luxorSupply = totalSupply - luxorAmount;
 
-        const rfvTreasuryAdjusted = rfvTreasury / 2;
-        const rfv = rfvTreasuryAdjusted / luxorSupply;
+        // RESERVES && LIQUIDITY //
+        const rawReserves = daiReserves + wftmReserves;
+        const reserves = rawReserves;
+        const liquidity = treasuryBalance - rawReserves;
+
+        console.log("reserves:%s", reserves);
+        console.log("liquidity:%s", liquidity);
+
+        const rfv = rfvTreasury / luxorSupply;
 
         const epoch = await stakingContract.epoch();
         const stakingReward = epoch.distribute;
@@ -74,6 +89,8 @@ export const loadAppDetails = createAsyncThunk(
             circSupply,
             fiveDayRate,
             treasuryBalance,
+            reserves,
+            liquidity,
             stakingAPY,
             stakingTVL,
             stakingRebase,
@@ -101,6 +118,8 @@ export interface IAppSlice {
     currentBlockTime: number;
     fiveDayRate: number;
     treasuryBalance: number;
+    reserves: number;
+    liquidity: number;
     stakingAPY: number;
     stakingRebase: number;
     networkID: number;
