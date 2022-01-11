@@ -97,7 +97,7 @@ export function BondDataCard({ bond }: IBondProps) {
                     </Link>
                 ) : Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) ? (
                     <div className="bond-table-btn-red">
-                        <p>Sold Out</p>
+                        <p>Maxed Out</p>
                     </div>
                 ) : (
                     <Link component={NavLink} to={`/mints/${bond.name}`}>
@@ -210,7 +210,7 @@ export function BondTableData({ bond }: IBondProps) {
                         </Link>
                     ) : Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) ? (
                         <div className="bond-table-btn-red">
-                            <p>Sold Out</p>
+                            <p>Maxed Out</p>
                         </div>
                     ) : (
                         <Link component={NavLink} to={`/mints/${bond.name}`}>
