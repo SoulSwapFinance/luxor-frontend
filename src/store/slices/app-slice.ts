@@ -33,6 +33,9 @@ export const loadAppDetails = createAsyncThunk(
         const daiContract = new ethers.Contract(addresses.DAI_ADDRESS, DaiTokenContract, provider);
         const wftmContract = new ethers.Contract(addresses.WFTM_ADDRESS, IERC20, provider);
 
+        // const luxDaiContract = new ethers.Contract(addresses.LUX_DAI_ADDRESS, IERC20, provider);
+        // const luxFtmContract = new ethers.Contract(addresses.LUX_FTM_ADDRESS, IERC20, provider);
+
         const marketPrice = ((await getMarketPrice(networkID, provider)) / Math.pow(10, 9)) * daiPrice;
         console.log("luxPrice:%s", await Number(marketPrice));
 
@@ -42,11 +45,16 @@ export const loadAppDetails = createAsyncThunk(
         const wftmBalance = (await wftmContract.balanceOf(addresses.TREASURY_ADDRESS)) / Math.pow(10, 18);
         const wftmReserves = wftmBalance * ftmPrice;
 
-        
         const luxOwned = (await luxorContract.balanceOf(addresses.DAO_ADDRESS)) / Math.pow(10, 9);
-        
+        const luxDaiLpAmount = (await luxorContract.balanceOf(addresses.LUX_DAI_ADDRESS)) / Math.pow(10, 9);
+        const luxFtmLpAmount = (await luxorContract.balanceOf(addresses.LUX_FTM_ADDRESS)) / Math.pow(10, 9);
+        console.log("luxDaiLp:%s", luxDaiLpAmount);
+        console.log("luxFtmLp:%s", luxFtmLpAmount);
+        const pooledLux = luxDaiLpAmount + luxFtmLpAmount;
+        console.log("pooledLux:%s", pooledLux);
+
         const circulatingLuxor = totalSupply - luxOwned;
-        
+
         const stakingTVL = circSupply * marketPrice;
         const marketCap = totalSupply * marketPrice;
 
@@ -91,6 +99,7 @@ export const loadAppDetails = createAsyncThunk(
             totalSupply,
             circulatingLuxor,
             luxOwned,
+            pooledLux,
             marketCap,
             currentBlock,
             circSupply,
@@ -134,6 +143,7 @@ export interface IAppSlice {
     totalSupply: number;
     circulatingLuxor: number;
     luxOwned: number;
+    pooledLux: number;
     rfv: number;
     runway: number;
 }

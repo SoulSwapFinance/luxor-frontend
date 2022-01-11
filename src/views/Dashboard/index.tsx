@@ -13,9 +13,9 @@ function Dashboard() {
 
     const trimmedStakingAPY = trim(app.stakingAPY * 100, 0);
     // const staked = app.totalSupply - app.circSupply;
-// const daoOwned= app.luxOwned;
+    // const daoOwned= app.luxOwned;
 
-    const percStaked = 100 * app.circSupply / (app.totalSupply - app.luxOwned);
+    const percStaked = (100 * app.circSupply) / (app.totalSupply - app.luxOwned - app.pooledLux);
 
     const wLUMPrice = useSelector(state => {
         return app.marketPrice * Number(app.currentIndex);
