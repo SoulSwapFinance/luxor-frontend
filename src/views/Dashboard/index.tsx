@@ -13,8 +13,10 @@ function Dashboard() {
 
     const trimmedStakingAPY = trim(app.stakingAPY * 100, 0);
     // const staked = app.totalSupply - app.circSupply;
-    // const normalizedIndex = Number(app.currentIndex) / 4.5;
-    const percStaked = (app.circSupply / app.totalSupply) * 100;
+// const daoOwned= app.luxOwned;
+
+    const percStaked = 100 * app.circSupply / (app.totalSupply - app.luxOwned);
+
     const wLUMPrice = useSelector(state => {
         return app.marketPrice * Number(app.currentIndex);
     });
