@@ -298,7 +298,7 @@ function Zapin({ open, handleClose, bond }: IZapinProps) {
                             <div className="data-row">
                                 <p className="data-row-name">Bonds Available</p>
                                 {Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) ? (
-                                    <p className="data-row-name-red">OUT OF STOCK</p>
+                                    <p className="data-row-name-red">MAXED OUT</p>
                                 ) : (
                                     <p className="data-row-name-green">
                                         <p className="bond-name-title-green">
