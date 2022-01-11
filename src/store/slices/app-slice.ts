@@ -42,6 +42,11 @@ export const loadAppDetails = createAsyncThunk(
         const wftmBalance = (await wftmContract.balanceOf(addresses.TREASURY_ADDRESS)) / Math.pow(10, 18);
         const wftmReserves = wftmBalance * ftmPrice;
 
+        
+        const luxOwned = (await luxorContract.balanceOf(addresses.DAO_ADDRESS)) / Math.pow(10, 9);
+        
+        const circulatingLuxor = totalSupply - luxOwned;
+        
         const stakingTVL = circSupply * marketPrice;
         const marketCap = totalSupply * marketPrice;
 
@@ -84,6 +89,8 @@ export const loadAppDetails = createAsyncThunk(
         return {
             currentIndex: Number(ethers.utils.formatUnits(currentIndex, "gwei")), // / 4.5,
             totalSupply,
+            circulatingLuxor,
+            luxOwned,
             marketCap,
             currentBlock,
             circSupply,
@@ -125,6 +132,8 @@ export interface IAppSlice {
     networkID: number;
     nextRebase: number;
     totalSupply: number;
+    circulatingLuxor: number;
+    luxOwned: number;
     rfv: number;
     runway: number;
 }
