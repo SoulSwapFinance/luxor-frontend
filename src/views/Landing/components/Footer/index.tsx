@@ -28,7 +28,7 @@ function Footer() {
             <Grid container spacing={1}>
                 <Grid item xs={12} sm={4} md={4} lg={4}>
                     <div className="landing-footer-item-wrap">
-                        <p className="landing-footer-item-title">Protected Value</p>
+                        <p className="landing-footer-item-title">Backed Value</p>
                         <p className="landing-footer-item-value">
                             {isAppLoading ? (
                                 <Skeleton width="180px" />
