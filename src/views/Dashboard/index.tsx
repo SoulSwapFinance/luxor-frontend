@@ -12,10 +12,7 @@ function Dashboard() {
     const app = useSelector<IReduxState, IAppSlice>(state => state.app);
 
     const trimmedStakingAPY = trim(app.stakingAPY * 100, 0);
-    // const staked = app.totalSupply - app.circSupply;
-    // const daoOwned= app.luxOwned;
-
-    const percStaked = (100 * app.circSupply) / (app.totalSupply - app.luxOwned - app.pooledLux);
+    const percStaked = (100 * app.circSupply) / (app.totalSupply - app.luxOwned - app.pooledLux - app.mintableLux);
 
     const wLUMPrice = useSelector(state => {
         return app.marketPrice * Number(app.currentIndex);

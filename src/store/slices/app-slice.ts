@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { getAddresses } from "../../constants";
-import { IERC20, DaiTokenContract, StakingContract, LumensTokenContract, LuxorTokenContract } from "../../abi";
+import { IERC20, DaiTokenContract, StakingContract, LumensTokenContract, LuxorSupplyContract, LuxorTokenContract } from "../../abi";
 import { setAll } from "../../helpers";
 import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit";
 import { JsonRpcProvider } from "@ethersproject/providers";
@@ -26,6 +26,7 @@ export const loadAppDetails = createAsyncThunk(
         const addresses = getAddresses(networkID);
 
         const stakingContract = new ethers.Contract(addresses.STAKING_ADDRESS, StakingContract, provider);
+        const luxorSupplyContract = new ethers.Contract(addresses.LUXOR_SUPPLY_ADDRESS, LuxorSupplyContract, provider);
         const currentBlock = await provider.getBlockNumber();
         const currentBlockTime = (await provider.getBlock(currentBlock)).timestamp;
         const lumensContract = new ethers.Contract(addresses.LUM_ADDRESS, LumensTokenContract, provider);
@@ -52,6 +53,8 @@ export const loadAppDetails = createAsyncThunk(
         console.log("luxFtmLp:%s", luxFtmLpAmount);
         const pooledLux = luxDaiLpAmount + luxFtmLpAmount;
         console.log("pooledLux:%s", pooledLux);
+        const mintableLux = (await luxorSupplyContract.mintableLuxor()) / Math.pow(10, 9);
+        console.log("mintableLux:%s", mintableLux);
 
         const circulatingLuxor = totalSupply - luxOwned;
 
@@ -100,6 +103,7 @@ export const loadAppDetails = createAsyncThunk(
             circulatingLuxor,
             luxOwned,
             pooledLux,
+            mintableLux,
             marketCap,
             currentBlock,
             circSupply,
@@ -144,6 +148,7 @@ export interface IAppSlice {
     circulatingLuxor: number;
     luxOwned: number;
     pooledLux: number;
+    mintableLux: number;
     rfv: number;
     runway: number;
 }
