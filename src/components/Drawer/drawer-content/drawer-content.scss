@@ -12,7 +12,7 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    margin: 20px 0 28px 0;
+    margin: 20px 0 20px 0;
 
     .wallet-link {
       margin: 10px;
@@ -75,7 +75,7 @@
       .button-dapp-menu.active {
         .dapp-menu-item{
           p{
-            // text-decoration: underline;
+            text-decoration: underline;
           }
         }
       }
