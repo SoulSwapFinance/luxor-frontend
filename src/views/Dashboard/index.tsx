@@ -121,9 +121,9 @@ function Dashboard() {
                                         <Skeleton width="250px" />
                                     ) : (
                                         `${new Intl.NumberFormat("en-US", {
-                                            maximumFractionDigits: 2,
+                                            maximumFractionDigits: 0,
                                             minimumFractionDigits: 0,
-                                        }).format(app.totalSupply)}`
+                                        }).format(app.totalSupply)} LUX`
                                     )}
                                 </p>
                             </div>
@@ -131,7 +131,7 @@ function Dashboard() {
 
                         <Grid item lg={6} md={6} sm={6} xs={12}>
                             <div className="dashboard-card">
-                                <p className="card-title">Index</p>
+                                <p className="card-title">Standard Index</p>
                                 <p className="card-value">{isAppLoading ? <Skeleton width="250px" /> : `${trim(Number(app.currentIndex) / 4.5, 2)} LUX`}</p>
                             </div>
                         </Grid>
@@ -204,7 +204,7 @@ function Dashboard() {
 
                         <Grid item lg={6} md={6} sm={6} xs={12}>
                             <div className="dashboard-card">
-                                <p className="card-title">$LUX Backing</p>
+                                <p className="card-title">LUX Floor Price</p>
                                 <p className="card-value">
                                     {isAppLoading ? (
                                         <Skeleton width="250px" />
@@ -212,8 +212,8 @@ function Dashboard() {
                                         new Intl.NumberFormat("en-US", {
                                             style: "currency",
                                             currency: "USD",
-                                            maximumFractionDigits: 0,
-                                            minimumFractionDigits: 0,
+                                            maximumFractionDigits: 2,
+                                            minimumFractionDigits: 2,
                                         }).format(app.reserves / app.totalSupply)
                                     )}
                                 </p>
@@ -221,7 +221,7 @@ function Dashboard() {
                         </Grid>
                         <Grid item lg={6} md={6} sm={6} xs={12}>
                             <div className="dashboard-card">
-                                <p className="card-title">Runway</p>
+                                <p className="card-title">APY Runway</p>
                                 <p className="card-value">{isAppLoading ? <Skeleton width="250px" /> : `${trim(Number(app.runway), 2)} Days`}</p>
                             </div>
                         </Grid>
