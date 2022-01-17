@@ -104,7 +104,7 @@ function Dashboard() {
                                     ) : (
                                         `${
                                             new Intl.NumberFormat("en-US", {
-                                                maximumFractionDigits: 2,
+                                                maximumFractionDigits: 0,
                                                 minimumFractionDigits: 0,
                                             }).format(percStaked) + "%"
                                         }`
