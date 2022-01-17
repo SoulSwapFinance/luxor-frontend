@@ -49,9 +49,11 @@ export const loadAppDetails = createAsyncThunk(
         const luxOwned = (await luxorContract.balanceOf(addresses.DAO_ADDRESS)) / Math.pow(10, 9);
         const luxDaiLpAmount = (await luxorContract.balanceOf(addresses.LUX_DAI_ADDRESS)) / Math.pow(10, 9);
         const luxFtmLpAmount = (await luxorContract.balanceOf(addresses.LUX_FTM_ADDRESS)) / Math.pow(10, 9);
+        const luxSoulLpAmount = (await luxorContract.balanceOf(addresses.LUX_SOUL_ADDRESS)) / Math.pow(10, 9);
         console.log("luxDaiLp:%s", luxDaiLpAmount);
         console.log("luxFtmLp:%s", luxFtmLpAmount);
-        const pooledLux = luxDaiLpAmount + luxFtmLpAmount;
+        console.log("luxSoulLp:%s", luxSoulLpAmount);
+        const pooledLux = luxDaiLpAmount + luxFtmLpAmount + luxSoulLpAmount;
         console.log("pooledLux:%s", pooledLux);
         const mintableLux = (await luxorSupplyContract.mintableLuxor()) / Math.pow(10, 9);
         console.log("mintableLux:%s", mintableLux);
