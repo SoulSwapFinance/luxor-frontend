@@ -143,6 +143,7 @@ export function BondTableData({ bond }: IBondProps) {
 
     const maxBondDebt = Number(bond.maxDebt / 1e9);
     const totalBondedDebt = Number(bond.totalBondDebt);
+    const bondAddress = bond.getAddressForBond(Networks.FTM);
 
     return (
         <TableRow>
@@ -150,6 +151,9 @@ export function BondTableData({ bond }: IBondProps) {
                 <BondLogo bond={bond} />
                 <div className="bond-name">
                     <p className="bond-name-title">{bond.displayName}</p>
+                    {/* <Link href={`https://ftmscan.com/address/${bondAddress}`} target="_blank">
+                        <p className="bond-name-title-gold">Smart Contract</p>
+                    </Link> */}
                     {bond.isLP && (
                         <Link color="primary" href={bond.lpUrl} target="_blank">
                             <p className="bond-name-title-gold">Create Pair</p>
