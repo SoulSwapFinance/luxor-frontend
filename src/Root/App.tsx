@@ -9,7 +9,8 @@ import { IReduxState } from "../store/slices/state.interface";
 import Loading from "../components/Loader";
 import useBonds from "../hooks/bonds";
 import ViewBase from "../components/ViewBase";
-import { Bond, Bridge, Calculator, ChooseBond, Dashboard, NotFound, Stake, Swap } from "../views"; // TODO: Wrap
+import { Bond, NotFound } from "../views"; // TODO: Wrap
+// import { Bond, Bridge, Calculator, ChooseBond, Dashboard, NotFound, Stake, Swap } from "../views"; // TODO: Wrap
 import "./style.scss";
 import useTokens from "../hooks/tokens";
 
@@ -110,7 +111,7 @@ function App() {
                 <Route exact path="/">
                     <Redirect to="/mints" />
                 </Route>
-                <Route path="/dashboard">
+                {/* <Route path="/dashboard">
                     <Dashboard />
                 </Route>
                 <Route path="/stake">
@@ -135,7 +136,7 @@ function App() {
 
                 <Route path="/calculator">
                     <Calculator />
-                </Route>
+                </Route> */}
 
                 <Route component={NotFound} />
             </Switch>
