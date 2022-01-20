@@ -298,7 +298,7 @@ export const ftmLuxor = new CustomLPBond({
             reserveAddress: "",
         },
     },
-    lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
+    lpUrl: "https://app.soulswap.finance/exchange/add/FTM/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
 });
 
 export const ftmLuxor7 = new CustomLPBond({
@@ -321,7 +321,7 @@ export const ftmLuxor7 = new CustomLPBond({
             reserveAddress: "",
         },
     },
-    lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
+    lpUrl: "https://app.soulswap.finance/exchange/add/FTM/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
 });
 
 export const ftmLuxor14 = new CustomLPBond({
@@ -344,7 +344,7 @@ export const ftmLuxor14 = new CustomLPBond({
             reserveAddress: "",
         },
     },
-    lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
+    lpUrl: "https://app.soulswap.finance/exchange/add/FTM/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
 });
 
 export const ftmLuxor28 = new CustomLPBond({
@@ -367,7 +367,7 @@ export const ftmLuxor28 = new CustomLPBond({
             reserveAddress: "",
         },
     },
-    lpUrl: "https://app.soulswap.finance/exchange/add/ETH/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
+    lpUrl: "https://app.soulswap.finance/exchange/add/FTM/0x6671E20b83Ba463F270c8c75dAe57e3Cc246cB2b",
 });
 
 export default [dai, dai7, dai14, dai28, daiLuxor, daiLuxor7, daiLuxor14, daiLuxor28, ftmLuxor, ftmLuxor7, ftmLuxor14, ftmLuxor28, wftm, wftm7, wftm14, wftm28];
