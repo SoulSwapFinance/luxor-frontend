@@ -186,24 +186,6 @@ function Dashboard() {
                         </Grid>
                         <Grid item lg={6} md={6} sm={6} xs={12}>
                             <div className="dashboard-card">
-                                <p className="card-title">Protocol Liquidity</p>
-                                <p className="card-value">
-                                    {isAppLoading ? (
-                                        <Skeleton width="250px" />
-                                    ) : (
-                                        new Intl.NumberFormat("en-US", {
-                                            style: "currency",
-                                            currency: "USD",
-                                            maximumFractionDigits: 0,
-                                            minimumFractionDigits: 0,
-                                        }).format(app.treasuryBalance / 4 - app.reserves)
-                                    )}
-                                </p>
-                            </div>
-                        </Grid>
-
-                        <Grid item lg={6} md={6} sm={6} xs={12}>
-                            <div className="dashboard-card">
                                 <p className="card-title">LUX Floor Price</p>
                                 <p className="card-value">
                                     {isAppLoading ? (
@@ -215,6 +197,23 @@ function Dashboard() {
                                             maximumFractionDigits: 2,
                                             minimumFractionDigits: 2,
                                         }).format(app.reserves / app.totalSupply)
+                                    )}
+                                </p>
+                            </div>
+                        </Grid>
+                                                <Grid item lg={6} md={6} sm={6} xs={12}>
+                            <div className="dashboard-card">
+                                <p className="card-title">LUX RFV</p>
+                                <p className="card-value">
+                                    {isAppLoading ? (
+                                        <Skeleton width="250px" />
+                                    ) : (
+                                        new Intl.NumberFormat("en-US", {
+                                            style: "currency",
+                                            currency: "USD",
+                                            maximumFractionDigits: 0,
+                                            minimumFractionDigits: 0,
+                                        }).format(app.rfv)
                                     )}
                                 </p>
                             </div>
