@@ -84,8 +84,8 @@ export const loadAppDetails = createAsyncThunk(
         console.log("reserves:%s", reserves);
         console.log("liquidity:%s", liquidity);
 
-        const rfv = rfvTreasury / 2 / luxorSupply;
-        
+        const rfv = rfvTreasury / luxorSupply;
+
         const epoch = await stakingContract.epoch();
         const stakingReward = epoch.distribute;
         const circ = await lumensContract.circulatingSupply();
