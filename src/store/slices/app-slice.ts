@@ -32,6 +32,7 @@ export const loadAppDetails = createAsyncThunk(
         const lumensContract = new ethers.Contract(addresses.LUM_ADDRESS, LumensTokenContract, provider);
         const luxorContract = new ethers.Contract(addresses.LUX_ADDRESS, LuxorTokenContract, provider);
         const daiContract = new ethers.Contract(addresses.DAI_ADDRESS, DaiTokenContract, provider);
+        const daiFtmContract = new ethers.Contract(addresses.DAI_FTM_ADDRESS, IERC20, provider);
         const wftmContract = new ethers.Contract(addresses.WFTM_ADDRESS, IERC20, provider);
 
         // const luxDaiContract = new ethers.Contract(addresses.LUX_DAI_ADDRESS, IERC20, provider);
@@ -50,6 +51,7 @@ export const loadAppDetails = createAsyncThunk(
         const luxDaiLpAmount = (await luxorContract.balanceOf(addresses.LUX_DAI_ADDRESS)) / Math.pow(10, 9);
         const luxFtmLpAmount = (await luxorContract.balanceOf(addresses.LUX_FTM_ADDRESS)) / Math.pow(10, 9);
         const luxSoulLpAmount = (await luxorContract.balanceOf(addresses.LUX_SOUL_ADDRESS)) / Math.pow(10, 9);
+
         console.log("luxDaiLp:%s", luxDaiLpAmount);
         console.log("luxFtmLp:%s", luxFtmLpAmount);
         console.log("luxSoulLp:%s", luxSoulLpAmount);
@@ -63,9 +65,21 @@ export const loadAppDetails = createAsyncThunk(
         const stakingTVL = circSupply * marketPrice;
         const marketCap = totalSupply * marketPrice;
 
+        // const daiFtmLpAmount = (await daiContract.balanceOf(addresses.DAI_FTM_ADDRESS)) / Math.pow(10, 18);
         const tokenBalPromises = allBonds.map(bond => bond.getTreasuryBalance(networkID, provider));
         const tokenBalances = await Promise.all(tokenBalPromises);
-        const treasuryBalance = tokenBalances.reduce((tokenBalance0, tokenBalance1) => tokenBalance0 + tokenBalance1, 0);
+        const rawTreasuryBalance = tokenBalances.reduce((tokenBalance0, tokenBalance1) => tokenBalance0 + tokenBalance1, 0);
+
+        const daiFtmSupply = (await daiFtmContract.totalSupply()) / Math.pow(10, 18);
+        const daiFtmLpPrice = ((await daiContract.balanceOf(addresses.DAI_FTM_ADDRESS)) * 2) / daiFtmSupply / Math.pow(10, 18);
+        const daiFtmLpBalance = (await daiFtmContract.balanceOf(addresses.TREASURY_ADDRESS)) / Math.pow(10, 18);
+        const investmentsValue = daiFtmLpBalance * daiFtmLpPrice;
+        console.log("lpPrice:%s", daiFtmLpPrice);
+        console.log("investedLiquidity:%s", daiFtmLpBalance);
+        console.log("investmentsValue:%s", investmentsValue);
+        const treasuryLuxorLiquidity = rawTreasuryBalance / 4;
+        const treasuryBalance = treasuryLuxorLiquidity + investmentsValue;
+        console.log("treasuryBalance:%s", treasuryBalance);
 
         const tokenAmountsPromises = allBonds.map(bond => bond.getTokenAmount(networkID, provider));
         const tokenAmounts = await Promise.all(tokenAmountsPromises);
@@ -79,8 +93,9 @@ export const loadAppDetails = createAsyncThunk(
         // RESERVES && LIQUIDITY //
         const rawReserves = daiReserves + wftmReserves;
         const reserves = rawReserves;
-        const liquidity = treasuryBalance - rawReserves;
+        const liquidity = treasuryLuxorLiquidity - rawReserves;
 
+        console.log("treasury:%s", treasuryBalance);
         console.log("reserves:%s", reserves);
         console.log("liquidity:%s", liquidity);
 
@@ -111,6 +126,7 @@ export const loadAppDetails = createAsyncThunk(
             circSupply,
             fiveDayRate,
             treasuryBalance,
+            investmentsValue,
             reserves,
             liquidity,
             stakingAPY,
@@ -140,6 +156,7 @@ export interface IAppSlice {
     currentBlockTime: number;
     fiveDayRate: number;
     treasuryBalance: number;
+    investmentsValue: number;
     reserves: number;
     liquidity: number;
     stakingAPY: number;

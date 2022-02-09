@@ -128,21 +128,6 @@ function Dashboard() {
                                 </p>
                             </div>
                         </Grid>
-
-                        <Grid item lg={6} md={6} sm={6} xs={12}>
-                            <div className="dashboard-card">
-                                <p className="card-title">Standard Index</p>
-                                <p className="card-value">{isAppLoading ? <Skeleton width="250px" /> : `${trim(Number(app.currentIndex) / 4.5, 2)} LUX`}</p>
-                            </div>
-                        </Grid>
-
-                        <Grid item lg={6} md={6} sm={6} xs={12}>
-                            <div className="dashboard-card">
-                                <p className="card-title">wLUM Index</p>
-                                <p className="card-value">{isAppLoading ? <Skeleton width="250px" /> : `${trim(Number(app.currentIndex), 2)} LUX`}</p>
-                            </div>
-                        </Grid>
-
                         <Grid item lg={6} md={6} sm={6} xs={12}>
                             <div className="dashboard-card">
                                 <p className="card-title">APY</p>
@@ -162,7 +147,7 @@ function Dashboard() {
                                             currency: "USD",
                                             maximumFractionDigits: 0,
                                             minimumFractionDigits: 0,
-                                        }).format(app.treasuryBalance / 4)
+                                        }).format(app.treasuryBalance)
                                     )}
                                 </p>
                             </div>
@@ -186,24 +171,7 @@ function Dashboard() {
                         </Grid>
                         <Grid item lg={6} md={6} sm={6} xs={12}>
                             <div className="dashboard-card">
-                                <p className="card-title">LUX Floor Price</p>
-                                <p className="card-value">
-                                    {isAppLoading ? (
-                                        <Skeleton width="250px" />
-                                    ) : (
-                                        new Intl.NumberFormat("en-US", {
-                                            style: "currency",
-                                            currency: "USD",
-                                            maximumFractionDigits: 2,
-                                            minimumFractionDigits: 2,
-                                        }).format(app.reserves / app.totalSupply)
-                                    )}
-                                </p>
-                            </div>
-                        </Grid>
-                                                <Grid item lg={6} md={6} sm={6} xs={12}>
-                            <div className="dashboard-card">
-                                <p className="card-title">LUX RFV</p>
+                                <p className="card-title">Protocol Liquidity</p>
                                 <p className="card-value">
                                     {isAppLoading ? (
                                         <Skeleton width="250px" />
@@ -213,7 +181,58 @@ function Dashboard() {
                                             currency: "USD",
                                             maximumFractionDigits: 0,
                                             minimumFractionDigits: 0,
-                                        }).format(app.rfv)
+                                        }).format(app.liquidity)
+                                    )}
+                                </p>
+                            </div>
+                        </Grid>
+                        <Grid item lg={6} md={6} sm={6} xs={12}>
+                            <div className="dashboard-card">
+                                <p className="card-title">Protocol Investments</p>
+                                <p className="card-value">
+                                    {isAppLoading ? (
+                                        <Skeleton width="250px" />
+                                    ) : (
+                                        new Intl.NumberFormat("en-US", {
+                                            style: "currency",
+                                            currency: "USD",
+                                            maximumFractionDigits: 0,
+                                            minimumFractionDigits: 0,
+                                        }).format(app.investmentsValue)
+                                    )}
+                                </p>
+                            </div>
+                        </Grid>
+                        <Grid item lg={6} md={6} sm={6} xs={12}>
+                            <div className="dashboard-card">
+                                <p className="card-title">Floor Price</p>
+                                <p className="card-value">
+                                    {isAppLoading ? (
+                                        <Skeleton width="250px" />
+                                    ) : (
+                                        new Intl.NumberFormat("en-US", {
+                                            style: "currency",
+                                            currency: "USD",
+                                            maximumFractionDigits: 0,
+                                            minimumFractionDigits: 0,
+                                        }).format(app.reserves / app.totalSupply)
+                                    )}
+                                </p>
+                            </div>
+                        </Grid>
+                        <Grid item lg={6} md={6} sm={6} xs={12}>
+                            <div className="dashboard-card">
+                                <p className="card-title">Backed Value</p>
+                                <p className="card-value">
+                                    {isAppLoading ? (
+                                        <Skeleton width="250px" />
+                                    ) : (
+                                        new Intl.NumberFormat("en-US", {
+                                            style: "currency",
+                                            currency: "USD",
+                                            maximumFractionDigits: 0,
+                                            minimumFractionDigits: 0,
+                                        }).format((app.reserves + app.liquidity) / app.totalSupply)
                                     )}
                                 </p>
                             </div>
@@ -222,6 +241,20 @@ function Dashboard() {
                             <div className="dashboard-card">
                                 <p className="card-title">APY Runway</p>
                                 <p className="card-value">{isAppLoading ? <Skeleton width="250px" /> : `${trim(Number(app.runway), 2)} Days`}</p>
+                            </div>
+                        </Grid>
+
+                        <Grid item lg={6} md={6} sm={6} xs={12}>
+                            <div className="dashboard-card">
+                                <p className="card-title">Standard Index</p>
+                                <p className="card-value">{isAppLoading ? <Skeleton width="250px" /> : `${trim(Number(app.currentIndex) / 4.5, 2)} LUX`}</p>
+                            </div>
+                        </Grid>
+
+                        <Grid item lg={6} md={6} sm={6} xs={12}>
+                            <div className="dashboard-card">
+                                <p className="card-title">wLUM Index</p>
+                                <p className="card-value">{isAppLoading ? <Skeleton width="250px" /> : `${trim(Number(app.currentIndex), 2)} LUX`}</p>
                             </div>
                         </Grid>
                     </Grid>
