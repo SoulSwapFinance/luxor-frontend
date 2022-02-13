@@ -155,16 +155,27 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                         }
                     />
                 </FormControl>
-                {hasAllowance() || useWFTM ? (
-                    <div
-                        className="transaction-button bond-approve-btn"
-                        onClick={async () => {
-                            if (isPendingTxn(pendingTransactions, "bond_" + bond.name)) return;
-                            await onBond();
-                        }}
-                    >
-                        <p>{txnButtonText(pendingTransactions, "bond_" + bond.name, "MINT LUXOR")}</p>
+                {/* { Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) ? (
+                    <div className="transaction-button bond-approve-btn-red">
+                        <p>{txnButtonText(pendingTransactions, "bond_" + bond.name, "MAX REACHED")}</p>
                     </div>
+                ) :  */}
+                {hasAllowance() || useWFTM ? (
+                    Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) ? (
+                        <div className="transaction-button bond-approve-btn-red">
+                            <p>{txnButtonText(pendingTransactions, "bond_" + bond.name, "MAX REACHED")}</p>
+                        </div>
+                    ) : (
+                        <div
+                            className="transaction-button bond-approve-btn"
+                            onClick={async () => {
+                                if (isPendingTxn(pendingTransactions, "bond_" + bond.name)) return;
+                                await onBond();
+                            }}
+                        >
+                            <p>{txnButtonText(pendingTransactions, "bond_" + bond.name, "MINT LUXOR")}</p>
+                        </div>
+                    )
                 ) : (
                     <div
                         className="transaction-button bond-approve-btn"
