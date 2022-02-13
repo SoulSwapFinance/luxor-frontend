@@ -155,11 +155,6 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                         }
                     />
                 </FormControl>
-                {/* { Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) ? (
-                    <div className="transaction-button bond-approve-btn-red">
-                        <p>{txnButtonText(pendingTransactions, "bond_" + bond.name, "MAX REACHED")}</p>
-                    </div>
-                ) :  */}
                 {hasAllowance() || useWFTM ? (
                     Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) ? (
                         <div className="transaction-button bond-approve-btn-red">
