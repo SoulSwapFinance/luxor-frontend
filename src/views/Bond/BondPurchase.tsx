@@ -11,6 +11,7 @@ import { IAllBondData } from "../../hooks/bonds";
 import useDebounce from "../../hooks/debounce";
 import { messages } from "../../constants/messages";
 import { warning } from "../../store/slices/messages-slice";
+import ConnectButton from "../../components/Header/connect-button-side";
 import Zapin from "./Zapin";
 import "./bond.scss";
 
@@ -155,7 +156,11 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                         }
                     />
                 </FormControl>
-                {hasAllowance() || useWFTM ? (
+                {!address ? (
+                    <div className="transaction-button bond-approve-btn-red">
+                        <ConnectButton />
+                    </div>
+                ) : hasAllowance() || useWFTM ? (
                     Number(bond.totalBondDebt) > Number(bond.maxDebt / 1e9) ? (
                         <div className="transaction-button bond-approve-btn-red">
                             <p>{txnButtonText(pendingTransactions, "bond_" + bond.name, "MAX REACHED")}</p>
