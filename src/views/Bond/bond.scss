@@ -235,6 +235,36 @@
       text-align: center;
     }
   }
+  
+  .bond-approve-btn-red {
+    background: darken(#ff0055, 20%);
+    background: #ff0055;
+    border-radius: 10px;
+    
+    height: 58px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    filter: brightness(0.85);
+
+    &:hover{
+      box-shadow: 0 0 10px rgb(245 197 0 / 60%);
+      background: #ff0055;
+      background: #ff0055;
+      transition: all .2s;
+      filter: brightness(1);
+    }
+
+    p {
+      font-family: Montserrat SemiBold;
+      font-weight: 600;
+      font-size: 18px;
+      color: #000000;
+      text-align: center;
+    }
+  }
 
   .help-text {
     margin-top: 20px;
