@@ -28,7 +28,7 @@ function RebaseTimer() {
                 {currentBlockTime ? (
                     timeUntilRebase ? (
                         <>
-                            Next Rebase: <strong>{timeUntilRebase}</strong>
+                            Warm-Up Period: 7 Days | Next Rebase: <strong>{timeUntilRebase}</strong>
                         </>
                     ) : (
                         <strong>Rebasing...</strong>
