@@ -34,6 +34,8 @@ export const loadAppDetails = createAsyncThunk(
         const daiContract = new ethers.Contract(addresses.DAI_ADDRESS, DaiTokenContract, provider);
         const daiFtmContract = new ethers.Contract(addresses.DAI_FTM_ADDRESS, IERC20, provider);
         const wftmContract = new ethers.Contract(addresses.WFTM_ADDRESS, IERC20, provider);
+        const ftmLendContract = new ethers.Contract(addresses.FTM_LEND_ADDRESS, IERC20, provider);
+        const daiLendContract = new ethers.Contract(addresses.DAI_LEND_ADDRESS, IERC20, provider);
 
         // const luxDaiContract = new ethers.Contract(addresses.LUX_DAI_ADDRESS, IERC20, provider);
         // const luxFtmContract = new ethers.Contract(addresses.LUX_FTM_ADDRESS, IERC20, provider);
@@ -73,7 +75,12 @@ export const loadAppDetails = createAsyncThunk(
         const daiFtmSupply = (await daiFtmContract.totalSupply()) / Math.pow(10, 18);
         const daiFtmLpPrice = ((await daiContract.balanceOf(addresses.DAI_FTM_ADDRESS)) * 2) / daiFtmSupply / Math.pow(10, 18);
         const daiFtmLpBalance = (await daiFtmContract.balanceOf(addresses.TREASURY_ADDRESS)) / Math.pow(10, 18);
-        const investmentsValue = daiFtmLpBalance * daiFtmLpPrice;
+        const liquidityInvestmentValue = ((await daiFtmContract.balanceOf(addresses.TREASURY_ADDRESS)) * daiFtmLpPrice) / Math.pow(10, 18);
+        const daiLendInvestmentValue = ((await daiLendContract.balanceOf(addresses.TREASURY_ADDRESS)) * daiPrice) / Math.pow(10, 18);
+        const ftmLendInvestmentValue = ((await ftmLendContract.balanceOf(addresses.TREASURY_ADDRESS)) * ftmPrice) / Math.pow(10, 18);
+        const lendInvestmentValue = ftmLendInvestmentValue + daiLendInvestmentValue;
+
+        const investmentsValue = lendInvestmentValue + liquidityInvestmentValue;
         console.log("lpPrice:%s", daiFtmLpPrice);
         console.log("investedLiquidity:%s", daiFtmLpBalance);
         console.log("investmentsValue:%s", investmentsValue);
