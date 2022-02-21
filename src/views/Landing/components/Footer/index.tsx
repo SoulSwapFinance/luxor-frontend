@@ -12,7 +12,7 @@ function Footer() {
         return state.app.stakingAPY;
     });
     const treasuryBalance = useSelector<IReduxState, number>(state => {
-        return state.app.treasuryBalance / 4;
+        return state.app.treasuryBalance;
     });
 
     const backing = useSelector<IReduxState, number>(state => {
