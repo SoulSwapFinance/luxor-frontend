@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { getAddresses } from "../../constants";
-import { LuxorTokenContract, LumensTokenContract, DaiTokenContract, wLumTokenContract } from "../../abi";
+import { LuxorTokenContract, LumensTokenContract, StakingContract, DaiTokenContract, wLumTokenContract } from "../../abi";
 import { setAll } from "../../helpers";
 
 import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit";
@@ -65,11 +65,20 @@ interface IUserAccountDetails {
     wrapping: {
         lumens: number;
     };
+    warmup: {
+        depositAmount: number;
+        warmUpAmount: number;
+        expiry: number;
+    };
 }
 
 export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails", async ({ networkID, provider, address }: ILoadAccountDetails): Promise<IUserAccountDetails> => {
     let luxorBalance = 0;
     let lumensBalance = 0;
+
+    let depositAmount = 0;
+    let warmUpAmount = 0;
+    let expiry = 0;
 
     let wlumBalance = 0;
     let lumWlumAllowance = 0;
@@ -99,6 +108,16 @@ export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails",
         wlumBalance = await wlumContract.balanceOf(address);
     }
 
+    if (addresses.STAKING_ADDRESS) {
+        const stakingContract = new ethers.Contract(addresses.STAKING_ADDRESS, StakingContract, provider);
+        const warmupInfo = await stakingContract.warmupInfo(address);
+        const lumensContract = new ethers.Contract(addresses.LUM_ADDRESS, LumensTokenContract, provider);
+        const balance = await lumensContract.balanceForGons(warmupInfo.gons);
+        depositAmount = warmupInfo.deposit;
+        warmUpAmount = +ethers.utils.formatUnits(balance, "gwei");
+        expiry = warmupInfo.expiry;
+    }
+
     return {
         balances: {
             lumens: ethers.utils.formatUnits(lumensBalance, "gwei"),
@@ -111,6 +130,11 @@ export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails",
         },
         wrapping: {
             lumens: Number(lumWlumAllowance),
+        },
+        warmup: {
+            depositAmount: +ethers.utils.formatUnits(lumensBalance, "gwei"),
+            warmUpAmount,
+            expiry,
         },
     };
 });
@@ -259,6 +283,11 @@ export interface IAccountSlice {
     wrapping: {
         lumens: number;
     };
+    warmup: {
+        depositAmount: number;
+        warmUpAmount: number;
+        expiry: number;
+    };
     tokens: { [key: string]: IUserTokenDetails };
 }
 
@@ -268,6 +297,7 @@ const initialState: IAccountSlice = {
     balances: { lumens: "", luxor: "", wlum: "" },
     staking: { luxor: 0, lumens: 0 },
     wrapping: { lumens: 0 },
+    warmup: { depositAmount: 0, warmUpAmount: 0, expiry: 0 },
     tokens: {},
 };
 

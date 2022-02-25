@@ -1,8 +1,8 @@
 import { useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Grid, InputAdornment, OutlinedInput, Zoom } from "@material-ui/core";
+import { Button, Grid, InputAdornment, OutlinedInput, Tooltip, Typography, Zoom } from "@material-ui/core";
 import RebaseTimer from "../../components/RebaseTimer";
-import { trim } from "../../helpers";
+import { prettifySeconds, secondsUntilBlock, trim } from "../../helpers";
 import { changeStake, changeApproval } from "../../store/slices/stake-thunk";
 import "./stake.scss";
 import { useWeb3Context } from "../../hooks";
@@ -13,6 +13,7 @@ import { messages } from "../../constants/messages";
 import classnames from "classnames";
 import { warning } from "../../store/slices/messages-slice";
 import { IAppSlice } from "src/store/slices/app-slice";
+import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 
 function Stake() {
     const dispatch = useDispatch();
@@ -42,6 +43,21 @@ function Stake() {
     const stakingRebase = useSelector<IReduxState, number>(state => {
         return state.app.stakingRebase;
     });
+    const currentEpochNumber = useSelector<IReduxState, number>(state => {
+        return state.app.currentEpoch;
+    });
+
+    const warmUpAmount = useSelector<IReduxState, number>(state => {
+        return state.account.warmup && state.account.warmup.warmUpAmount;
+    });
+
+    const depositAmount = useSelector<IReduxState, number>(state => {
+        return state.account.warmup && state.account.warmup.depositAmount;
+    });
+
+    const expiry = useSelector<IReduxState, number>(state => {
+        return state.account.warmup && state.account.warmup.expiry;
+    });
     const stakingAPY = useSelector<IReduxState, number>(state => {
         return state.app.stakingAPY;
     });
@@ -61,12 +77,16 @@ function Stake() {
         }
     };
 
+    const timeUntilEpochEnd = () => {
+        const seconds = secondsUntilBlock(currentEpochNumber, expiry);
+        return prettifySeconds(seconds);
+    };
+
     const onSeekApproval = async (token: string) => {
         if (await checkWrongNetwork()) return;
 
         await dispatch(changeApproval({ address, token, provider, networkID: chainID }));
     };
-
     const onChangeStake = async (action: string) => {
         if (await checkWrongNetwork()) return;
         if (quantity === "" || parseFloat(quantity) === 0) {
@@ -95,6 +115,20 @@ function Stake() {
     const trimmedStakingAPY = trim(stakingAPY * 100, 1);
     const stakingRebasePercentage = trim(stakingRebase * 100, 4);
     const nextRewardValue = trim((Number(stakingRebasePercentage) / 100) * Number(trimmedLumensBalance), 6);
+    const remainingPeriods = expiry - Number(currentEpochNumber);
+    const totalPendingRewards = warmUpAmount + Number(nextRewardValue);
+
+    const useStyles = makeStyles(theme =>
+        createStyles({
+            customWidth: {
+                maxWidth: 250,
+                fontSize: theme.typography.pxToRem(14),
+                backgroundColor: theme.palette.common.black,
+            },
+        }),
+    );
+
+    const classes = useStyles();
 
     return (
         <div className="stake-view">
@@ -260,20 +294,30 @@ function Stake() {
                                     <RebaseTimer />
                                     <div className="stake-user-data">
                                         <div className="data-row">
-                                            <p className="data-row-name">Your Balance</p>
-                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(Number(luxorBalance), 4)} LUX</>}</p>
+                                            <p className="data-row-name">Luxor Balance</p>
+                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(Number(luxorBalance), 2)} LUX</>}</p>
                                         </div>
 
                                         <div className="data-row">
-                                            <p className="data-row-name">Your Staked Balance</p>
-                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trimmedLumensBalance} LUM</>}</p>
+                                            <p className="data-row-name">Lumens Balance</p>
+                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(Number(trimmedLumensBalance), 2)} LUM</>}</p>
                                         </div>
-
+                                        {Number(remainingPeriods) > 0 && (
+                                            <div className="data-row">
+                                                <p className="data-row-name-warmup">Warmup Balance</p>
+                                                <p className="data-row-value-warmup">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(warmUpAmount, 2)} LUX</>}</p>
+                                            </div>
+                                        )}
                                         <div className="data-row">
                                             <p className="data-row-name">Next Reward Amount</p>
-                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{nextRewardValue} LUM</>}</p>
+                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(Number(nextRewardValue), 2)} LUM</>}</p>
                                         </div>
-
+                                        {Number(remainingPeriods) > 0 && (
+                                            <div className="data-row">
+                                                <p className="data-row-name-warmup">Total Reward Amount</p>
+                                                <p className="data-row-value-warmup">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(totalPendingRewards, 2)} LUM</>}</p>
+                                            </div>
+                                        )}
                                         <div className="data-row">
                                             <p className="data-row-name">Next Reward Yield</p>
                                             <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{stakingRebasePercentage}%</>}</p>
@@ -283,6 +327,12 @@ function Stake() {
                                             <p className="data-row-name">ROI (5-Day Rate)</p>
                                             <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(Number(fiveDayRate) * 100, 4)}%</>}</p>
                                         </div>
+                                        {Number(remainingPeriods) > 0 && (
+                                            <div className="data-row">
+                                                <p className="data-row-name-warmup">Remaining Periods</p>
+                                                <p className="data-row-value-warmup">{isAppLoading ? <Skeleton width="80px" /> : <>{remainingPeriods}</>}</p>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             )}
