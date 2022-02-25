@@ -65,11 +65,20 @@ interface IUserAccountDetails {
     wrapping: {
         lumens: number;
     };
+    warmup: {
+        deposit: number;
+        gons: number;
+        expiry: number;
+    };
 }
 
 export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails", async ({ networkID, provider, address }: ILoadAccountDetails): Promise<IUserAccountDetails> => {
     let luxorBalance = 0;
     let lumensBalance = 0;
+
+    let deposit = 0;
+    let gons = 0;
+    let expiry = 0;
 
     let wlumBalance = 0;
     let lumWlumAllowance = 0;
@@ -111,6 +120,11 @@ export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails",
         },
         wrapping: {
             lumens: Number(lumWlumAllowance),
+        },
+        warmup: {
+            deposit: Number(deposit),
+            gons: Number(gons),
+            expiry: Number(expiry),
         },
     };
 });
@@ -259,6 +273,11 @@ export interface IAccountSlice {
     wrapping: {
         lumens: number;
     };
+    warmup: {
+        deposit: number;
+        gons: number;
+        expiry: number;
+    };
     tokens: { [key: string]: IUserTokenDetails };
 }
 
@@ -268,6 +287,7 @@ const initialState: IAccountSlice = {
     balances: { lumens: "", luxor: "", wlum: "" },
     staking: { luxor: 0, lumens: 0 },
     wrapping: { lumens: 0 },
+    warmup: { deposit: 0, gons: 0, expiry: 0 },
     tokens: {},
 };
 
