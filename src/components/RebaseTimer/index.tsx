@@ -11,9 +11,36 @@ function RebaseTimer() {
         return state.app.currentBlockTime;
     });
 
+    const currentEpoch = useSelector<IReduxState, number>(state => {
+        return state.app.currentEpoch;
+    });
+
     const nextRebase = useSelector<IReduxState, number>(state => {
         return state.app.nextRebase;
     });
+
+    const epochEnd = useSelector<IReduxState, number>(state => {
+        return state.account.warmup.expiry;
+    });
+
+    const remainingPeriods = useSelector<IReduxState, number>(state => {
+        return epochEnd - currentEpoch; // remaining epochs
+    });
+
+    const secsPerEpoch = 28800; // epoch = 8hrs = 60secs * 60mins * 8hrs
+
+    const remainingWarmupTime = remainingPeriods * secsPerEpoch;
+
+    const epochEndTime = useSelector<IReduxState, number>(state => {
+        return Number(currentBlockTime) + Number(remainingWarmupTime);
+    });
+
+    const timeUntilEpochEnd = useMemo(() => {
+        if (currentEpoch && epochEnd) {
+            const seconds = secondsUntilBlock(currentBlockTime, epochEndTime);
+            return prettifySeconds(seconds);
+        }
+    }, [Number(currentEpoch), Number(epochEnd)]);
 
     const timeUntilRebase = useMemo(() => {
         if (currentBlockTime && nextRebase) {
@@ -28,7 +55,14 @@ function RebaseTimer() {
                 {currentBlockTime ? (
                     timeUntilRebase ? (
                         <>
-                            Warm-Up Period: 7 Days | Next Rebase: <strong>{timeUntilRebase}</strong>
+                            Next Rebase:{" "}
+                            <strong>
+                                {timeUntilRebase}
+                                <br />
+                                Warmup Period: 7 Days
+                            </strong>
+                            <br />
+                            {Number(remainingPeriods) > 0 ? <strong>Remaining Periods: {Number(remainingPeriods)}</strong> : ""}
                         </>
                     ) : (
                         <strong>Rebasing...</strong>
