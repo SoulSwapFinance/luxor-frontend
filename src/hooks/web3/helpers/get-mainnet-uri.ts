@@ -1,3 +1,3 @@
 export const getMainnetURI = (): string => {
-    return "https://rpc.fantom.network";
+    return "https://rpc.ftm.tools";
 };
