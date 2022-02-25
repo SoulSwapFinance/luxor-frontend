@@ -258,6 +258,13 @@
     font-size: 14px;
     color: #00ff37;
   }
+  .data-row-name-warmup {
+    font-family: Montserrat Medium;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: $color-primary;
+  }
   .data-row-name-red {
     font-family: Montserrat Medium;
     font-style: normal;
@@ -270,6 +277,12 @@
     font-size: 14px;
     line-height: 17px;
     color: #FFFFFF;
+  }
+  .data-row-value-warmup{
+    font-family: Montserrat;
+    font-size: 14px;
+    line-height: 17px;
+    color: $color-primary;
   }
 }
 
@@ -308,6 +321,83 @@
   }
 }
 
+.stake {
+  display: grid;
+  grid: 1fr max-content / 1fr;
+  justify-content: center;
+  row-gap: 30px;
+  color: #FFFFFF;
+}
+
+.lux-card {
+  max-width: 830px;
+}
+
+.warm-up {
+  display: grid;
+  place-items: center;
+  justify-self: center;
+  row-gap: 10px;
+  max-width: 830px;
+  grid: 1fr / minmax(0, 1fr);
+  .header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+
+    .card-header .MuiTypography-h5 {
+      margin: 0;
+    }
+    svg {
+      overflow: visible;
+      align-self: flex-start;
+      margin: 0;
+    }
+  }
+  .details {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 100%;
+    justify-items: left;
+
+    .claim-forfeit {
+      display: grid;
+      grid-auto-flow: column;
+      padding: 5px;
+      column-gap: 10px;
+      align-items: self-end;
+
+      .claim-disable {
+        border: none;
+      }
+    }
+    @media screen and (max-width: 600px) {
+      .claim-forfeit {
+        grid-auto-flow: row;
+      }
+    }
+    > div {
+      display: grid;
+      justify-items: center;
+      row-gap: 5px;
+      height: 100%;
+      align-items: center;
+
+      > div {
+        padding: 10px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    .details {
+      grid-template-columns: 1fr 1fr;
+      justify-items: center;
+    }
+  }
+
+}
 @media screen and (max-width: 1240px) {
   .stake-view{
     width: 100%;

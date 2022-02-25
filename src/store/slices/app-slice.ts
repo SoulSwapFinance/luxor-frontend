@@ -117,6 +117,7 @@ export const loadAppDetails = createAsyncThunk(
 
         const currentIndex = await stakingContract.index();
         const nextRebase = epoch.endTime;
+        const currentEpoch = epoch.number;
 
         const treasuryRunway = rfvTreasury / circSupply;
         const runway = Math.log(treasuryRunway) / Math.log(1 + stakingRebase) / 3;
@@ -130,6 +131,7 @@ export const loadAppDetails = createAsyncThunk(
             mintableLux,
             marketCap,
             currentBlock,
+            currentEpoch,
             circSupply,
             fiveDayRate,
             treasuryBalance,
@@ -160,6 +162,7 @@ export interface IAppSlice {
     circSupply: number;
     currentIndex: string;
     currentBlock: number;
+    currentEpoch: number;
     currentBlockTime: number;
     fiveDayRate: number;
     treasuryBalance: number;
