@@ -116,3 +116,50 @@ export const changeStake = createAsyncThunk("stake/changeStake", async ({ action
     dispatch(info({ text: messages.your_balance_updated }));
     return;
 });
+
+interface IForfeitStake {
+    provider: StaticJsonRpcProvider | JsonRpcProvider;
+    address: string;
+    networkID: Networks;
+}
+
+export const forfeitStake = createAsyncThunk("staking/forfeitStake", async ({ address, networkID, provider }: IForfeitStake, { dispatch }) => {
+    if (!provider) {
+        dispatch(warning({ text: messages.please_connect_wallet }));
+        return;
+    }
+
+    const addresses = getAddresses(networkID);
+    const signer = provider.getSigner();
+    const staking = new ethers.Contract(addresses.STAKING_ADDRESS, StakingContract, signer);
+
+    let redeemTx;
+    try {
+        const gasPrice = await getGasPrice(provider);
+
+        redeemTx = await staking.forfeit({ gasPrice });
+        const pendingTxnType = "forfeit";
+        dispatch(
+            fetchPendingTxns({
+                txnHash: redeemTx.hash,
+                text: "Forfeitting Rewards",
+                type: pendingTxnType,
+            }),
+        );
+        await redeemTx.wait();
+        dispatch(success({ text: messages.tx_successfully_send }));
+        await sleep(0.01);
+        dispatch(info({ text: messages.your_balance_update_soon }));
+        await sleep(10);
+        // await dispatch(calculateUserBondDetails({ address, bond, networkID, provider }));
+        // await dispatch(getBalances({ address, networkID, provider }));
+        dispatch(info({ text: messages.your_balance_updated }));
+        return;
+    } catch (err: any) {
+        metamaskErrorWrap(err, dispatch);
+    } finally {
+        if (redeemTx) {
+            dispatch(clearPendingTxn(redeemTx.hash));
+        }
+    }
+});
