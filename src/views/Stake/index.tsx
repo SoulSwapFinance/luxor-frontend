@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Button, Grid, InputAdornment, OutlinedInput, Tooltip, Typography, Zoom } from "@material-ui/core";
 import RebaseTimer from "../../components/RebaseTimer";
 import { prettifySeconds, secondsUntilBlock, trim } from "../../helpers";
-import { changeStake, changeApproval, forfeitStake } from "../../store/slices/stake-thunk";
+import { changeStake, changeApproval, claimWarmup, forfeitStake } from "../../store/slices/stake-thunk";
 import "./stake.scss";
 import { useWeb3Context } from "../../hooks";
 import { IPendingTxn, isPendingTxn, txnButtonText } from "../../store/slices/pending-txns-slice";
@@ -100,6 +100,11 @@ function Stake() {
     async function onForfeitStake() {
         if (await checkWrongNetwork()) return;
         await dispatch(forfeitStake({ address, networkID: chainID, provider }));
+    }
+
+    async function onClaimWarmup() {
+        if (await checkWrongNetwork()) return;
+        await dispatch(claimWarmup({ address, networkID: chainID, provider }));
     }
 
     const hasAllowance = useCallback(
@@ -294,6 +299,19 @@ function Stake() {
                                                                 }}
                                                             >
                                                                 <p>{txnButtonText(pendingTransactions, "forfeit", "Forfeit")}</p>
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                    {Number(expiry) == 0 && Number(remainingPeriods) == 0 && (
+                                                        <div className="stake-card-tab-panel">
+                                                            <div
+                                                                className="stake-card-tab-panel-btn"
+                                                                onClick={() => {
+                                                                    if (isPendingTxn(pendingTransactions, "claim")) return;
+                                                                    onClaimWarmup();
+                                                                }}
+                                                            >
+                                                                <p>{txnButtonText(pendingTransactions, "claim", "Claim")}</p>
                                                             </div>
                                                         </div>
                                                     )}

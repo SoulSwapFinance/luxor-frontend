@@ -14,7 +14,7 @@ const addChainRequest = () => {
             {
                 chainId: "250",
                 chainName: "Fantom Opera",
-                rpcUrls: ["https://rpcapi.fantom.network"],
+                rpcUrls: ["https://rpc.ftm.tools"],
                 blockExplorerUrls: ["https://ftmscan.com/"],
                 nativeCurrency: {
                     name: "FTM",
