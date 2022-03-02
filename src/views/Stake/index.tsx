@@ -302,7 +302,7 @@ function Stake() {
                                                             </div>
                                                         </div>
                                                     )}
-                                                    {Number(expiry) == 0 && Number(remainingPeriods) == 0 && (
+                                                    {Number(remainingPeriods) < 1 && (
                                                         <div className="stake-card-tab-panel">
                                                             <div
                                                                 className="stake-card-tab-panel-btn"
