@@ -37,6 +37,7 @@ export const loadAppDetails = createAsyncThunk(
         const ethContract = new ethers.Contract(addresses.ETH_ADDRESS, IERC20, provider);
         const daiFtmContract = new ethers.Contract(addresses.DAI_FTM_ADDRESS, IERC20, provider);
         const ethFtmContract = new ethers.Contract(addresses.ETH_FTM_ADDRESS, IERC20, provider);
+        const wlumFtmContract = new ethers.Contract(addresses.WLUM_FTM_ADDRESS, IERC20, provider);
         const wftmContract = new ethers.Contract(addresses.WFTM_ADDRESS, IERC20, provider);
         const ftmLendContract = new ethers.Contract(addresses.FTM_LEND_ADDRESS, IERC20, provider);
         const daiLendContract = new ethers.Contract(addresses.DAI_LEND_ADDRESS, IERC20, provider);
