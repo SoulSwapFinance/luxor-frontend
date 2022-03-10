@@ -81,6 +81,7 @@ export const loadAppDetails = createAsyncThunk(
         const wlumFtmSupply = (await wlumFtmContract.totalSupply()) / Math.pow(10, 18);
         const daiFtmLpPrice = ((await daiContract.balanceOf(addresses.DAI_FTM_ADDRESS)) * 2) / daiFtmSupply / Math.pow(10, 18);
         const ethFtmLpPrice = ((await ethContract.balanceOf(addresses.ETH_FTM_ADDRESS)) * 2 * ethPrice) / ethFtmSupply / Math.pow(10, 18);
+        const wlumFtmLpPrice = ((await wftmContract.balanceOf(addresses.WLUM_FTM_ADDRESS)) * 2 * ftmPrice) / wlumFtmSupply / Math.pow(10, 18);
         const daiFtmLpBalance = (await daiFtmContract.balanceOf(addresses.TREASURY_ADDRESS)) / Math.pow(10, 18);
         const daiFtmInvestmentValue = ((await daiFtmContract.balanceOf(addresses.TREASURY_ADDRESS)) * daiFtmLpPrice) / Math.pow(10, 18);
         const ethFtmInvestmentValue = ((await ethFtmContract.balanceOf(addresses.TREASURY_ADDRESS)) * ethFtmLpPrice) / Math.pow(10, 18);
