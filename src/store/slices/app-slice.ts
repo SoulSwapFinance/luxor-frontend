@@ -41,7 +41,7 @@ export const loadAppDetails = createAsyncThunk(
         const ftmLendContract = new ethers.Contract(addresses.FTM_LEND_ADDRESS, IERC20, provider);
         const daiLendContract = new ethers.Contract(addresses.DAI_LEND_ADDRESS, IERC20, provider);
         const ethLendContract = new ethers.Contract(addresses.ETH_LEND_ADDRESS, IERC20, provider);
-
+        const wlumFtmContract = new ethers.Contract(addresses.WLUM_FTM_ADDRESS, IERC20, provider);
         // const luxDaiContract = new ethers.Contract(addresses.LUX_DAI_ADDRESS, IERC20, provider);
         // const luxFtmContract = new ethers.Contract(addresses.LUX_FTM_ADDRESS, IERC20, provider);
 
@@ -78,12 +78,14 @@ export const loadAppDetails = createAsyncThunk(
 
         const daiFtmSupply = (await daiFtmContract.totalSupply()) / Math.pow(10, 18);
         const ethFtmSupply = (await ethFtmContract.totalSupply()) / Math.pow(10, 18);
+        const wlumFtmSupply = (await wlumFtmContract.totalSupply()) / Math.pow(10, 18);
         const daiFtmLpPrice = ((await daiContract.balanceOf(addresses.DAI_FTM_ADDRESS)) * 2) / daiFtmSupply / Math.pow(10, 18);
         const ethFtmLpPrice = ((await ethContract.balanceOf(addresses.ETH_FTM_ADDRESS)) * 2 * ethPrice) / ethFtmSupply / Math.pow(10, 18);
         const daiFtmLpBalance = (await daiFtmContract.balanceOf(addresses.TREASURY_ADDRESS)) / Math.pow(10, 18);
         const daiFtmInvestmentValue = ((await daiFtmContract.balanceOf(addresses.TREASURY_ADDRESS)) * daiFtmLpPrice) / Math.pow(10, 18);
         const ethFtmInvestmentValue = ((await ethFtmContract.balanceOf(addresses.TREASURY_ADDRESS)) * ethFtmLpPrice) / Math.pow(10, 18);
-        const liquidityInvestmentValue = daiFtmInvestmentValue + ethFtmInvestmentValue;
+        const wlumFtmInvestmentValue = ((await wlumFtmContract.balanceOf(addresses.TREASURY_ADDRESS)) * wlumFtmLpPrice) / Math.pow(10, 18);
+        const liquidityInvestmentValue = daiFtmInvestmentValue + ethFtmInvestmentValue + wlumFtmInvestmentValue;
         const ethLendInvestmentValue = ((await ethLendContract.balanceOf(addresses.TREASURY_ADDRESS)) * ethPrice) / Math.pow(10, 18);
         const daiLendInvestmentValue = ((await daiLendContract.balanceOf(addresses.TREASURY_ADDRESS)) * daiPrice) / Math.pow(10, 18);
         const ftmLendInvestmentValue = ((await ftmLendContract.balanceOf(addresses.TREASURY_ADDRESS)) * ftmPrice) / Math.pow(10, 18);
