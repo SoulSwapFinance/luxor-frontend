@@ -7,4 +7,5 @@ export { default as ChooseBond } from "./ChooseBond";
 export { default as Stake } from "./Stake";
 export { default as NotFound } from "./404";
 export { default as Swap } from "./Swap";
+export { default as Exchange } from "./Exchange";
 // export { default as Wrap } from "./Wrap";
