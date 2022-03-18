@@ -413,7 +413,7 @@
 }
 
 .confirmation-background {
-  background-color: var(--overlay-background-color);
+  background-color: black;
   width: 100%;
   height: 100%;
   opacity: 0.8;
@@ -425,11 +425,11 @@
 .confirmation {
   max-width: 45ch;
   width: 100%;
-  color: var(--primary-text-color);
-  background-color: var(--primary-background-color);
+  color: white;
+  background-color: #575757;
   border-radius: 8px;
   font-family: "Square", sans-serif;
-  color: var(--primary-text-color);
+  color: white;
   font-size: 18px;
   position: fixed;
   left: 50%;

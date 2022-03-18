@@ -13,6 +13,33 @@
     "isFavortite": true,
     "tokens": [
         {
+          "id": "soul",
+          "name": "Soul Power",
+          "address": "0xe2fb177009FF39F52C0134E8007FA0e4BaAcBd07",
+          "rank": 1,
+          "logo": "https://raw.githubusercontent.com/soulswapfinance/assets/prod/blockchains/fantom/assets/0xe2fb177009FF39F52C0134E8007FA0e4BaAcBd07/logo.png",
+          "symbol": "SOUL",
+          "decimals": 18
+        },
+        {
+          "id": "seance",
+          "name": "Seance Circle",
+          "address": "0x124B06C5ce47De7A6e9EFDA71a946717130079E6",
+          "symbol": "SEANCE",
+          "rank": 2,
+          "logo": "https://raw.githubusercontent.com/soulswapfinance/assets/prod/blockchains/fantom/assets/0x124B06C5ce47De7A6e9EFDA71a946717130079E6/logo.png",
+          "decimals": 18
+        },
+        {
+            "id": "wlum",
+            "name": "Wrapped Lumens",
+            "symbol": "WLUM",
+            "logo": "https://raw.githubusercontent.com/soulswapfinance/assets/analytics/blockchains/fantom/assets/0xa69557e01B0a6b86E5b29BE66d730c0Bfff68208/logo.png",
+            "rank": 3,
+            "address": "0xa69557e01B0a6b86E5b29BE66d730c0Bfff68208",
+            "decimals": 9
+          },
+        {
             "id": "fantom",
             "name": "Fantom",
             "symbol": "FTM",
@@ -589,14 +616,6 @@
             "logo": "https://assets.coingecko.com/coins/images/19307/small/token_light_3x.png?1642936901",
             "symbol": "1ART",
             "address": "0xd3c325848d7c6e29b574cb0789998b2ff901f17e"
-        },
-        {
-            "id": "vesper-finance",
-            "name": "Vesper Finance",
-            "rank": 1895,
-            "logo": "https://assets.coingecko.com/coins/images/13527/small/vesper_logo.jpg?1609399927",
-            "symbol": "VSP",
-            "address": "0x461d52769884ca6235b685ef2040f47d30c94eb5"
         },
         {
             "id": "cerby-token",
