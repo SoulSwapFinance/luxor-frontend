@@ -8,6 +8,7 @@ import { Networks } from "../../constants";
 import { messages } from "../../constants/messages";
 import { useDispatch } from "react-redux";
 import { switchNetwork } from "../../helpers/switch-network";
+import { CHAINS } from "src/helpers/chains";
 
 type onChainProvider = {
     connect: () => Promise<Web3Provider>;
@@ -167,3 +168,19 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
     //@ts-ignore
     return <Web3Context.Provider value={{ onChainProvider }}>{children}</Web3Context.Provider>;
 };
+
+export const WEB_3_MODAL = new Web3Modal({
+    cacheProvider: true, // optional
+    providerOptions: {
+        walletconnect: {
+            package: WalletConnectProvider,
+            options: {
+                rpc: Object.fromEntries(CHAINS.map(c => [c.chainId, c.rpc[0]])),
+                qrcode: true,
+                qrcodeModalOptions: {
+                    mobileLinks: ["metamask", "trust"],
+                },
+            },
+        },
+    },
+});

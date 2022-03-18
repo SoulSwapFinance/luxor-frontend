@@ -9,7 +9,7 @@ import classnames from "classnames";
 import { trim, formatCurrency } from "../../helpers";
 import { changeApproval, changeWrap } from "src/store/slices/wrap-thunk";
 import "../Stake/stake.scss";
-import { useWeb3Context } from "src/hooks/web3/web3-context";
+import { useWeb3Context } from "src/hooks/web3/web3Context";
 import { isPendingTxn, txnButtonText } from "src/store/slices/pending-txns-slice";
 import { Skeleton } from "@material-ui/lab";
 import { error } from "../../store/slices/messages-slice";

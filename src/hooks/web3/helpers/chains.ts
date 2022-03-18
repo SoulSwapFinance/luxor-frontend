@@ -21,18 +21,18 @@ export interface Token {
     decimals?: number;
 }
 
-import fantomChain from "src/assets/chains/fantom.json";
-import fantomLogo from "src/assets/chains/fantom.svg";
-import avalancheChain from "src/assets/chains/avalanche.json";
-import avalancheLogo from "src/assets/chains/avalanche.svg";
-import ethereumChain from "src/assets/chains/ethereum.json";
-import ethereumLogo from "src/assets/chains/ethereum.svg";
-import binanceChain from "src/assets/chains/binance.json";
-import binanceLogo from "src/assets/chains/binance.svg";
-import polygonChain from "src/assets/chains/polygon.json";
-import polygonLogo from "src/assets/chains/polygon.svg";
-import moonriverChain from "src/assets/chains/moonriver.json";
-import moonriverLogo from "src/assets/chains/moonriver.svg";
+import fantomChain from "../../../assets/chains/fantom.json";
+import fantomLogo from "../../../assets/chains/fantom.svg";
+import avalancheChain from "../../../assets/chains/avalanche.json";
+import avalancheLogo from "../../../assets/chains/avalanche.svg";
+import ethereumChain from "../../../assets/chains/ethereum.json";
+import ethereumLogo from "../../../assets/chains/ethereum.svg";
+import binanceChain from "../../../assets/chains/binance.json";
+import binanceLogo from "../../../assets/chains/binance.svg";
+import polygonChain from "../../../assets/chains/polygon.json";
+import polygonLogo from "../../../assets/chains/polygon.svg";
+import moonriverChain from "../../../assets/chains/moonriver.json";
+import moonriverLogo from "../../../assets/chains/moonriver.svg";
 
 export const FANTOM: Chain = { ...fantomChain, logo: fantomLogo };
 export const AVALANCHE: Chain = { ...avalancheChain, logo: avalancheLogo };
