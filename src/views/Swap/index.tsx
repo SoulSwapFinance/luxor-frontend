@@ -92,12 +92,12 @@ export default function Exchange() {
         return (
             getLastExchange() ?? {
                 from: { chain: FANTOM, token: FTM },
-                to: { chain: FANTOM, token: HEC },
+                to: { chain: FANTOM, token: LUX },
             }
         );
     }, []);
-    const [from, setFrom] = useState<Token>(FANTOM.tokens[0]); // (lastExchange.from.token);
-    const [to, setTo] = useState<Token>(FANTOM.tokens[1]); // (lastExchange.to.token);
+    const [from, setFrom] = useState<Token>(FANTOM.tokens[22]); // (lastExchange.from.token);
+    const [to, setTo] = useState<Token>(FANTOM.tokens[50]); // (lastExchange.to.token);
     const [fromChain, setFromChain] = useState<Chain>(FANTOM); //(lastExchange.from.chain);
     const [toChain, setToChain] = useState<Chain>(FANTOM); // (lastExchange.to.chain);
     const [fromUsd, setFromUsd] = useState<string | number>();
