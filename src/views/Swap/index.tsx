@@ -9,7 +9,7 @@ import SDK, {
     CrossChainTrade,
     InsufficientLiquidityError,
     MAINNET_BLOCKCHAIN_NAME,
-} from "hector-rubic-sdk";
+} from "rubik-sdk";
 import { sleep } from "../../helpers/sleep";
 import { ReactComponent as ChevronIcon } from "src/assets/icons/chevron.svg";
 import { ReactComponent as ArrowDownIcon } from "src/assets/icons/arrow-down.svg";
@@ -84,7 +84,7 @@ const rubicConfiguration: Configuration = {
 };
 
 const FTM = FANTOM.tokens.find(t => t.id === "fantom");
-const LUX = FANTOM.tokens.find(t => t.id === "luxor");
+// const LUX = FANTOM.tokens.find(t => t.id === "luxor");
 const HEC = FANTOM.tokens.find(t => t.id === "hector-dao");
 
 export default function Exchange() {
@@ -92,14 +92,14 @@ export default function Exchange() {
         return (
             getLastExchange() ?? {
                 from: { chain: FANTOM, token: FTM },
-                to: { chain: FANTOM, token: LUX },
+                to: { chain: FANTOM, token: HEC },
             }
         );
     }, []);
     const [from, setFrom] = useState<Token>(FANTOM.tokens[22]); // (lastExchange.from.token);
     const [to, setTo] = useState<Token>(FANTOM.tokens[50]); // (lastExchange.to.token);
     const [fromChain, setFromChain] = useState<Chain>(FANTOM); //(lastExchange.from.chain);
-    const [toChain, setToChain] = useState<Chain>(FANTOM); // (lastExchange.to.chain);
+    const [toChain, setToChain] = useState<Chain>(lastExchange.to.chain || FANTOM);
     const [fromUsd, setFromUsd] = useState<string | number>();
     const [toUsd, setToUsd] = useState<string | number>();
     const [amount, setAmount] = useState("");
@@ -117,11 +117,10 @@ export default function Exchange() {
     const { address, connected, connect, chainID } = useWeb3Context();
     const [isConnected, setConnected] = useState(connected);
     const [wallet, setWallet] = useState<WalletProvider>();
-    // const [wallet, setWallet] = useState<WalletProvider>(null);
     useEffect(() => {
-        // if (web3.connection !== Web3Connection.Connected) {
-        //     return;
-        // }
+        if (!connected) {
+            return;
+        }
         setWallet({
             address: address,
             chainId: chainID,
@@ -222,7 +221,7 @@ export default function Exchange() {
                                   amount,
                                   to.isNative ? NATIVE_ADDRESS : to.address,
                               )
-                              .then((trades): InstantTrade => trades[0])
+                              .then((trades: InstantTrade[]): InstantTrade => trades[0])
                         : rubic?.crossChain.calculateTrade(
                               {
                                   address: from.isNative ? NATIVE_ADDRESS : from.address,
@@ -396,7 +395,7 @@ export default function Exchange() {
                         setShowConfirmation("show");
                         try {
                             await trade?.swap({
-                                onConfirm: _hash => setShowConfirmation("hide"),
+                                onConfirm: (_hash: any) => setShowConfirmation("hide"),
                             });
                         } catch (e) {
                             if (e instanceof InsufficientFundsError) {
@@ -538,7 +537,7 @@ const TokenSelect: React.VFC<TokenSelectProps> = ({ show, onClose, chain }) => {
         <div className="token-select-overlay" style={{ opacity: show ? 1 : 0, pointerEvents: show ? "unset" : "none" }}>
             <div className="token-select-background" onClick={() => onClose()} />
             <div className="token-select-modal" style={{ transform: `translate(-50%, calc(-50% + ${show ? 0 : 30}px))` }}>
-                <div
+                {/* <div
                     className="chain-select"
                     style={{
                         transform: isShowingChainSelect ? "translateX(0)" : "translateX(100%)",
@@ -565,7 +564,7 @@ const TokenSelect: React.VFC<TokenSelectProps> = ({ show, onClose, chain }) => {
                             </button>
                         ))}
                     </div>
-                </div>
+                </div> */}
                 <div
                     className="token-select"
                     style={{
