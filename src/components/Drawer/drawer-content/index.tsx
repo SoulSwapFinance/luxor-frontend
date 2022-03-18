@@ -240,7 +240,7 @@ function NavContent() {
                             </Link>
                         ))}
                     </div>
-                    {/* <Link
+                    <Link
                         component={NavLink}
                         to="/swap"
                         isActive={(match: any, location: any) => {
@@ -252,7 +252,7 @@ function NavContent() {
                             <img alt="" src={ExchangeIcon} />
                             <p>Exchange</p>
                         </div>
-                    </Link> */}
+                    </Link>
                     <Link
                         component={NavLink}
                         to="/bridge"
