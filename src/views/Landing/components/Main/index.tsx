@@ -10,7 +10,7 @@ function Main() {
                 <img src={LuxImg} alt="" />
             </div>
             <div className="landing-main-btns-wrap">
-                <Link href="https://app.luxor.money" target="_blank" rel="noreferrer">
+                <Link href="https://app.luxor.money/luxor/dashboard" target="_blank" rel="noreferrer">
                     <div className="landing-main-btn">
                         <p>Enter App</p>
                     </div>

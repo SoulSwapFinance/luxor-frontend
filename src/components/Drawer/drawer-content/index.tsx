@@ -52,7 +52,7 @@ function NavContent() {
                 )}
                 {!address && (
                     // <div className="app-link">
-                    //     {/* <Link href={`https://app.luxor.money`} target="_blank">
+                    //     {/* <Link href={`https://app.luxor.money/luxor/dashboard`} target="_blank">
                     //         <p>Connect Wallet</p>
                     //     </Link> */}
                     // </div>
