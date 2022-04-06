@@ -20,20 +20,14 @@ function Main() {
                         <p>Documentation</p>
                     </div>
                 </Link>
-                <Link href="https://board.soulswap.finance" target="_blank" rel="noreferrer">
-                    <div className="landing-main-btn">
-                        <p>Roadmap</p>
-                    </div>
-                </Link>
             </div>
-            <div className="landing-main-title-wrap">
-                {/* <p>The Defi</p> */}
+      {/* <div className="landing-main-title-wrap">
                 <p>Luxor Money</p>
             </div>
             <div className="landing-main-help-text-wrap">
-                {/* <p>Financial tools to grow your wealth - stake</p>
-                <p>and earn compounding interest.</p> */}
-            </div>
+                <p>Financial tools to grow your wealth - stake</p>
+                <p>and earn compounding interest.</p> 
+            </div> */}
         </div>
     );
 }
