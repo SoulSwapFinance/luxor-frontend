@@ -10,7 +10,7 @@ function Landing() {
         <div className="landing-root">
             <Header />
             <Main />
-            <Footer />
+            {/* <Footer /> */}
             <Background />
         </div>
     );
